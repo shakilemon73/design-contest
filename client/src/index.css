@@ -1,56 +1,44 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Comic+Neue:wght@300;400;700&family=Patrick+Hand:wght@400&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: hsl(40, 30%, 92%);
-  --foreground: hsl(25, 20%, 15%);
-  --card: hsl(42, 25%, 88%);
-  --card-foreground: hsl(25, 20%, 15%);
-  --popover: hsl(42, 25%, 88%);
-  --popover-foreground: hsl(25, 20%, 15%);
-  --primary: hsl(25, 40%, 50%);
-  --primary-foreground: hsl(40, 30%, 95%);
-  --secondary: hsl(35, 25%, 70%);
-  --secondary-foreground: hsl(25, 20%, 15%);
-  --muted: hsl(40, 20%, 85%);
-  --muted-foreground: hsl(25, 15%, 45%);
-  --accent: hsl(30, 45%, 65%);
-  --accent-foreground: hsl(25, 20%, 15%);
-  --destructive: hsl(0, 50%, 55%);
-  --destructive-foreground: hsl(40, 30%, 95%);
-  --border: hsl(35, 20%, 75%);
-  --input: hsl(42, 25%, 88%);
-  --ring: hsl(25, 40%, 50%);
-  --chart-1: hsl(25, 40%, 50%);
-  --chart-2: hsl(30, 45%, 65%);
-  --chart-3: hsl(35, 25%, 70%);
-  --chart-4: hsl(40, 20%, 85%);
-  --chart-5: hsl(42, 25%, 88%);
-  --sidebar: hsl(42, 25%, 88%);
-  --sidebar-foreground: hsl(25, 20%, 15%);
-  --sidebar-primary: hsl(25, 40%, 50%);
-  --sidebar-primary-foreground: hsl(40, 30%, 95%);
-  --sidebar-accent: hsl(30, 45%, 65%);
-  --sidebar-accent-foreground: hsl(25, 20%, 15%);
-  --sidebar-border: hsl(35, 20%, 75%);
-  --sidebar-ring: hsl(25, 40%, 50%);
-  --font-sans: Inter, sans-serif;
-  --font-serif: Georgia, serif;
-  --font-mono: Menlo, monospace;
-  --radius: 16px;
-  --shadow-2xs: 0px 2px 0px 0px hsl(25, 40%, 30%, 0.00);
-  --shadow-xs: 0px 2px 0px 0px hsl(25, 40%, 30%, 0.00);
-  --shadow-sm: 0px 2px 0px 0px hsl(25, 40%, 30%, 0.00), 0px 1px 2px -1px hsl(25, 40%, 30%, 0.00);
-  --shadow: 0px 2px 0px 0px hsl(25, 40%, 30%, 0.00), 0px 1px 2px -1px hsl(25, 40%, 30%, 0.00);
-  --shadow-md: 0px 2px 0px 0px hsl(25, 40%, 30%, 0.00), 0px 2px 4px -1px hsl(25, 40%, 30%, 0.00);
-  --shadow-lg: 0px 2px 0px 0px hsl(25, 40%, 30%, 0.00), 0px 4px 6px -1px hsl(25, 40%, 30%, 0.00);
-  --shadow-xl: 0px 2px 0px 0px hsl(25, 40%, 30%, 0.00), 0px 8px 10px -1px hsl(25, 40%, 30%, 0.00);
-  --shadow-2xl: 0px 2px 0px 0px hsl(25, 40%, 30%, 0.00);
-  --tracking-normal: 0em;
-  --spacing: 0.25rem;
+  --background: linear-gradient(135deg, hsl(210, 100%, 98%) 0%, hsl(190, 100%, 95%) 50%, hsl(280, 100%, 97%) 100%);
+  --foreground: hsl(220, 20%, 25%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(220, 20%, 25%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(220, 20%, 25%);
+  --primary: hsl(280, 85%, 65%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(45, 100%, 70%);
+  --secondary-foreground: hsl(220, 20%, 25%);
+  --muted: hsl(210, 50%, 95%);
+  --muted-foreground: hsl(220, 20%, 45%);
+  --accent: hsl(15, 100%, 75%);
+  --accent-foreground: hsl(0, 0%, 100%);
+  --success: hsl(120, 70%, 60%);
+  --success-foreground: hsl(0, 0%, 100%);
+  --destructive: hsl(0, 80%, 65%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(210, 30%, 90%);
+  --input: hsl(0, 0%, 100%);
+  --ring: hsl(280, 85%, 65%);
+  --magical-purple: hsl(280, 85%, 65%);
+  --sunny-yellow: hsl(45, 100%, 70%);
+  --ocean-blue: hsl(200, 100%, 70%);
+  --forest-green: hsl(120, 70%, 60%);
+  --sunset-orange: hsl(15, 100%, 75%);
+  --candy-pink: hsl(330, 85%, 80%);
+  --font-sans: 'Comic Neue', 'Inter', sans-serif;
+  --font-display: 'Fredoka One', cursive;
+  --font-story: 'Patrick Hand', cursive;
+  --radius: 24px;
+  --magic-glow: 0 0 30px hsla(280, 85%, 65%, 0.4);
+  --warm-shadow: 0 8px 32px hsla(280, 40%, 40%, 0.15);
+  --playful-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .dark {
@@ -97,8 +85,10 @@
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
+    @apply font-sans antialiased text-foreground;
+    font-family: 'Comic Neue', 'Inter', sans-serif;
+    background: linear-gradient(135deg, hsl(210, 100%, 98%) 0%, hsl(190, 100%, 95%) 50%, hsl(280, 100%, 97%) 100%);
+    background-attachment: fixed;
   }
 }
 
@@ -106,52 +96,238 @@
   font-family: 'Fredoka One', cursive;
 }
 
+/* Magical Story Cards */
 .story-card {
-  transition: all 0.3s ease;
-  background: linear-gradient(145deg, hsl(42, 25%, 90%) 0%, hsl(40, 20%, 86%) 100%);
+  transition: all 0.4s var(--playful-bounce);
+  background: linear-gradient(145deg, 
+    hsla(0, 0%, 100%, 0.95) 0%, 
+    hsla(280, 30%, 98%, 0.9) 50%,
+    hsla(200, 50%, 98%, 0.95) 100%
+  );
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.story-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    var(--magical-purple), 
+    var(--candy-pink), 
+    var(--ocean-blue), 
+    var(--sunny-yellow)
+  );
+  background-size: 400% 400%;
+  animation: gradient-flow 6s ease infinite;
+  opacity: 0.1;
+  z-index: -1;
 }
 
 .story-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px hsla(25, 40%, 30%, 0.15);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--magic-glow), var(--warm-shadow);
+  border-color: var(--magical-purple);
 }
 
+.story-card:hover::before {
+  opacity: 0.2;
+}
+
+/* Create Button - Super Magical */
 .create-button {
-  background: linear-gradient(135deg, hsl(25, 50%, 55%) 0%, hsl(20, 45%, 50%) 100%);
-  transition: all 0.3s ease;
+  background: linear-gradient(135deg, 
+    var(--magical-purple) 0%, 
+    var(--candy-pink) 50%, 
+    var(--sunset-orange) 100%
+  );
+  background-size: 200% 200%;
+  animation: gradient-flow 3s ease infinite;
+  transition: all 0.4s var(--playful-bounce);
+  position: relative;
+  overflow: hidden;
+}
+
+.create-button::before {
+  content: '✨';
+  position: absolute;
+  font-size: 2rem;
+  animation: sparkle 2s ease-in-out infinite;
+  top: 20%;
+  right: 15%;
+  opacity: 0.7;
+}
+
+.create-button::after {
+  content: '🌟';
+  position: absolute;
+  font-size: 1.5rem;
+  animation: sparkle 2s ease-in-out infinite 1s;
+  bottom: 20%;
+  left: 15%;
+  opacity: 0.6;
 }
 
 .create-button:hover {
-  background: linear-gradient(135deg, hsl(25, 55%, 60%) 0%, hsl(20, 50%, 55%) 100%);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px hsla(25, 40%, 30%, 0.25);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 40px hsla(280, 85%, 65%, 0.4);
 }
 
-.nav-button {
-  transition: all 0.2s ease;
+/* Interactive Buttons */
+.play-button {
+  background: linear-gradient(135deg, var(--forest-green) 0%, var(--ocean-blue) 100%);
+  transition: all 0.3s var(--playful-bounce);
+  position: relative;
 }
 
-.nav-button:hover {
-  background-color: hsl(35, 25%, 80%);
+.play-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px hsla(120, 70%, 60%, 0.3);
 }
 
-.story-thumbnail {
-  background: linear-gradient(45deg, hsl(30, 35%, 75%) 0%, hsl(35, 30%, 80%) 100%);
+.play-button::before {
+  content: '▶️';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
+.play-button:hover::before {
+  opacity: 1;
+}
+
+/* Floating Magical Elements */
 .floating-element {
-  animation: float 6s ease-in-out infinite;
+  animation: magical-float 4s ease-in-out infinite;
 }
 
-@keyframes float {
+.floating-star {
+  animation: twinkle 2s ease-in-out infinite alternate;
+}
+
+.floating-heart {
+  animation: pulse-heart 1.5s ease-in-out infinite;
+}
+
+/* Logo Animation */
+.logo-container {
+  animation: gentle-bounce 3s ease-in-out infinite;
+}
+
+/* Story Thumbnails */
+.story-thumbnail {
+  background: linear-gradient(45deg, 
+    var(--sunny-yellow) 0%, 
+    var(--sunset-orange) 50%,
+    var(--candy-pink) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.story-thumbnail::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+  opacity: 0;
+}
+
+.story-thumbnail:hover::before {
+  opacity: 1;
+  transform: rotate(45deg) translate(50%, 50%);
+}
+
+/* Magical Animations */
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes magical-float {
   0%, 100% { 
-    transform: translateY(0px); 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  25% { 
+    transform: translateY(-15px) rotate(2deg); 
   }
   50% { 
-    transform: translateY(-10px); 
+    transform: translateY(-25px) rotate(0deg); 
+  }
+  75% { 
+    transform: translateY(-15px) rotate(-2deg); 
   }
 }
 
-.gentle-shadow {
-  box-shadow: 0 4px 15px hsla(25, 40%, 30%, 0.1);
+@keyframes sparkle {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% { 
+    transform: scale(1.2) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+@keyframes twinkle {
+  0% { 
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  100% { 
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes pulse-heart {
+  0%, 100% { 
+    transform: scale(1);
+  }
+  50% { 
+    transform: scale(1.1);
+  }
+}
+
+@keyframes gentle-bounce {
+  0%, 100% { 
+    transform: translateY(0px);
+  }
+  50% { 
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes rainbow-glow {
+  0% { box-shadow: 0 0 20px var(--magical-purple); }
+  25% { box-shadow: 0 0 20px var(--ocean-blue); }
+  50% { box-shadow: 0 0 20px var(--forest-green); }
+  75% { box-shadow: 0 0 20px var(--sunset-orange); }
+  100% { box-shadow: 0 0 20px var(--magical-purple); }
+}
+
+/* Enhanced Shadows */
+.magical-shadow {
+  box-shadow: var(--warm-shadow);
+}
+
+.super-magical-shadow {
+  box-shadow: var(--magic-glow), var(--warm-shadow);
 }
