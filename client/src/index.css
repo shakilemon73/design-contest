@@ -5,39 +5,39 @@
 @tailwind utilities;
 
 :root {
-  --background: linear-gradient(135deg, hsl(210, 100%, 98%) 0%, hsl(190, 100%, 95%) 50%, hsl(280, 100%, 97%) 100%);
-  --foreground: hsl(220, 20%, 25%);
-  --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(220, 20%, 25%);
-  --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(220, 20%, 25%);
-  --primary: hsl(280, 85%, 65%);
-  --primary-foreground: hsl(0, 0%, 100%);
-  --secondary: hsl(45, 100%, 70%);
-  --secondary-foreground: hsl(220, 20%, 25%);
-  --muted: hsl(210, 50%, 95%);
-  --muted-foreground: hsl(220, 20%, 45%);
-  --accent: hsl(15, 100%, 75%);
-  --accent-foreground: hsl(0, 0%, 100%);
-  --success: hsl(120, 70%, 60%);
-  --success-foreground: hsl(0, 0%, 100%);
-  --destructive: hsl(0, 80%, 65%);
-  --destructive-foreground: hsl(0, 0%, 100%);
-  --border: hsl(210, 30%, 90%);
-  --input: hsl(0, 0%, 100%);
-  --ring: hsl(280, 85%, 65%);
-  --magical-purple: hsl(280, 85%, 65%);
-  --sunny-yellow: hsl(45, 100%, 70%);
-  --ocean-blue: hsl(200, 100%, 70%);
-  --forest-green: hsl(120, 70%, 60%);
-  --sunset-orange: hsl(15, 100%, 75%);
-  --candy-pink: hsl(330, 85%, 80%);
+  --background: linear-gradient(135deg, hsl(35, 35%, 85%) 0%, hsl(30, 30%, 78%) 50%, hsl(25, 25%, 72%) 100%);
+  --foreground: hsl(25, 40%, 20%);
+  --card: hsl(35, 40%, 88%);
+  --card-foreground: hsl(25, 40%, 20%);
+  --popover: hsl(35, 40%, 88%);
+  --popover-foreground: hsl(25, 40%, 20%);
+  --primary: hsl(25, 50%, 45%);
+  --primary-foreground: hsl(35, 40%, 95%);
+  --secondary: hsl(35, 45%, 65%);
+  --secondary-foreground: hsl(25, 40%, 20%);
+  --muted: hsl(30, 30%, 80%);
+  --muted-foreground: hsl(25, 30%, 40%);
+  --accent: hsl(20, 45%, 55%);
+  --accent-foreground: hsl(35, 40%, 95%);
+  --success: hsl(120, 45%, 50%);
+  --success-foreground: hsl(35, 40%, 95%);
+  --destructive: hsl(0, 50%, 55%);
+  --destructive-foreground: hsl(35, 40%, 95%);
+  --border: hsl(30, 25%, 70%);
+  --input: hsl(35, 40%, 90%);
+  --ring: hsl(25, 50%, 45%);
+  --warm-brown: hsl(25, 50%, 35%);
+  --rich-tan: hsl(30, 45%, 60%);
+  --light-beige: hsl(35, 40%, 80%);
+  --dark-brown: hsl(20, 60%, 25%);
+  --golden-tan: hsl(35, 55%, 70%);
+  --cream: hsl(40, 50%, 85%);
   --font-sans: 'Comic Neue', 'Inter', sans-serif;
   --font-display: 'Fredoka One', cursive;
   --font-story: 'Patrick Hand', cursive;
   --radius: 24px;
-  --magic-glow: 0 0 30px hsla(280, 85%, 65%, 0.4);
-  --warm-shadow: 0 8px 32px hsla(280, 40%, 40%, 0.15);
+  --warm-glow: 0 0 30px hsla(25, 50%, 45%, 0.4);
+  --earthy-shadow: 0 8px 32px hsla(25, 40%, 30%, 0.15);
   --playful-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
@@ -87,7 +87,7 @@
   body {
     @apply font-sans antialiased text-foreground;
     font-family: 'Comic Neue', 'Inter', sans-serif;
-    background: linear-gradient(135deg, hsl(210, 100%, 98%) 0%, hsl(190, 100%, 95%) 50%, hsl(280, 100%, 97%) 100%);
+    background: linear-gradient(135deg, hsl(35, 35%, 85%) 0%, hsl(30, 30%, 78%) 50%, hsl(25, 25%, 72%) 100%);
     background-attachment: fixed;
   }
 }
@@ -100,9 +100,9 @@
 .story-card {
   transition: all 0.4s var(--playful-bounce);
   background: linear-gradient(145deg, 
-    hsla(0, 0%, 100%, 0.95) 0%, 
-    hsla(280, 30%, 98%, 0.9) 50%,
-    hsla(200, 50%, 98%, 0.95) 100%
+    hsla(35, 40%, 88%, 0.95) 0%, 
+    hsla(30, 35%, 85%, 0.9) 50%,
+    hsla(25, 30%, 82%, 0.95) 100%
   );
   border: 3px solid transparent;
   background-clip: padding-box;
@@ -119,10 +119,10 @@
   right: 0;
   bottom: 0;
   background: linear-gradient(45deg, 
-    var(--magical-purple), 
-    var(--candy-pink), 
-    var(--ocean-blue), 
-    var(--sunny-yellow)
+    var(--warm-brown), 
+    var(--rich-tan), 
+    var(--golden-tan), 
+    var(--cream)
   );
   background-size: 400% 400%;
   animation: gradient-flow 6s ease infinite;
@@ -132,8 +132,8 @@
 
 .story-card:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: var(--magic-glow), var(--warm-shadow);
-  border-color: var(--magical-purple);
+  box-shadow: var(--warm-glow), var(--earthy-shadow);
+  border-color: var(--warm-brown);
 }
 
 .story-card:hover::before {
@@ -143,9 +143,9 @@
 /* Create Button - Super Magical */
 .create-button {
   background: linear-gradient(135deg, 
-    var(--magical-purple) 0%, 
-    var(--candy-pink) 50%, 
-    var(--sunset-orange) 100%
+    var(--warm-brown) 0%, 
+    var(--rich-tan) 50%, 
+    var(--golden-tan) 100%
   );
   background-size: 200% 200%;
   animation: gradient-flow 3s ease infinite;
@@ -176,19 +176,19 @@
 
 .create-button:hover {
   transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 12px 40px hsla(280, 85%, 65%, 0.4);
+  box-shadow: 0 12px 40px hsla(25, 50%, 35%, 0.4);
 }
 
 /* Interactive Buttons */
 .play-button {
-  background: linear-gradient(135deg, var(--forest-green) 0%, var(--ocean-blue) 100%);
+  background: linear-gradient(135deg, var(--dark-brown) 0%, var(--warm-brown) 100%);
   transition: all 0.3s var(--playful-bounce);
   position: relative;
 }
 
 .play-button:hover {
   transform: scale(1.1);
-  box-shadow: 0 8px 25px hsla(120, 70%, 60%, 0.3);
+  box-shadow: 0 8px 25px hsla(25, 50%, 35%, 0.3);
 }
 
 .play-button::before {
@@ -227,9 +227,9 @@
 /* Story Thumbnails */
 .story-thumbnail {
   background: linear-gradient(45deg, 
-    var(--sunny-yellow) 0%, 
-    var(--sunset-orange) 50%,
-    var(--candy-pink) 100%
+    var(--golden-tan) 0%, 
+    var(--rich-tan) 50%,
+    var(--warm-brown) 100%
   );
   position: relative;
   overflow: hidden;
@@ -316,18 +316,18 @@
 }
 
 @keyframes rainbow-glow {
-  0% { box-shadow: 0 0 20px var(--magical-purple); }
-  25% { box-shadow: 0 0 20px var(--ocean-blue); }
-  50% { box-shadow: 0 0 20px var(--forest-green); }
-  75% { box-shadow: 0 0 20px var(--sunset-orange); }
-  100% { box-shadow: 0 0 20px var(--magical-purple); }
+  0% { box-shadow: 0 0 20px var(--warm-brown); }
+  25% { box-shadow: 0 0 20px var(--rich-tan); }
+  50% { box-shadow: 0 0 20px var(--golden-tan); }
+  75% { box-shadow: 0 0 20px var(--dark-brown); }
+  100% { box-shadow: 0 0 20px var(--warm-brown); }
 }
 
 /* Enhanced Shadows */
 .magical-shadow {
-  box-shadow: var(--warm-shadow);
+  box-shadow: var(--earthy-shadow);
 }
 
 .super-magical-shadow {
-  box-shadow: var(--magic-glow), var(--warm-shadow);
+  box-shadow: var(--warm-glow), var(--earthy-shadow);
 }
