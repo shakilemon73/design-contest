@@ -88,6 +88,14 @@
     @apply border-border;
   }
 
+  html, body, #root {
+    width: 2160px;
+    height: 1080px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
   body {
     @apply font-sans antialiased bg-background text-foreground;
     font-family: 'Inter', sans-serif;

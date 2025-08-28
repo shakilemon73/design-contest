@@ -19,7 +19,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <div className="fixed inset-0" style={{ width: "2160px", height: "1080px", transform: "scale(0.5)", transformOrigin: "top left", overflow: "hidden" }}>
+        <div className="w-full h-full" style={{ width: "2160px", height: "1080px", overflow: "hidden" }}>
           <Toaster />
           <Router />
         </div>
