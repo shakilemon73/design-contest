@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(40, 30%, 92%);
+  --foreground: hsl(25, 20%, 15%);
+  --card: hsl(42, 25%, 88%);
+  --card-foreground: hsl(25, 20%, 15%);
+  --popover: hsl(42, 25%, 88%);
+  --popover-foreground: hsl(25, 20%, 15%);
+  --primary: hsl(25, 40%, 50%);
+  --primary-foreground: hsl(40, 30%, 95%);
+  --secondary: hsl(35, 25%, 70%);
+  --secondary-foreground: hsl(25, 20%, 15%);
+  --muted: hsl(40, 20%, 85%);
+  --muted-foreground: hsl(25, 15%, 45%);
+  --accent: hsl(30, 45%, 65%);
+  --accent-foreground: hsl(25, 20%, 15%);
+  --destructive: hsl(0, 50%, 55%);
+  --destructive-foreground: hsl(40, 30%, 95%);
+  --border: hsl(35, 20%, 75%);
+  --input: hsl(42, 25%, 88%);
+  --ring: hsl(25, 40%, 50%);
+  --chart-1: hsl(25, 40%, 50%);
+  --chart-2: hsl(30, 45%, 65%);
+  --chart-3: hsl(35, 25%, 70%);
+  --chart-4: hsl(40, 20%, 85%);
+  --chart-5: hsl(42, 25%, 88%);
+  --sidebar: hsl(42, 25%, 88%);
+  --sidebar-foreground: hsl(25, 20%, 15%);
+  --sidebar-primary: hsl(25, 40%, 50%);
+  --sidebar-primary-foreground: hsl(40, 30%, 95%);
+  --sidebar-accent: hsl(30, 45%, 65%);
+  --sidebar-accent-foreground: hsl(25, 20%, 15%);
+  --sidebar-border: hsl(35, 20%, 75%);
+  --sidebar-ring: hsl(25, 40%, 50%);
+  --font-sans: Inter, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: Menlo, monospace;
+  --radius: 16px;
+  --shadow-2xs: 0px 2px 0px 0px hsl(25, 40%, 30%, 0.00);
+  --shadow-xs: 0px 2px 0px 0px hsl(25, 40%, 30%, 0.00);
+  --shadow-sm: 0px 2px 0px 0px hsl(25, 40%, 30%, 0.00), 0px 1px 2px -1px hsl(25, 40%, 30%, 0.00);
+  --shadow: 0px 2px 0px 0px hsl(25, 40%, 30%, 0.00), 0px 1px 2px -1px hsl(25, 40%, 30%, 0.00);
+  --shadow-md: 0px 2px 0px 0px hsl(25, 40%, 30%, 0.00), 0px 2px 4px -1px hsl(25, 40%, 30%, 0.00);
+  --shadow-lg: 0px 2px 0px 0px hsl(25, 40%, 30%, 0.00), 0px 4px 6px -1px hsl(25, 40%, 30%, 0.00);
+  --shadow-xl: 0px 2px 0px 0px hsl(25, 40%, 30%, 0.00), 0px 8px 10px -1px hsl(25, 40%, 30%, 0.00);
+  --shadow-2xl: 0px 2px 0px 0px hsl(25, 40%, 30%, 0.00);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+}
+
+.dark {
+  --background: hsl(25, 20%, 15%);
+  --foreground: hsl(40, 30%, 85%);
+  --card: hsl(25, 25%, 20%);
+  --card-foreground: hsl(40, 30%, 85%);
+  --popover: hsl(25, 25%, 20%);
+  --popover-foreground: hsl(40, 30%, 85%);
+  --primary: hsl(25, 40%, 50%);
+  --primary-foreground: hsl(40, 30%, 95%);
+  --secondary: hsl(35, 25%, 30%);
+  --secondary-foreground: hsl(40, 30%, 85%);
+  --muted: hsl(25, 15%, 25%);
+  --muted-foreground: hsl(35, 20%, 55%);
+  --accent: hsl(30, 45%, 35%);
+  --accent-foreground: hsl(40, 30%, 85%);
+  --destructive: hsl(0, 50%, 55%);
+  --destructive-foreground: hsl(40, 30%, 95%);
+  --border: hsl(25, 20%, 25%);
+  --input: hsl(25, 25%, 20%);
+  --ring: hsl(25, 40%, 50%);
+  --sidebar: hsl(25, 25%, 20%);
+  --sidebar-foreground: hsl(40, 30%, 85%);
+  --sidebar-primary: hsl(25, 40%, 50%);
+  --sidebar-primary-foreground: hsl(40, 30%, 95%);
+  --sidebar-accent: hsl(30, 45%, 35%);
+  --sidebar-accent-foreground: hsl(40, 30%, 85%);
+  --sidebar-border: hsl(25, 20%, 25%);
+  --sidebar-ring: hsl(25, 40%, 50%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+.title-font {
+  font-family: 'Fredoka One', cursive;
+}
+
+.story-card {
+  transition: all 0.3s ease;
+  background: linear-gradient(145deg, hsl(42, 25%, 90%) 0%, hsl(40, 20%, 86%) 100%);
+}
+
+.story-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px hsla(25, 40%, 30%, 0.15);
+}
+
+.create-button {
+  background: linear-gradient(135deg, hsl(25, 50%, 55%) 0%, hsl(20, 45%, 50%) 100%);
+  transition: all 0.3s ease;
+}
+
+.create-button:hover {
+  background: linear-gradient(135deg, hsl(25, 55%, 60%) 0%, hsl(20, 50%, 55%) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px hsla(25, 40%, 30%, 0.25);
+}
+
+.nav-button {
+  transition: all 0.2s ease;
+}
+
+.nav-button:hover {
+  background-color: hsl(35, 25%, 80%);
+}
+
+.story-thumbnail {
+  background: linear-gradient(45deg, hsl(30, 35%, 75%) 0%, hsl(35, 30%, 80%) 100%);
+}
+
+.floating-element {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-10px); 
+  }
+}
+
+.gentle-shadow {
+  box-shadow: 0 4px 15px hsla(25, 40%, 30%, 0.1);
+}
