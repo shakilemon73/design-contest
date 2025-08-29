@@ -79,22 +79,22 @@ export default function Home() {
   const regularStories = stories.filter(story => story.isFeatured !== "true");
 
   return (
-    <div className="w-full h-full flex flex-col relative overflow-hidden">
+    <div className="w-full h-full flex flex-col relative overflow-hidden bg-gradient-to-br from-amber-50 to-orange-50">
       {/* Minimal Magical Floating Elements */}
       <div className="absolute top-20 right-32 text-4xl floating-star z-10 opacity-30" style={{ animationDelay: "0s" }}>⭐</div>
       <div className="absolute bottom-32 left-32 text-4xl floating-element z-10 opacity-30" style={{ animationDelay: "2s" }}>🌙</div>
       <div className="absolute top-1/3 left-20 text-3xl floating-star z-10 opacity-30" style={{ animationDelay: "1.5s" }}>✨</div>
 
       {/* Header Navigation */}
-      <header className="flex items-center justify-between px-16 py-8 bg-amber-50/80 backdrop-blur-xl magical-shadow relative z-20 border-b-4 border-amber-200">
+      <header className="flex items-center justify-between px-16 py-6 bg-gradient-to-r from-amber-100/95 to-orange-100/95 backdrop-blur-xl relative z-20 border-b border-amber-200/50">
         <div className="flex items-center space-x-8">
           {/* Logo and Title */}
           <div className="flex items-center space-x-6 logo-container">
-            <div className="w-20 h-20 bg-gradient-to-br from-amber-800 via-amber-600 to-amber-500 rounded-3xl flex items-center justify-center super-magical-shadow">
-              <div className="text-4xl">📚</div>
+            <div className="w-16 h-16 bg-gradient-to-br from-amber-800 to-amber-700 rounded-2xl flex items-center justify-center shadow-lg">
+              <div className="text-2xl">📚</div>
             </div>
-            <h1 className="title-font text-7xl bg-gradient-to-r from-amber-900 via-amber-700 to-amber-600 bg-clip-text text-transparent tracking-wide drop-shadow-lg">
-              ✨ TALE POP ✨
+            <h1 className="title-font text-5xl bg-gradient-to-r from-amber-900 to-amber-800 bg-clip-text text-transparent tracking-wide">
+              TALE POP
             </h1>
           </div>
         </div>
@@ -111,8 +111,8 @@ export default function Home() {
           </Button>
 
           {user && (
-            <div className="flex items-center space-x-6 bg-amber-50/90 rounded-3xl px-8 py-4 super-magical-shadow border-4 border-amber-200">
-              <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-amber-400 super-magical-shadow">
+            <div className="flex items-center space-x-3 bg-amber-100/80 rounded-2xl px-4 py-3 border border-amber-300">
+              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-amber-400">
                 <img 
                   src={user.avatar || "https://pixabay.com/get/g86a8cda62c5da0cb1681ef0168ac00acb7b16f30ac85551cc58b4e3aa168ec68b44a51edf1fbba500022048e5ffe2324e28e53bfc678717f8145363f3cc2b7c6_1280.jpg"} 
                   alt="User avatar" 
@@ -121,10 +121,9 @@ export default function Home() {
                 />
               </div>
               <div className="text-left">
-                <p className="font-bold text-2xl bg-gradient-to-r from-amber-800 to-amber-600 bg-clip-text text-transparent title-font" data-testid="text-username">
-                  👋 Hi {user.name}!
+                <p className="font-bold text-lg text-amber-900" data-testid="text-username">
+                  {user.name}
                 </p>
-                <p className="text-lg text-amber-700 font-semibold">Ready for magical stories! ✨</p>
               </div>
             </div>
           )}
@@ -132,27 +131,21 @@ export default function Home() {
       </header>
 
       {/* Main Content Area */}
-      <main className="flex-1 flex flex-col px-16 py-8 gap-12">
+      <main className="flex-1 flex flex-col px-16 py-6 gap-8">
         
         {/* Hero CTA Section - Create New Story */}
-        <div className="w-full flex justify-center mb-8">
-          <div className="w-full max-w-4xl">
+        <div className="w-full flex justify-center mb-6">
+          <div className="w-full max-w-2xl">
             <Button 
               onClick={handleCreateNewStory}
-              className="create-button w-full text-white p-16 rounded-[3rem] font-bold text-5xl title-font tracking-wide relative overflow-hidden border-6 border-amber-300 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700 hover:from-purple-700 hover:via-pink-700 hover:to-purple-800 shadow-2xl transform hover:scale-[1.02] transition-all duration-500"
+              className="create-button w-full text-white p-8 rounded-3xl font-bold text-3xl title-font tracking-wide relative overflow-hidden border-3 border-amber-800/30 shadow-xl transform hover:scale-[1.02] transition-all duration-300"
               data-testid="button-create-new"
             >
-              {/* Magical Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-400 via-pink-400 to-purple-500 opacity-20 animate-pulse"></div>
-              
-              <div className="flex items-center justify-center space-x-8 relative z-10">
-                <div className="w-20 h-20 bg-white/30 rounded-full flex items-center justify-center backdrop-blur-sm border-4 border-white/40">
-                  <Plus className="w-12 h-12" />
+              <div className="flex items-center justify-center space-x-4 relative z-10">
+                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                  <Plus className="w-8 h-8" />
                 </div>
-                <span className="drop-shadow-lg">✨ CREATE YOUR MAGICAL STORY ✨</span>
-                <div className="w-20 h-20 bg-white/30 rounded-full flex items-center justify-center backdrop-blur-sm border-4 border-white/40">
-                  <div className="text-2xl">🎨</div>
-                </div>
+                <span className="drop-shadow-sm">CREATE NEW!</span>
               </div>
             </Button>
           </div>
@@ -164,49 +157,45 @@ export default function Home() {
           {/* Left Panel - Featured Story */}
           <div className="w-2/5">
             {featuredStory && (
-              <Card className="bg-amber-50/95 rounded-[2rem] p-10 super-magical-shadow relative overflow-hidden border-4 border-amber-200">
-                {/* Subtle Background Elements */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-amber-300 to-amber-500 rounded-full -translate-y-8 translate-x-8 opacity-15"></div>
-                <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-amber-400 to-amber-600 rounded-full translate-y-6 -translate-x-6 opacity-15"></div>
+              <div className="rounded-3xl overflow-hidden border-2 border-amber-700/20 bg-gradient-to-br from-amber-100/90 to-orange-100/90 backdrop-blur-sm">
+                <div className="w-full h-48 overflow-hidden">
+                  <img 
+                    src={featuredStory.thumbnail || ""} 
+                    alt="Featured story illustration" 
+                    className="w-full h-full object-cover"
+                    data-testid="img-featured-thumbnail"
+                  />
+                </div>
                 
-                <div className="relative z-10">
-                  <div className="flex items-center space-x-3 mb-6">
-                    <div className="w-4 h-4 bg-gradient-to-r from-amber-500 to-amber-700 rounded-full"></div>
-                    <span className="text-amber-800 font-bold text-xl tracking-wide title-font">🌟 FEATURED STORY</span>
+                <div className="p-6">
+                  <div className="flex items-center space-x-2 mb-3">
+                    <div className="w-3 h-3 bg-amber-600 rounded-full"></div>
+                    <span className="text-amber-800 font-bold text-sm tracking-wide">FEATURED STORY</span>
                   </div>
                   
-                  <div className="w-full h-48 rounded-2xl overflow-hidden mb-6 super-magical-shadow border-3 border-amber-300">
-                    <img 
-                      src={featuredStory.thumbnail || ""} 
-                      alt="Featured story illustration" 
-                      className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
-                      data-testid="img-featured-thumbnail"
-                    />
-                  </div>
-                  
-                  <h3 className="title-font text-3xl bg-gradient-to-r from-amber-900 via-amber-700 to-amber-600 bg-clip-text text-transparent mb-3" data-testid="text-featured-title">
+                  <h3 className="title-font text-2xl text-amber-900 mb-3" data-testid="text-featured-title">
                     {featuredStory.title}
                   </h3>
-                  <p className="text-amber-800 text-lg leading-relaxed mb-6 font-medium" data-testid="text-featured-description">
+                  <p className="text-amber-800 text-base leading-relaxed mb-4 font-medium" data-testid="text-featured-description">
                     {featuredStory.description}
                   </p>
                   
-                  <div className="flex items-center space-x-4">
+                  <div className="flex items-center space-x-3">
                     <Button 
                       onClick={() => handlePlayStory(featuredStory.id)}
-                      className="play-button flex items-center space-x-3 px-8 py-4 rounded-2xl font-bold text-lg text-white transform hover:scale-105 transition-all duration-300"
+                      className="play-button flex items-center space-x-2 px-6 py-3 rounded-2xl font-bold text-base text-white"
                       data-testid="button-play-featured"
                     >
-                      <Play className="w-6 h-6" />
-                      <span>🎧 Listen Now</span>
+                      <Play className="w-5 h-5" />
+                      <span>Listen</span>
                     </Button>
-                    <span className="text-base text-amber-700 bg-amber-100 px-4 py-2 rounded-xl flex items-center space-x-2 font-semibold">
-                      <Clock className="w-4 h-4" />
+                    <span className="text-sm text-amber-700 bg-amber-50 px-3 py-2 rounded-lg flex items-center space-x-1 font-medium">
+                      <Clock className="w-3 h-3" />
                       <span>{featuredStory.duration} min</span>
                     </span>
                   </div>
                 </div>
-              </Card>
+              </div>
             )}
           </div>
 
@@ -214,25 +203,10 @@ export default function Home() {
         <div className="flex-1 space-y-10">
           
           {/* Library Header */}
-          <div className="flex items-center justify-between">
-            <div>
-              <h2 className="title-font text-3xl bg-gradient-to-r from-amber-900 via-amber-700 to-amber-600 bg-clip-text text-transparent mb-2" data-testid="text-library-title">
-                📚 Your Library
-              </h2>
-              <p className="text-amber-800 text-lg font-medium">Choose your next adventure</p>
-            </div>
-            
-            {/* Filter/Sort Controls */}
-            <div className="flex items-center space-x-4">
-              <Button 
-                variant="ghost" 
-                className="px-6 py-3 bg-gradient-to-r from-amber-500 to-amber-700 hover:from-amber-600 hover:to-amber-800 rounded-xl text-white font-semibold text-base transition-all duration-300 flex items-center space-x-2"
-                data-testid="button-filter"
-              >
-                <Filter className="w-4 h-4" />
-                <span>Filter</span>
-              </Button>
-            </div>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="title-font text-2xl text-amber-900" data-testid="text-library-title">
+              Your Stories
+            </h2>
           </div>
 
           {/* Story List */}
@@ -249,59 +223,46 @@ export default function Home() {
               </div>
             ) : (
               regularStories.map((story) => (
-                <Card key={story.id} className="story-card rounded-2xl p-6 flex items-center space-x-6 border-2 border-amber-100 hover:border-amber-200 transition-all duration-300 hover:shadow-lg">
+                <div key={story.id} className="bg-amber-50/80 border-2 border-amber-700/20 rounded-2xl p-4 flex items-center space-x-4 hover:bg-amber-100/80 transition-all duration-200">
                   {/* Story thumbnail */}
-                  <div className="w-24 h-24 story-thumbnail rounded-xl flex items-center justify-center flex-shrink-0 overflow-hidden border-2 border-amber-200">
+                  <div className="w-16 h-16 rounded-xl overflow-hidden border border-amber-300 flex-shrink-0">
                     <img 
                       src={story.thumbnail || ""} 
                       alt={`${story.title} thumbnail`} 
-                      className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover"
                       data-testid={`img-thumbnail-${story.id}`}
                     />
                   </div>
                   
                   {/* Story details */}
                   <div className="flex-1">
-                    <h3 className="font-bold text-2xl bg-gradient-to-r from-amber-800 to-amber-600 bg-clip-text text-transparent mb-2 title-font" data-testid={`text-title-${story.id}`}>
+                    <h3 className="font-bold text-xl text-amber-900 mb-1" data-testid={`text-title-${story.id}`}>
                       {story.title}
                     </h3>
-                    <p className="text-amber-800 text-base mb-3 font-medium leading-relaxed" data-testid={`text-description-${story.id}`}>
+                    <p className="text-amber-800 text-sm font-medium leading-relaxed" data-testid={`text-description-${story.id}`}>
                       {story.description}
                     </p>
-                    <div className="flex items-center space-x-4 text-sm text-amber-700 font-medium">
-                      <span className="flex items-center space-x-1 bg-amber-100 px-3 py-1 rounded-lg">
-                        <Star className="w-3 h-3" />
-                        <span>{story.genre}</span>
-                      </span>
-                      <span className="flex items-center space-x-1 bg-amber-50 px-3 py-1 rounded-lg">
-                        <Clock className="w-3 h-3" />
-                        <span>{story.duration} min</span>
-                      </span>
-                      <span className="text-amber-600">{formatTimeAgo(story.lastPlayed)}</span>
-                    </div>
                   </div>
                   
                   {/* Action buttons */}
-                  <div className="flex items-center space-x-3">
+                  <div className="flex items-center space-x-2">
                     <Button 
                       onClick={() => handlePlayStory(story.id)}
-                      size="lg"
-                      className="play-button w-16 h-16 rounded-2xl flex items-center justify-center text-white font-bold transform hover:scale-105 transition-all duration-300"
+                      className="play-button w-12 h-12 rounded-xl flex items-center justify-center text-white"
                       data-testid={`button-play-${story.id}`}
                     >
-                      <Play className="w-6 h-6" />
+                      <Play className="w-5 h-5" />
                     </Button>
                     <Button 
                       onClick={() => handleDeleteStory(story.id)}
                       variant="ghost"
-                      size="lg"
-                      className="w-16 h-16 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center hover:bg-red-500 hover:text-white transition-all duration-300 transform hover:scale-105"
+                      className="w-12 h-12 bg-red-100 text-red-600 rounded-xl flex items-center justify-center hover:bg-red-500 hover:text-white transition-all duration-200"
                       data-testid={`button-delete-${story.id}`}
                     >
-                      <Trash2 className="w-5 h-5" />
+                      <Trash2 className="w-4 h-4" />
                     </Button>
                   </div>
-                </Card>
+                </div>
               ))
             )}
           </div>
