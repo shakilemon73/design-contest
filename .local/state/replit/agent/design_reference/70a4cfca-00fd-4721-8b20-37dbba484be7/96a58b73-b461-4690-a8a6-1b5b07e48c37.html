@@ -1,0 +1,473 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tale Pop - Bedtime Stories for Kids</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)",
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    popover: {
+                        DEFAULT: "var(--popover)",
+                        foreground: "var(--popover-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    destructive: {
+                        DEFAULT: "var(--destructive)",
+                        foreground: "var(--destructive-foreground)",
+                    },
+                    border: "var(--border)",
+                    input: "var(--input)",
+                    ring: "var(--ring)",
+                },
+                fontFamily: {
+                    display: ['Fredoka One', 'cursive'],
+                    sans: ['Inter', 'sans-serif'],
+                }
+            },
+        }
+    };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/heroicons@2.0.18/24/outline/index.js" type="module"></script>
+    <style>
+        :root {
+            --background: hsl(40 30% 92%);
+            --foreground: hsl(25 20% 15%);
+            --card: hsl(42 25% 88%);
+            --card-foreground: hsl(25 20% 15%);
+            --popover: hsl(42 25% 88%);
+            --popover-foreground: hsl(25 20% 15%);
+            --primary: hsl(25 40% 50%);
+            --primary-foreground: hsl(40 30% 95%);
+            --secondary: hsl(35 25% 70%);
+            --secondary-foreground: hsl(25 20% 15%);
+            --muted: hsl(40 20% 85%);
+            --muted-foreground: hsl(25 15% 45%);
+            --accent: hsl(30 45% 65%);
+            --accent-foreground: hsl(25 20% 15%);
+            --destructive: hsl(0 50% 55%);
+            --destructive-foreground: hsl(40 30% 95%);
+            --border: hsl(35 20% 75%);
+            --input: hsl(42 25% 88%);
+            --ring: hsl(25 40% 50%);
+            --radius: 16px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, hsl(40 30% 92%) 0%, hsl(35 25% 88%) 100%);
+        }
+
+        .title-font {
+            font-family: 'Fredoka One', cursive;
+        }
+
+        .story-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(145deg, hsl(42 25% 90%) 0%, hsl(40 20% 86%) 100%);
+        }
+
+        .story-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px hsla(25 40% 30% / 0.15);
+        }
+
+        .create-button {
+            background: linear-gradient(135deg, hsl(25 50% 55%) 0%, hsl(20 45% 50%) 100%);
+            transition: all 0.3s ease;
+        }
+
+        .create-button:hover {
+            background: linear-gradient(135deg, hsl(25 55% 60%) 0%, hsl(20 50% 55%) 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px hsla(25 40% 30% / 0.25);
+        }
+
+        .nav-button {
+            transition: all 0.2s ease;
+        }
+
+        .nav-button:hover {
+            background-color: hsl(35 25% 80%);
+        }
+
+        .story-thumbnail {
+            background: linear-gradient(45deg, hsl(30 35% 75%) 0%, hsl(35 30% 80%) 100%);
+        }
+
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .gentle-shadow {
+            box-shadow: 0 4px 15px hsla(25 40% 30% / 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground min-h-screen" style="width: 2160px; height: 1080px; overflow: hidden;">
+    <!-- @COMPONENT: MainApp [Full application layout] -->
+    <div class="w-full h-full flex flex-col relative">
+        
+        <!-- Header Navigation -->
+        <!-- @COMPONENT: Header [Navigation and user controls] -->
+        <header class="flex items-center justify-between px-16 py-8 bg-card/50 backdrop-blur-sm gentle-shadow relative z-10">
+            <div class="flex items-center space-x-8">
+                <!-- Logo and Title -->
+                <div class="flex items-center space-x-4">
+                    <!-- Magical book icon as logo -->
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center gentle-shadow floating-element">
+                        <svg class="w-8 h-8 text-primary-foreground" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                        </svg>
+                    </div>
+                    <h1 class="title-font text-6xl text-primary tracking-wide">✦ TALE POP ✦</h1>
+                </div>
+            </div>
+
+            <!-- User Profile Section -->
+            <div class="flex items-center space-x-6">
+                <!-- Settings -->
+                <button class="nav-button p-4 rounded-xl bg-muted/50 hover:bg-muted transition-colors" data-event="click:openSettings">
+                    <svg class="w-8 h-8 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                </button>
+
+                <!-- User Avatar -->
+                <div class="flex items-center space-x-4 bg-muted/50 rounded-2xl px-6 py-3">
+                    <!-- Child avatar with warm illustration -->
+                    <div class="w-20 h-20 rounded-full overflow-hidden gentle-shadow">
+                        <!-- A warm, cozy illustration of a child reading a book before bedtime -->
+                        <img src="https://pixabay.com/get/g86a8cda62c5da0cb1681ef0168ac00acb7b16f30ac85551cc58b4e3aa168ec68b44a51edf1fbba500022048e5ffe2324e28e53bfc678717f8145363f3cc2b7c6_1280.jpg" alt="Child user avatar" class="w-full h-full object-cover" data-mock="true" />
+                    </div>
+                    <div class="text-left">
+                        <p class="font-semibold text-lg text-foreground" data-bind="user.name">Emma</p>
+                        <p class="text-sm text-muted-foreground">Ready for stories!</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- @END_COMPONENT: Header -->
+
+        <!-- Main Content Area -->
+        <main class="flex-1 flex px-16 py-12 gap-16">
+            
+            <!-- Left Panel - Featured Story & Create New -->
+            <!-- @COMPONENT: LeftPanel [Featured content and creation tools] -->
+            <div class="w-2/5 space-y-8">
+                
+                <!-- Featured Story Card -->
+                <div class="bg-card rounded-3xl p-10 gentle-shadow relative overflow-hidden">
+                    <!-- Background decoration -->
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-accent/20 rounded-full -translate-y-8 translate-x-8"></div>
+                    <div class="absolute bottom-0 left-0 w-24 h-24 bg-primary/20 rounded-full translate-y-6 -translate-x-6"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center space-x-3 mb-6">
+                            <div class="w-3 h-3 bg-accent rounded-full"></div>
+                            <span class="text-accent-foreground font-semibold text-lg tracking-wide">FEATURED STORY</span>
+                        </div>
+                        
+                        <!-- Featured story illustration -->
+                        <div class="w-full h-48 rounded-2xl overflow-hidden mb-6 gentle-shadow">
+                            <!-- A magical nighttime scene with stars and a crescent moon, perfect for bedtime stories -->
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Featured story illustration" class="w-full h-full object-cover" />
+                        </div>
+                        
+                        <h3 class="title-font text-3xl text-primary mb-3">The Starlight Adventure</h3>
+                        <p class="text-muted-foreground text-lg leading-relaxed mb-6">Join Luna as she discovers a magical portal hidden in her bedroom ceiling that leads to a world made entirely of stars and moonbeams.</p>
+                        
+                        <div class="flex items-center space-x-4">
+                            <button class="flex items-center space-x-3 bg-primary text-primary-foreground px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-primary/90 transition-colors gentle-shadow" data-event="click:playFeaturedStory">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                                <span>Listen Now</span>
+                            </button>
+                            <span class="text-sm text-muted-foreground bg-muted px-4 py-2 rounded-xl">8 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Create New Story Button -->
+                <button class="create-button w-full text-primary-foreground p-8 rounded-3xl font-bold text-2xl title-font tracking-wide gentle-shadow" data-event="click:createNewStory">
+                    <div class="flex items-center justify-center space-x-4">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                        </svg>
+                        <span>CREATE NEW STORY!</span>
+                    </div>
+                </button>
+
+            </div>
+            <!-- @END_COMPONENT: LeftPanel -->
+
+            <!-- Right Panel - Story Library -->
+            <!-- @COMPONENT: RightPanel [Story collection and library] -->
+            <div class="flex-1 space-y-8">
+                
+                <!-- Library Header -->
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h2 class="title-font text-4xl text-primary mb-2">Your Story Library</h2>
+                        <p class="text-muted-foreground text-lg">Choose your next bedtime adventure</p>
+                    </div>
+                    
+                    <!-- Filter/Sort Controls -->
+                    <div class="flex items-center space-x-4">
+                        <button class="nav-button px-6 py-3 bg-muted rounded-xl text-muted-foreground hover:bg-muted/80 transition-colors flex items-center space-x-2" data-event="click:filterStories">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.414A1 1 0 013 6.707V4z"/>
+                            </svg>
+                            <span>Filter</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Story List -->
+                <!-- @MAP: stories.map(story => ( -->
+                <div class="space-y-6">
+                    
+                    <!-- Story Item 1 -->
+                    <div class="story-card rounded-2xl p-6 gentle-shadow flex items-center space-x-6" data-mock="true">
+                        <!-- Story thumbnail -->
+                        <div class="w-24 h-24 story-thumbnail rounded-2xl flex items-center justify-center gentle-shadow flex-shrink-0">
+                            <!-- A whimsical illustration of a magical crystal or glowing stone -->
+                            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200" alt="Lysander story thumbnail" class="w-full h-full object-cover rounded-2xl" />
+                        </div>
+                        
+                        <!-- Story details -->
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-foreground mb-2" data-bind="story.title">Lysander and the Lumin-Stone</h3>
+                            <p class="text-muted-foreground mb-3">A brave young wizard discovers a magical stone that lights up the darkest corners of the enchanted forest.</p>
+                            <div class="flex items-center space-x-4 text-sm text-muted-foreground">
+                                <span class="flex items-center space-x-1">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                    <span>Adventure</span>
+                                </span>
+                                <span>12 min</span>
+                                <span>Last played 2 days ago</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Action buttons -->
+                        <div class="flex items-center space-x-3">
+                            <button class="w-14 h-14 bg-primary text-primary-foreground rounded-2xl flex items-center justify-center hover:bg-primary/90 transition-colors gentle-shadow" data-event="click:playStory" data-story-id="lysander">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                            <button class="w-14 h-14 bg-muted text-muted-foreground rounded-2xl flex items-center justify-center hover:bg-destructive hover:text-destructive-foreground transition-colors" data-event="click:deleteStory" data-story-id="lysander">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Story Item 2 -->
+                    <div class="story-card rounded-2xl p-6 gentle-shadow flex items-center space-x-6" data-mock="true">
+                        <div class="w-24 h-24 story-thumbnail rounded-2xl flex items-center justify-center gentle-shadow flex-shrink-0">
+                            <!-- A graceful ballet dancer silhouette against a moonlit background -->
+                            <img src="https://pixabay.com/get/g42546e9ec316da6dc2b8150359a73339a3403212dcfd29df2260d72528bb872e3e0362ce8084c413e5d3b0a83f576e19345fcd9c4244666ad6f0aeadd65069e2_1280.jpg" alt="Moonlight Ballet story thumbnail" class="w-full h-full object-cover rounded-2xl" />
+                        </div>
+                        
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-foreground mb-2" data-bind="story.title">The Moonlight Ballet Mystery</h3>
+                            <p class="text-muted-foreground mb-3">Every full moon, mysterious dancers appear in the garden, teaching children the secret language of movement.</p>
+                            <div class="flex items-center space-x-4 text-sm text-muted-foreground">
+                                <span class="flex items-center space-x-1">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                    <span>Mystery</span>
+                                </span>
+                                <span>10 min</span>
+                                <span>Last played 1 week ago</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-3">
+                            <button class="w-14 h-14 bg-primary text-primary-foreground rounded-2xl flex items-center justify-center hover:bg-primary/90 transition-colors gentle-shadow" data-event="click:playStory" data-story-id="ballet">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                            <button class="w-14 h-14 bg-muted text-muted-foreground rounded-2xl flex items-center justify-center hover:bg-destructive hover:text-destructive-foreground transition-colors" data-event="click:deleteStory" data-story-id="ballet">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Story Item 3 -->
+                    <div class="story-card rounded-2xl p-6 gentle-shadow flex items-center space-x-6" data-mock="true">
+                        <div class="w-24 h-24 story-thumbnail rounded-2xl flex items-center justify-center gentle-shadow flex-shrink-0">
+                            <!-- A magical carnival at night with twinkling lights and ferris wheel -->
+                            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200" alt="Magical Carnival story thumbnail" class="w-full h-full object-cover rounded-2xl" />
+                        </div>
+                        
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-foreground mb-2" data-bind="story.title">The Magical Midnight Carnival</h3>
+                            <p class="text-muted-foreground mb-3">A carnival that only appears when children are fast asleep, filled with wonder and impossible rides through the clouds.</p>
+                            <div class="flex items-center space-x-4 text-sm text-muted-foreground">
+                                <span class="flex items-center space-x-1">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                    <span>Fantasy</span>
+                                </span>
+                                <span>15 min</span>
+                                <span>New story!</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-3">
+                            <button class="w-14 h-14 bg-primary text-primary-foreground rounded-2xl flex items-center justify-center hover:bg-primary/90 transition-colors gentle-shadow" data-event="click:playStory" data-story-id="carnival">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                            <button class="w-14 h-14 bg-muted text-muted-foreground rounded-2xl flex items-center justify-center hover:bg-destructive hover:text-destructive-foreground transition-colors" data-event="click:deleteStory" data-story-id="carnival">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Story Item 4 -->
+                    <div class="story-card rounded-2xl p-6 gentle-shadow flex items-center space-x-6" data-mock="true">
+                        <div class="w-24 h-24 story-thumbnail rounded-2xl flex items-center justify-center gentle-shadow flex-shrink-0">
+                            <!-- A cozy cottage garden with fireflies and soft evening light -->
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200" alt="Firefly Garden story thumbnail" class="w-full h-full object-cover rounded-2xl" />
+                        </div>
+                        
+                        <div class="flex-1">
+                            <h3 class="font-bold text-xl text-foreground mb-2" data-bind="story.title">The Firefly Garden</h3>
+                            <p class="text-muted-foreground mb-3">A little girl discovers that fireflies are actually tiny fairies who tend a secret garden that only blooms at night.</p>
+                            <div class="flex items-center space-x-4 text-sm text-muted-foreground">
+                                <span class="flex items-center space-x-1">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                    <span>Nature</span>
+                                </span>
+                                <span>9 min</span>
+                                <span>Last played 3 days ago</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-3">
+                            <button class="w-14 h-14 bg-primary text-primary-foreground rounded-2xl flex items-center justify-center hover:bg-primary/90 transition-colors gentle-shadow" data-event="click:playStory" data-story-id="firefly">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                            <button class="w-14 h-14 bg-muted text-muted-foreground rounded-2xl flex items-center justify-center hover:bg-destructive hover:text-destructive-foreground transition-colors" data-event="click:deleteStory" data-story-id="firefly">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- @END_MAP )) -->
+
+                <!-- Load More Stories -->
+                <div class="text-center pt-8">
+                    <button class="bg-secondary text-secondary-foreground px-10 py-4 rounded-2xl font-semibold text-lg hover:bg-secondary/90 transition-colors gentle-shadow" data-event="click:loadMoreStories">
+                        Load More Stories
+                    </button>
+                </div>
+
+            </div>
+            <!-- @END_COMPONENT: RightPanel -->
+
+        </main>
+
+        <!-- Floating decorative elements -->
+        <div class="absolute top-20 right-20 w-8 h-8 bg-accent/30 rounded-full floating-element" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-32 left-32 w-6 h-6 bg-primary/30 rounded-full floating-element" style="animation-delay: 3s;"></div>
+        <div class="absolute top-1/2 right-1/3 w-4 h-4 bg-secondary/40 rounded-full floating-element" style="animation-delay: 2s;"></div>
+
+    </div>
+    <!-- @END_COMPONENT: MainApp -->
+
+    <script>
+        // TODO: Implement story playback functionality
+        // TODO: Implement story creation workflow
+        // TODO: Implement user settings and preferences
+        // TODO: Implement story filtering and search
+        // TODO: Add audio playback controls and progress tracking
+        
+        (function() {
+            // Simple UI interactions for demo purposes
+            document.addEventListener('DOMContentLoaded', function() {
+                // Add gentle hover effects to story cards
+                const storyCards = document.querySelectorAll('.story-card');
+                storyCards.forEach(card => {
+                    card.addEventListener('mouseenter', function() {
+                        this.style.transform = 'translateY(-2px)';
+                    });
+                    
+                    card.addEventListener('mouseleave', function() {
+                        this.style.transform = 'translateY(0)';
+                    });
+                });
+
+                // Add click feedback to buttons
+                const buttons = document.querySelectorAll('button');
+                buttons.forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        // Add gentle click animation
+                        this.style.transform = 'scale(0.98)';
+                        setTimeout(() => {
+                            this.style.transform = 'scale(1)';
+                        }, 150);
+                    });
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
