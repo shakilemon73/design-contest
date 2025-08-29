@@ -85,15 +85,15 @@ export default function Home() {
       <div className="absolute bottom-32 left-32 text-4xl floating-element z-10 opacity-30" style={{ animationDelay: "2s" }}>🌙</div>
       <div className="absolute top-1/3 left-20 text-3xl floating-star z-10 opacity-30" style={{ animationDelay: "1.5s" }}>✨</div>
 
-      {/* Header Navigation - Child-Optimized */}
-      <header className="flex items-center justify-between px-16 py-8 bg-gradient-to-r from-amber-100/95 to-orange-100/95 backdrop-blur-xl relative z-20 border-b-2 border-amber-300/50">
+      {/* Header Navigation - Nostalgic Gold */}
+      <header className="flex items-center justify-between px-16 py-8 bg-gradient-to-r from-yellow-100/95 to-amber-200/95 backdrop-blur-xl relative z-20 border-b-2 border-yellow-400/50 shadow-lg">
         <div className="flex items-center space-x-8">
           {/* Logo and Title */}
           <div className="flex items-center space-x-6 logo-container">
-            <div className="w-20 h-20 bg-gradient-to-br from-amber-800 to-amber-700 rounded-3xl flex items-center justify-center shadow-xl border-3 border-amber-600">
+            <div className="w-20 h-20 bg-gradient-to-br from-yellow-700 to-yellow-600 rounded-3xl flex items-center justify-center shadow-xl border-3 border-yellow-500">
               <div className="text-3xl">📚</div>
             </div>
-            <h1 className="title-font text-6xl bg-gradient-to-r from-amber-900 to-amber-800 bg-clip-text text-transparent tracking-wide">
+            <h1 className="title-font text-6xl text-yellow-900 tracking-wide drop-shadow-lg">
               TALE POP
             </h1>
           </div>
@@ -104,15 +104,15 @@ export default function Home() {
           <Button 
             variant="ghost" 
             size="lg" 
-            className="p-6 rounded-3xl bg-gradient-to-br from-amber-500 to-amber-700 hover:from-amber-600 hover:to-amber-800 transition-all duration-300 transform hover:scale-110 shadow-xl border-3 border-amber-600 min-w-[80px] min-h-[80px]"
+            className="p-6 rounded-3xl bg-gradient-to-br from-yellow-600 to-yellow-800 hover:from-yellow-700 hover:to-yellow-900 transition-all duration-300 transform hover:scale-110 shadow-xl border-3 border-yellow-600 min-w-[80px] min-h-[80px]"
             data-testid="button-settings"
           >
             <Settings className="w-10 h-10 text-white drop-shadow-md" />
           </Button>
 
           {user && (
-            <div className="flex items-center space-x-4 bg-amber-100/90 rounded-3xl px-6 py-4 border-3 border-amber-400 shadow-lg">
-              <div className="w-16 h-16 rounded-full overflow-hidden border-3 border-amber-500 shadow-md">
+            <div className="flex items-center space-x-4 bg-yellow-100/90 rounded-3xl px-6 py-4 border-3 border-yellow-500 shadow-lg">
+              <div className="w-16 h-16 rounded-full overflow-hidden border-3 border-yellow-600 shadow-md">
                 <img 
                   src={user.avatar || "https://pixabay.com/get/g86a8cda62c5da0cb1681ef0168ac00acb7b16f30ac85551cc58b4e3aa168ec68b44a51edf1fbba500022048e5ffe2324e28e53bfc678717f8145363f3cc2b7c6_1280.jpg"} 
                   alt="User avatar" 
@@ -121,10 +121,10 @@ export default function Home() {
                 />
               </div>
               <div className="text-left">
-                <p className="font-bold text-2xl text-amber-900 title-font" data-testid="text-username">
+                <p className="font-bold text-2xl text-yellow-900 title-font drop-shadow-sm" data-testid="text-username">
                   👋 Hi {user.name}!
                 </p>
-                <p className="text-amber-700 font-medium text-base">Ready for stories! ✨</p>
+                <p className="text-yellow-800 font-medium text-base drop-shadow-sm">Ready for stories! ✨</p>
               </div>
             </div>
           )}
@@ -139,15 +139,15 @@ export default function Home() {
           <div className="w-full max-w-3xl">
             <Button 
               onClick={handleCreateNewStory}
-              className="create-button w-full text-white p-12 rounded-[2rem] font-bold text-4xl title-font tracking-wide relative overflow-hidden border-4 border-amber-700 shadow-2xl transform hover:scale-[1.03] transition-all duration-400 min-h-[120px]"
+              className="create-button w-full text-yellow-900 p-12 rounded-[2rem] font-bold text-4xl title-font tracking-wide relative overflow-hidden border-4 border-yellow-700 shadow-2xl transform hover:scale-[1.03] transition-all duration-400 min-h-[120px]"
               data-testid="button-create-new"
             >
               <div className="flex items-center justify-center space-x-6 relative z-10">
-                <div className="w-16 h-16 bg-white/25 rounded-full flex items-center justify-center border-3 border-white/40">
-                  <Plus className="w-10 h-10" />
+                <div className="w-16 h-16 bg-yellow-200/40 rounded-full flex items-center justify-center border-3 border-yellow-300/60">
+                  <Plus className="w-10 h-10 text-yellow-900" />
                 </div>
-                <span className="drop-shadow-lg">CREATE NEW STORY!</span>
-                <div className="w-16 h-16 bg-white/25 rounded-full flex items-center justify-center border-3 border-white/40">
+                <span className="drop-shadow-lg text-yellow-900">CREATE NEW STORY!</span>
+                <div className="w-16 h-16 bg-yellow-200/40 rounded-full flex items-center justify-center border-3 border-yellow-300/60">
                   <div className="text-3xl">✨</div>
                 </div>
               </div>
@@ -161,7 +161,7 @@ export default function Home() {
           {/* Left Panel - Featured Story - Child-Optimized */}
           <div className="w-2/5">
             {featuredStory && (
-              <div className="rounded-[2rem] overflow-hidden border-4 border-amber-600/30 bg-gradient-to-br from-amber-50 to-orange-50 shadow-xl">
+              <div className="rounded-[2rem] overflow-hidden border-4 border-yellow-600/40 bg-gradient-to-br from-yellow-50 to-amber-50 shadow-xl">
                 <div className="w-full h-56 overflow-hidden">
                   <img 
                     src={featuredStory.thumbnail || ""} 
@@ -173,14 +173,14 @@ export default function Home() {
                 
                 <div className="p-8">
                   <div className="flex items-center space-x-3 mb-4">
-                    <div className="w-4 h-4 bg-amber-600 rounded-full"></div>
-                    <span className="text-amber-800 font-bold text-lg tracking-wide title-font">🌟 FEATURED STORY</span>
+                    <div className="w-4 h-4 bg-yellow-700 rounded-full"></div>
+                    <span className="text-yellow-900 font-bold text-lg tracking-wide title-font drop-shadow-sm">🌟 FEATURED STORY</span>
                   </div>
                   
-                  <h3 className="title-font text-3xl text-amber-900 mb-4 leading-tight" data-testid="text-featured-title">
+                  <h3 className="title-font text-3xl text-yellow-900 mb-4 leading-tight drop-shadow-sm" data-testid="text-featured-title">
                     {featuredStory.title}
                   </h3>
-                  <p className="text-amber-800 text-lg leading-relaxed mb-6 font-medium" data-testid="text-featured-description">
+                  <p className="text-yellow-800 text-lg leading-relaxed mb-6 font-medium drop-shadow-sm" data-testid="text-featured-description">
                     {featuredStory.description}
                   </p>
                   
@@ -193,7 +193,7 @@ export default function Home() {
                       <Play className="w-7 h-7" />
                       <span>🎧 LISTEN</span>
                     </Button>
-                    <div className="text-lg text-amber-700 bg-amber-100 px-4 py-3 rounded-xl flex items-center space-x-2 font-bold">
+                    <div className="text-lg text-yellow-900 bg-yellow-200 px-4 py-3 rounded-xl flex items-center space-x-2 font-bold drop-shadow-sm">
                       <Clock className="w-5 h-5" />
                       <span>{featuredStory.duration} MIN</span>
                     </div>
@@ -209,18 +209,18 @@ export default function Home() {
           {/* Library Header - Child-Friendly */}
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-amber-600 rounded-2xl flex items-center justify-center">
+              <div className="w-12 h-12 bg-yellow-700 rounded-2xl flex items-center justify-center shadow-lg">
                 <div className="text-2xl">📚</div>
               </div>
-              <h2 className="title-font text-3xl text-amber-900" data-testid="text-library-title">
+              <h2 className="title-font text-3xl text-yellow-900 drop-shadow-sm" data-testid="text-library-title">
                 Your Story Library
               </h2>
             </div>
             
             {/* Achievement Badge */}
-            <div className="flex items-center space-x-2 bg-amber-100 px-4 py-2 rounded-xl border-2 border-amber-300">
+            <div className="flex items-center space-x-2 bg-yellow-200 px-4 py-2 rounded-xl border-2 border-yellow-400 shadow-md">
               <div className="text-lg">⭐</div>
-              <span className="text-amber-800 font-bold text-lg">{regularStories.length} Stories</span>
+              <span className="text-yellow-900 font-bold text-lg drop-shadow-sm">{regularStories.length} Stories</span>
             </div>
           </div>
 
@@ -232,21 +232,21 @@ export default function Home() {
                 <p className="text-amber-700 text-2xl font-bold">Loading your magical stories...</p>
               </div>
             ) : regularStories.length === 0 ? (
-              <div className="text-center py-20 bg-amber-50/50 rounded-3xl border-3 border-amber-200 border-dashed">
+              <div className="text-center py-20 bg-yellow-50/60 rounded-3xl border-3 border-yellow-300 border-dashed shadow-lg">
                 <div className="text-9xl mb-8 floating-heart">📚</div>
-                <h3 className="text-amber-800 text-3xl font-bold title-font mb-4">Your Story Adventure Awaits!</h3>
-                <p className="text-amber-700 text-xl font-medium mb-8 max-w-md mx-auto">Ready to create your very first magical story? Click the big button above to start!</p>
+                <h3 className="text-yellow-900 text-3xl font-bold title-font mb-4 drop-shadow-sm">Your Story Adventure Awaits!</h3>
+                <p className="text-yellow-800 text-xl font-medium mb-8 max-w-md mx-auto drop-shadow-sm">Ready to create your very first magical story? Click the big button above to start!</p>
                 <div className="flex items-center justify-center space-x-2">
                   <div className="text-2xl">👆</div>
-                  <span className="text-amber-600 text-lg font-bold">Click CREATE NEW STORY!</span>
+                  <span className="text-yellow-700 text-lg font-bold drop-shadow-sm">Click CREATE NEW STORY!</span>
                   <div className="text-2xl">✨</div>
                 </div>
               </div>
             ) : (
               regularStories.map((story) => (
-                <div key={story.id} className="bg-amber-50 border-3 border-amber-600/30 rounded-2xl p-6 flex items-center space-x-6 hover:bg-amber-100 hover:border-amber-600/50 transition-all duration-300 hover:shadow-lg">
+                <div key={story.id} className="bg-yellow-50 border-3 border-yellow-600/40 rounded-2xl p-6 flex items-center space-x-6 hover:bg-yellow-100 hover:border-yellow-600/60 transition-all duration-300 hover:shadow-lg">
                   {/* Story thumbnail - Larger for children */}
-                  <div className="w-20 h-20 rounded-xl overflow-hidden border-3 border-amber-400 flex-shrink-0 shadow-md">
+                  <div className="w-20 h-20 rounded-xl overflow-hidden border-3 border-yellow-500 flex-shrink-0 shadow-md">
                     <img 
                       src={story.thumbnail || ""} 
                       alt={`${story.title} thumbnail`} 
@@ -257,17 +257,17 @@ export default function Home() {
                   
                   {/* Story details - Bigger typography */}
                   <div className="flex-1">
-                    <h3 className="font-bold text-2xl text-amber-900 mb-2 title-font" data-testid={`text-title-${story.id}`}>
+                    <h3 className="font-bold text-2xl text-yellow-900 mb-2 title-font drop-shadow-sm" data-testid={`text-title-${story.id}`}>
                       {story.title}
                     </h3>
-                    <p className="text-amber-800 text-base font-medium leading-relaxed" data-testid={`text-description-${story.id}`}>
+                    <p className="text-yellow-800 text-base font-medium leading-relaxed drop-shadow-sm" data-testid={`text-description-${story.id}`}>
                       {story.description}
                     </p>
                     <div className="flex items-center space-x-3 mt-3">
-                      <span className="text-sm text-amber-700 bg-amber-100 px-3 py-1 rounded-lg font-bold">
+                      <span className="text-sm text-yellow-900 bg-yellow-200 px-3 py-1 rounded-lg font-bold drop-shadow-sm">
                         {story.duration} MIN
                       </span>
-                      <span className="text-sm text-amber-600 font-medium">
+                      <span className="text-sm text-yellow-700 font-medium drop-shadow-sm">
                         {formatTimeAgo(story.lastPlayed)}
                       </span>
                     </div>
@@ -285,7 +285,7 @@ export default function Home() {
                     <Button 
                       onClick={() => handleDeleteStory(story.id)}
                       variant="ghost"
-                      className="w-20 h-20 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center hover:bg-red-500 hover:text-white transition-all duration-300 font-bold border-2 border-red-200 hover:border-red-500"
+                      className="w-20 h-20 bg-red-100 text-red-700 rounded-2xl flex items-center justify-center hover:bg-red-500 hover:text-white transition-all duration-300 font-bold border-3 border-red-300 hover:border-red-500 shadow-md"
                       data-testid={`button-delete-${story.id}`}
                     >
                       <Trash2 className="w-6 h-6" />

@@ -5,33 +5,37 @@
 @tailwind utilities;
 
 :root {
-  --background: linear-gradient(135deg, hsl(35, 35%, 85%) 0%, hsl(30, 30%, 78%) 50%, hsl(25, 25%, 72%) 100%);
-  --foreground: hsl(25, 40%, 20%);
-  --card: hsl(35, 40%, 88%);
-  --card-foreground: hsl(25, 40%, 20%);
-  --popover: hsl(35, 40%, 88%);
-  --popover-foreground: hsl(25, 40%, 20%);
-  --primary: hsl(25, 50%, 45%);
-  --primary-foreground: hsl(35, 40%, 95%);
-  --secondary: hsl(35, 45%, 65%);
-  --secondary-foreground: hsl(25, 40%, 20%);
-  --muted: hsl(30, 30%, 80%);
-  --muted-foreground: hsl(25, 30%, 40%);
-  --accent: hsl(20, 45%, 55%);
-  --accent-foreground: hsl(35, 40%, 95%);
+  /* Nostalgic Old Gold Color Palette */
+  --background: linear-gradient(135deg, hsl(45, 65%, 82%) 0%, hsl(42, 55%, 75%) 25%, hsl(38, 45%, 68%) 75%, hsl(35, 40%, 62%) 100%);
+  --foreground: hsl(30, 70%, 15%);
+  --card: hsl(45, 50%, 85%);
+  --card-foreground: hsl(30, 70%, 15%);
+  --popover: hsl(45, 50%, 85%);
+  --popover-foreground: hsl(30, 70%, 15%);
+  --primary: hsl(42, 75%, 45%);
+  --primary-foreground: hsl(30, 70%, 15%);
+  --secondary: hsl(40, 60%, 65%);
+  --secondary-foreground: hsl(30, 70%, 15%);
+  --muted: hsl(45, 40%, 75%);
+  --muted-foreground: hsl(30, 50%, 25%);
+  --accent: hsl(38, 70%, 55%);
+  --accent-foreground: hsl(30, 70%, 15%);
   --success: hsl(120, 45%, 50%);
-  --success-foreground: hsl(35, 40%, 95%);
+  --success-foreground: hsl(45, 60%, 95%);
   --destructive: hsl(0, 50%, 55%);
-  --destructive-foreground: hsl(35, 40%, 95%);
-  --border: hsl(30, 25%, 70%);
-  --input: hsl(35, 40%, 90%);
-  --ring: hsl(25, 50%, 45%);
-  --warm-brown: hsl(25, 50%, 35%);
-  --rich-tan: hsl(30, 45%, 60%);
-  --light-beige: hsl(35, 40%, 80%);
-  --dark-brown: hsl(20, 60%, 25%);
-  --golden-tan: hsl(35, 55%, 70%);
-  --cream: hsl(40, 50%, 85%);
+  --destructive-foreground: hsl(45, 60%, 95%);
+  --border: hsl(42, 45%, 65%);
+  --input: hsl(45, 55%, 88%);
+  --ring: hsl(42, 75%, 45%);
+  /* Nostalgic Old Gold Custom Colors */
+  --vintage-gold: hsl(42, 85%, 45%);
+  --antique-brass: hsl(38, 70%, 35%);
+  --old-parchment: hsl(45, 60%, 85%);
+  --aged-copper: hsl(35, 75%, 40%);
+  --golden-honey: hsl(45, 80%, 65%);
+  --weathered-bronze: hsl(32, 65%, 30%);
+  --faded-yellow: hsl(48, 55%, 75%);
+  --tarnished-gold: hsl(40, 60%, 50%);
   --font-sans: 'Comic Neue', 'Inter', sans-serif;
   --font-display: 'Fredoka One', cursive;
   --font-story: 'Patrick Hand', cursive;
@@ -87,8 +91,18 @@
   body {
     @apply font-sans antialiased text-foreground;
     font-family: 'Comic Neue', 'Inter', sans-serif;
-    background: linear-gradient(135deg, hsl(35, 35%, 85%) 0%, hsl(30, 30%, 78%) 50%, hsl(25, 25%, 72%) 100%);
+    /* Nostalgic Old Gold Background */
+    background: linear-gradient(135deg, 
+      hsl(45, 65%, 82%) 0%, 
+      hsl(42, 55%, 75%) 25%, 
+      hsl(38, 45%, 68%) 75%, 
+      hsl(35, 40%, 62%) 100%
+    );
     background-attachment: fixed;
+    /* Vintage texture overlay */
+    background-image: 
+      radial-gradient(circle at 25% 25%, hsla(45, 80%, 70%, 0.1) 0%, transparent 25%),
+      radial-gradient(circle at 75% 75%, hsla(42, 70%, 60%, 0.1) 0%, transparent 25%);
   }
 }
 
@@ -96,19 +110,23 @@
   font-family: 'Fredoka One', cursive;
 }
 
-/* Magical Story Cards */
+/* Nostalgic Gold Story Cards */
 .story-card {
   transition: all 0.4s var(--playful-bounce);
   background: linear-gradient(145deg, 
-    hsla(35, 40%, 88%, 0.95) 0%, 
-    hsla(30, 35%, 85%, 0.9) 50%,
-    hsla(25, 30%, 82%, 0.95) 100%
+    hsla(45, 60%, 85%, 0.95) 0%, 
+    hsla(42, 50%, 82%, 0.9) 50%,
+    hsla(38, 45%, 78%, 0.95) 100%
   );
   border: 3px solid transparent;
   background-clip: padding-box;
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
+  /* Vintage paper texture */
+  box-shadow: 
+    inset 0 1px 0 hsla(45, 80%, 90%, 0.3),
+    0 4px 12px hsla(35, 40%, 40%, 0.15);
 }
 
 .story-card::before {
@@ -119,39 +137,47 @@
   right: 0;
   bottom: 0;
   background: linear-gradient(45deg, 
-    var(--warm-brown), 
-    var(--rich-tan), 
-    var(--golden-tan), 
-    var(--cream)
+    var(--vintage-gold), 
+    var(--golden-honey), 
+    var(--tarnished-gold), 
+    var(--old-parchment)
   );
   background-size: 400% 400%;
-  animation: gradient-flow 6s ease infinite;
-  opacity: 0.1;
+  animation: nostalgic-shimmer 8s ease infinite;
+  opacity: 0.15;
   z-index: -1;
 }
 
 .story-card:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: var(--warm-glow), var(--earthy-shadow);
-  border-color: var(--warm-brown);
+  box-shadow: 
+    0 0 25px hsla(42, 75%, 45%, 0.4),
+    0 12px 40px hsla(35, 60%, 30%, 0.2);
+  border-color: var(--vintage-gold);
 }
 
 .story-card:hover::before {
   opacity: 0.2;
 }
 
-/* Create Button - Super Magical */
+/* Nostalgic Gold Create Button */
 .create-button {
   background: linear-gradient(135deg, 
-    var(--warm-brown) 0%, 
-    var(--rich-tan) 50%, 
-    var(--golden-tan) 100%
+    var(--antique-brass) 0%, 
+    var(--vintage-gold) 30%,
+    var(--golden-honey) 70%,
+    var(--tarnished-gold) 100%
   );
-  background-size: 200% 200%;
-  animation: gradient-flow 3s ease infinite;
+  background-size: 300% 300%;
+  animation: nostalgic-shimmer 4s ease infinite;
   transition: all 0.4s var(--playful-bounce);
   position: relative;
   overflow: hidden;
+  /* Vintage metallic effect */
+  box-shadow: 
+    inset 0 2px 0 hsla(45, 80%, 70%, 0.3),
+    inset 0 -2px 0 hsla(35, 60%, 30%, 0.3),
+    0 8px 25px hsla(40, 60%, 40%, 0.4);
 }
 
 .create-button::before {
@@ -179,11 +205,19 @@
   box-shadow: 0 12px 40px hsla(25, 50%, 35%, 0.4);
 }
 
-/* Interactive Buttons */
+/* Nostalgic Play Buttons */
 .play-button {
-  background: linear-gradient(135deg, var(--dark-brown) 0%, var(--warm-brown) 100%);
+  background: linear-gradient(135deg, 
+    var(--weathered-bronze) 0%, 
+    var(--antique-brass) 50%,
+    var(--aged-copper) 100%
+  );
   transition: all 0.3s var(--playful-bounce);
   position: relative;
+  /* Old button texture */
+  box-shadow: 
+    inset 0 1px 0 hsla(42, 70%, 60%, 0.3),
+    0 4px 12px hsla(35, 60%, 30%, 0.3);
 }
 
 .play-button:hover {
@@ -224,15 +258,19 @@
   animation: gentle-bounce 3s ease-in-out infinite;
 }
 
-/* Story Thumbnails */
+/* Nostalgic Story Thumbnails */
 .story-thumbnail {
   background: linear-gradient(45deg, 
-    var(--golden-tan) 0%, 
-    var(--rich-tan) 50%,
-    var(--warm-brown) 100%
+    var(--golden-honey) 0%, 
+    var(--tarnished-gold) 50%,
+    var(--antique-brass) 100%
   );
   position: relative;
   overflow: hidden;
+  /* Vintage frame effect */
+  box-shadow: 
+    inset 0 0 0 2px hsla(42, 75%, 45%, 0.3),
+    0 2px 8px hsla(35, 50%, 30%, 0.2);
 }
 
 .story-thumbnail::before {
@@ -254,9 +292,11 @@
 }
 
 /* Magical Animations */
-@keyframes gradient-flow {
+@keyframes nostalgic-shimmer {
   0% { background-position: 0% 50%; }
+  25% { background-position: 50% 25%; }
   50% { background-position: 100% 50%; }
+  75% { background-position: 50% 75%; }
   100% { background-position: 0% 50%; }
 }
 
@@ -315,12 +355,12 @@
   }
 }
 
-@keyframes rainbow-glow {
-  0% { box-shadow: 0 0 20px var(--warm-brown); }
-  25% { box-shadow: 0 0 20px var(--rich-tan); }
-  50% { box-shadow: 0 0 20px var(--golden-tan); }
-  75% { box-shadow: 0 0 20px var(--dark-brown); }
-  100% { box-shadow: 0 0 20px var(--warm-brown); }
+@keyframes vintage-glow {
+  0% { box-shadow: 0 0 20px var(--vintage-gold); }
+  25% { box-shadow: 0 0 20px var(--golden-honey); }
+  50% { box-shadow: 0 0 20px var(--tarnished-gold); }
+  75% { box-shadow: 0 0 20px var(--antique-brass); }
+  100% { box-shadow: 0 0 20px var(--vintage-gold); }
 }
 
 /* Enhanced Shadows */
