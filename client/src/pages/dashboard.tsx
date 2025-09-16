@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Plus, Settings, Palette, Info, ChevronRight, ChevronDown, History } from "lucide-react"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 
 export default function Dashboard() {
   const [selectedQuantumComputer, setSelectedQuantumComputer] = useState("ibm-hanoi")
@@ -35,6 +36,14 @@ export default function Dashboard() {
     console.log(`${gate} gate clicked for ${qubitId}`)
   }
 
+  const gateDescriptions: Record<string, string> = {
+    "X": "Pauli-X gate: Flips qubit state (0↔1)",
+    "Y": "Pauli-Y gate: Rotates qubit around Y-axis", 
+    "Z": "Pauli-Z gate: Adds phase to |1⟩ state",
+    "T": "T gate: Applies π/4 phase rotation",
+    "H": "Hadamard gate: Creates superposition"
+  }
+
   const handleMeasure = (qubitId: string, measureType: string) => {
     console.log(`${measureType} applied to ${qubitId}`)
   }
@@ -52,12 +61,12 @@ export default function Dashboard() {
           </Link>
           <div className="flex items-center gap-2">
             <Link href="/settings">
-              <Button size="icon" variant="ghost" data-testid="button-settings">
+              <Button size="icon" variant="ghost" data-testid="button-settings" aria-label="Open quantum settings">
                 <Settings className="h-4 w-4" />
               </Button>
             </Link>
             <Link href="/profile">
-              <Button size="icon" variant="ghost" data-testid="button-themes">
+              <Button size="icon" variant="ghost" data-testid="button-themes" aria-label="Change theme colors">
                 <Palette className="h-4 w-4" />
               </Button>
             </Link>
@@ -77,7 +86,7 @@ export default function Dashboard() {
                   <div className="w-3 h-3 rounded-full bg-muted-foreground" />
                   <span className="font-medium">{qubit.name}</span>
                 </div>
-                <Button size="sm" variant="ghost" data-testid={`button-info-${index}`}>
+                <Button size="sm" variant="ghost" data-testid={`button-info-${index}`} aria-label={`View details for ${qubit.name}`}>
                   <Info className="h-4 w-4" />
                 </Button>
               </div>
@@ -85,23 +94,30 @@ export default function Dashboard() {
               {/* Quantum Gates */}
               <div className="grid grid-cols-6 gap-2 mb-4">
                 {qubit.gates.map((gate, gateIndex) => (
-                  <Button
-                    key={gateIndex}
-                    variant="outline"
-                    size="sm"
-                    className="h-8 text-xs font-mono"
-                    onClick={() => handleGateClick(qubit.id, gate)}
-                    data-testid={`gate-${gate.toLowerCase()}-${index}-${gateIndex}`}
-                  >
-                    {gate}
-                  </Button>
+                  <Tooltip key={gateIndex}>
+                    <TooltipTrigger asChild>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="h-8 text-xs font-mono"
+                        onClick={() => handleGateClick(qubit.id, gate)}
+                        data-testid={`gate-${gate.toLowerCase()}-${index}-${gateIndex}`}
+                        aria-label={`Apply ${gate} gate to ${qubit.name}`}
+                      >
+                        {gate}
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="text-sm">{gateDescriptions[gate]}</p>
+                    </TooltipContent>
+                  </Tooltip>
                 ))}
               </div>
 
               {/* Measure Section */}
               <div className="flex items-center gap-2">
                 <Select value={qubit.measureType} onValueChange={(value) => handleMeasure(qubit.id, value)}>
-                  <SelectTrigger className="flex-1" data-testid={`select-measure-${index}`}>
+                  <SelectTrigger className="flex-1" data-testid={`select-measure-${index}`} aria-label={`Select measurement operation for ${qubit.name}`}>
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -110,7 +126,7 @@ export default function Dashboard() {
                     <SelectItem value="Reset">Reset</SelectItem>
                   </SelectContent>
                 </Select>
-                <Button size="icon" variant="ghost" data-testid={`button-dropdown-${index}`}>
+                <Button size="icon" variant="ghost" data-testid={`button-dropdown-${index}`} aria-label={`More options for ${qubit.name}`}>
                   <ChevronDown className="h-4 w-4" />
                 </Button>
               </div>
@@ -120,7 +136,7 @@ export default function Dashboard() {
 
         {/* Dropdown for additional options */}
         <div className="flex justify-center">
-          <Button size="icon" variant="ghost" data-testid="button-expand-options">
+          <Button size="icon" variant="ghost" data-testid="button-expand-options" aria-label="Show more quantum circuit options">
             <ChevronDown className="h-4 w-4" />
           </Button>
         </div>
@@ -209,7 +225,7 @@ export default function Dashboard() {
               <div>
                 <p className="text-sm font-medium">Next shake</p>
                 <Select value={selectedQuantumComputer} onValueChange={setSelectedQuantumComputer}>
-                  <SelectTrigger className="w-auto border-none p-0 h-auto shadow-none focus:ring-0" data-testid="select-quantum-computer">
+                  <SelectTrigger className="w-auto border-none p-0 h-auto shadow-none focus:ring-0" data-testid="select-quantum-computer" aria-label="Select quantum computer for next execution">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -222,7 +238,7 @@ export default function Dashboard() {
                 </Select>
               </div>
             </div>
-            <Button size="icon" variant="ghost" data-testid="button-quantum-computer-dropdown">
+            <Button size="icon" variant="ghost" data-testid="button-quantum-computer-dropdown" aria-label="Select different quantum computer">
               <ChevronDown className="h-4 w-4" />
             </Button>
           </div>

@@ -51,7 +51,7 @@ export default function Profile() {
       {/* Header */}
       <div className="flex items-center gap-4">
         <Link href="/">
-          <Button size="icon" variant="ghost" data-testid="button-back">
+          <Button size="icon" variant="ghost" data-testid="button-back" aria-label="Go back to dashboard">
             <ArrowLeft className="h-4 w-4" />
           </Button>
         </Link>
