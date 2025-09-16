@@ -81,7 +81,7 @@ export default function Dashboard() {
   ]
 
   return (
-    <div className="max-w-6xl mx-auto bg-background min-h-screen px-4" data-testid="page-dashboard">
+    <div className="bg-background min-h-screen" data-testid="page-dashboard">
       {/* Build Circuit Section */}
       <div className="p-4 border-b border-border">
         <div className="flex items-center justify-between">
@@ -107,7 +107,7 @@ export default function Dashboard() {
       </div>
 
       {/* Quantum Components Demo */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-4">
+      <div className="space-y-6 p-4">
         <div className="space-y-4">
           <h3 className="text-lg font-semibold">Quantum Circuit</h3>
           <QuantumCircuitCanvas
@@ -137,7 +137,7 @@ export default function Dashboard() {
             onStateClick={(state) => console.log('State clicked:', state)}
           />
           
-          <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-4">
             <FidelityGauge
               value={0.956}
               label="Gate Fidelity"

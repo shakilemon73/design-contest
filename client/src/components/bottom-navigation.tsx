@@ -58,7 +58,7 @@ export function BottomNavigation({ className }: BottomNavigationProps) {
       className={`fixed bottom-0 left-0 right-0 bg-background/95 backdrop-blur border-t border-border pb-[max(0.5rem,env(safe-area-inset-bottom))] ${className}`}
       data-testid="bottom-navigation"
     >
-      <div className="flex items-center justify-around py-2 px-2 max-w-2xl mx-auto">
+      <div className="flex items-center justify-around py-2 px-2 max-w-[430px] mx-auto">
         {navigationItems.map((item) => (
           <Link key={item.id} href={item.href}>
             <Button

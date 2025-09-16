@@ -62,7 +62,7 @@ export default function Learn() {
   const completedModules = mockModules.filter(m => m.isCompleted).length
 
   return (
-    <div className="max-w-2xl mx-auto p-6 space-y-6" data-testid="page-learn">
+    <div className="space-y-6" data-testid="page-learn">
       {/* Header */}
       <div className="space-y-2">
         <h1 className="text-2xl font-semibold">Learn Quantum Computing</h1>
@@ -72,7 +72,7 @@ export default function Learn() {
       </div>
 
       {/* Progress overview */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="space-y-4">
         <Card data-testid="card-overall-progress">
           <CardContent className="p-4 text-center">
             <div className="text-2xl font-semibold text-primary">{totalProgress}%</div>
@@ -103,7 +103,7 @@ export default function Learn() {
       </div>
 
       {/* Quick actions */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="space-y-4">
         <Button 
           variant="outline" 
           className="h-auto p-4 justify-start"
@@ -148,8 +148,8 @@ export default function Learn() {
       </div>
 
       {/* Main learning content */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2">
+      <div className="space-y-6">
+        <div>
           <LearningProgress
             modules={mockModules}
             totalProgress={totalProgress}

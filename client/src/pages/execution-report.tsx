@@ -40,7 +40,7 @@ export default function ExecutionReport() {
   const totalMeasurements = Object.values(executionData.results).reduce((sum, count) => sum + count, 0)
 
   return (
-    <div className="max-w-2xl mx-auto p-6 space-y-6" data-testid="page-execution-report">
+    <div className="space-y-6" data-testid="page-execution-report">
       {/* Header */}
       <div className="flex items-center gap-4">
         <Link href="/">
@@ -80,7 +80,7 @@ export default function ExecutionReport() {
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="grid grid-cols-2 gap-4 text-sm">
+          <div className="space-y-3 text-sm">
             <div>
               <span className="text-muted-foreground">Execution ID:</span>
               <p className="font-mono">{executionData.id}</p>
@@ -110,7 +110,7 @@ export default function ExecutionReport() {
           <CardTitle>Circuit Information</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="grid grid-cols-3 gap-4 text-center">
+          <div className="space-y-4 text-center">
             <div>
               <div className="text-2xl font-semibold text-primary">{executionData.qubits}</div>
               <div className="text-sm text-muted-foreground">Qubits</div>
