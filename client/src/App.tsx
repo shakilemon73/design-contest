@@ -11,6 +11,12 @@ import Connected from "@/pages/connected";
 import Learn from "@/pages/learn";
 import Profile from "@/pages/profile";
 import Settings from "@/pages/settings";
+import AddQubits from "@/pages/add-qubits";
+import Themes from "@/pages/themes";
+import ExecutionReport from "@/pages/execution-report";
+import History from "@/pages/history";
+import RunStory from "@/pages/run-story";
+import QuantumComputers from "@/pages/quantum-computers";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -25,6 +31,12 @@ function Router() {
       <Route path="/docs" component={Learn} />
       <Route path="/profile" component={Profile} />
       <Route path="/settings" component={Settings} />
+      <Route path="/add-qubits" component={AddQubits} />
+      <Route path="/themes" component={Themes} />
+      <Route path="/execution-report" component={ExecutionReport} />
+      <Route path="/history" component={History} />
+      <Route path="/run-story" component={RunStory} />
+      <Route path="/quantum-computers" component={QuantumComputers} />
       <Route component={NotFound} />
     </Switch>
   );

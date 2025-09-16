@@ -53,7 +53,7 @@ export default function Dashboard() {
       {/* Build Circuit Section */}
       <div className="p-4 border-b border-border">
         <div className="flex items-center justify-between">
-          <Link href="/circuits">
+          <Link href="/add-qubits">
             <Button variant="ghost" className="text-primary hover:text-primary/80" data-testid="button-build-circuit">
               <Plus className="h-4 w-4 mr-1" />
               Build Circuit
@@ -65,7 +65,7 @@ export default function Dashboard() {
                 <Settings className="h-4 w-4" />
               </Button>
             </Link>
-            <Link href="/profile">
+            <Link href="/themes">
               <Button size="icon" variant="ghost" data-testid="button-themes" aria-label="Change theme colors">
                 <Palette className="h-4 w-4" />
               </Button>
@@ -149,11 +149,13 @@ export default function Dashboard() {
             <div>
               <h3 className="font-medium text-sm">Last shake - IBM Hanoi</h3>
               <div className="flex items-center gap-2 mt-2">
-                <Button size="sm" variant="outline" className="h-8 text-xs" data-testid="button-read-report">
-                  View Results
-                  <ChevronRight className="h-3 w-3 ml-1" />
-                </Button>
-                <Link href="/learn">
+                <Link href="/execution-report">
+                  <Button size="sm" variant="outline" className="h-8 text-xs" data-testid="button-read-report">
+                    View Results
+                    <ChevronRight className="h-3 w-3 ml-1" />
+                  </Button>
+                </Link>
+                <Link href="/run-story">
                   <Button size="sm" variant="outline" className="h-8 text-xs" data-testid="button-skip-story">
                     Learn More
                     <ChevronRight className="h-3 w-3 ml-1" />
@@ -169,10 +171,12 @@ export default function Dashboard() {
       <div className="px-4 mb-4">
         <div className="flex items-center justify-between mb-3">
           <h3 className="font-medium">Pending circuit</h3>
-          <Button size="sm" variant="ghost" data-testid="button-history" onClick={() => console.log('History feature coming soon')}>
+          <Link href="/history">
+            <Button size="sm" variant="ghost" data-testid="button-history">
             <History className="h-4 w-4 mr-1" />
             History
-          </Button>
+            </Button>
+          </Link>
         </div>
         
         {/* Circuit Visualization */}
@@ -225,9 +229,11 @@ export default function Dashboard() {
               <div>
                 <p className="text-sm font-medium">Next shake</p>
                 <Select value={selectedQuantumComputer} onValueChange={setSelectedQuantumComputer}>
-                  <SelectTrigger className="w-auto border-none p-0 h-auto shadow-none focus:ring-0" data-testid="select-quantum-computer" aria-label="Select quantum computer for next execution">
-                    <SelectValue />
-                  </SelectTrigger>
+                  <Link href="/quantum-computers">
+                    <SelectTrigger className="w-auto border-none p-0 h-auto shadow-none focus:ring-0" data-testid="select-quantum-computer" aria-label="Select quantum computer for next execution">
+                      <SelectValue />
+                    </SelectTrigger>
+                  </Link>
                   <SelectContent>
                     {quantumComputers.map((computer) => (
                       <SelectItem key={computer.id} value={computer.id}>
