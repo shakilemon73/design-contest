@@ -226,15 +226,15 @@ export default function Dashboard() {
                 {/* Qubit Header */}
                 <div className="flex items-center justify-between mb-5">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 border-2 border-blue-500/30 flex items-center justify-center">
-                      <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-qolour-sky-blue/20 to-qolour-electric-indigo/20 border-2 border-qolour-sky-blue/30 flex items-center justify-center">
+                      <div className="w-2 h-2 rounded-full bg-qolour-electric-indigo animate-pulse" />
                     </div>
                     <div>
                       <div className="text-lg font-bold text-foreground">{qubit.name}</div>
                       <div className="text-sm text-muted-foreground">ID: {qubit.id}</div>
                       <div className="flex items-center gap-2 mt-1">
-                        <div className="w-2 h-2 rounded-full bg-green-500" />
-                        <span className="text-xs text-green-600 font-medium">Active</span>
+                        <div className="w-2 h-2 rounded-full bg-qolour-ion-green" />
+                        <span className="text-xs text-qolour-ion-green font-medium">Active</span>
                       </div>
                     </div>
                   </div>
@@ -256,11 +256,11 @@ export default function Dashboard() {
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                     {qubit.gates.map((gate, gateIndex) => {
                       const gateColors: Record<string, string> = {
-                        'X': 'bg-red-500 hover:bg-red-600 border-red-500/30',
-                        'Y': 'bg-green-500 hover:bg-green-600 border-green-500/30', 
-                        'Z': 'bg-blue-500 hover:bg-blue-600 border-blue-500/30',
-                        'T': 'bg-purple-500 hover:bg-purple-600 border-purple-500/30',
-                        'H': 'bg-orange-500 hover:bg-orange-600 border-orange-500/30'
+                        'X': 'bg-qolour-electric-indigo hover:bg-qolour-electric-indigo/90 border-qolour-electric-indigo/30',
+                        'Y': 'bg-qolour-sky-blue hover:bg-qolour-sky-blue/90 border-qolour-sky-blue/30', 
+                        'Z': 'bg-qolour-quantum-pink hover:bg-qolour-quantum-pink/90 border-qolour-quantum-pink/30',
+                        'T': 'bg-qolour-helio-yellow hover:bg-qolour-helio-yellow/90 border-qolour-helio-yellow/30',
+                        'H': 'bg-qolour-ember-orange hover:bg-qolour-ember-orange/90 border-qolour-ember-orange/30'
                       }
                       return (
                         <Button
@@ -269,7 +269,7 @@ export default function Dashboard() {
                           size="sm"
                           className={cn(
                             "h-14 text-white font-mono font-bold border-2 rounded-xl transition-all duration-200 touch-manipulation shadow-sm hover:shadow-md hover:scale-105 active:scale-95",
-                            gateColors[gate] || 'bg-gray-500 hover:bg-gray-600 border-gray-500/30'
+                            gateColors[gate] || 'bg-muted hover:bg-muted/80 border-muted/30'
                           )}
                           onClick={() => handleGateClick(qubit.id, gate)}
                           data-testid={`gate-${gate.toLowerCase()}-${index}-${gateIndex}`}
@@ -373,15 +373,15 @@ export default function Dashboard() {
             {/* Circuit Header */}
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 border-2 border-purple-500/30 flex items-center justify-center">
-                  <Zap className="h-5 w-5 text-purple-600" />
+                <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-qolour-electric-indigo/20 to-qolour-sky-blue/20 border-2 border-qolour-electric-indigo/30 flex items-center justify-center">
+                  <Zap className="h-5 w-5 text-qolour-electric-indigo" />
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-foreground">Quantum Circuit</h3>
                   <p className="text-sm text-muted-foreground">Bell State Preparation</p>
                 </div>
               </div>
-              <Badge variant="outline" className="text-sm px-3 py-1 rounded-full border-purple-500/30 text-purple-600">
+              <Badge variant="outline" className="text-sm px-3 py-1 rounded-full border-qolour-electric-indigo/30 text-qolour-electric-indigo">
                 2 Qubits
               </Badge>
             </div>
@@ -389,19 +389,19 @@ export default function Dashboard() {
             {/* Mobile-First Qubit Operations */}
             <div className="space-y-5">
               {/* Qubit 0 Operations */}
-              <Card className="border-0 bg-gradient-to-r from-blue-500/5 to-blue-500/10">
+              <Card className="border-0 bg-gradient-to-r from-qolour-sky-blue/5 to-qolour-sky-blue/10">
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center">
-                        <span className="text-sm font-bold font-mono text-blue-700">q0</span>
+                      <div className="w-8 h-8 rounded-xl bg-qolour-sky-blue/20 border border-qolour-sky-blue/30 flex items-center justify-center">
+                        <span className="text-sm font-bold font-mono text-qolour-sky-blue">q0</span>
                       </div>
                       <div>
                         <div className="text-sm font-semibold">Qubit 0</div>
                         <div className="text-xs text-muted-foreground">Initial State |0⟩</div>
                       </div>
                     </div>
-                    <div className="w-3 h-3 rounded-full bg-blue-500 animate-pulse" />
+                    <div className="w-3 h-3 rounded-full bg-qolour-sky-blue animate-pulse" />
                   </div>
                   
                   <div className="flex items-center gap-3 overflow-x-auto pb-2">
@@ -411,11 +411,11 @@ export default function Dashboard() {
                       </div>
                     </div>
                     <ArrowRight className="h-4 w-4 text-muted-foreground flex-shrink-0" />
-                    <Button size="sm" className="h-10 px-4 bg-purple-500 hover:bg-purple-600 text-white rounded-xl flex-shrink-0">
+                    <Button size="sm" className="h-10 px-4 bg-qolour-electric-indigo hover:bg-qolour-electric-indigo/90 text-white rounded-xl flex-shrink-0">
                       <span className="font-mono font-bold">H</span>
                     </Button>
                     <ArrowRight className="h-4 w-4 text-muted-foreground flex-shrink-0" />
-                    <Button size="sm" className="h-10 px-4 bg-red-500 hover:bg-red-600 text-white rounded-xl flex-shrink-0">
+                    <Button size="sm" className="h-10 px-4 bg-qolour-quantum-pink hover:bg-qolour-quantum-pink/90 text-white rounded-xl flex-shrink-0">
                       <span className="font-mono font-bold">X</span>
                     </Button>
                     <ArrowRight className="h-4 w-4 text-muted-foreground flex-shrink-0" />
@@ -429,19 +429,19 @@ export default function Dashboard() {
               </Card>
               
               {/* Qubit 1 Operations */}
-              <Card className="border-0 bg-gradient-to-r from-green-500/5 to-green-500/10">
+              <Card className="border-0 bg-gradient-to-r from-qolour-ion-green/5 to-qolour-ion-green/10">
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-xl bg-green-500/20 border border-green-500/30 flex items-center justify-center">
-                        <span className="text-sm font-bold font-mono text-green-700">q1</span>
+                      <div className="w-8 h-8 rounded-xl bg-qolour-ion-green/20 border border-qolour-ion-green/30 flex items-center justify-center">
+                        <span className="text-sm font-bold font-mono text-qolour-ion-green">q1</span>
                       </div>
                       <div>
                         <div className="text-sm font-semibold">Qubit 1</div>
                         <div className="text-xs text-muted-foreground">Initial State |0⟩</div>
                       </div>
                     </div>
-                    <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
+                    <div className="w-3 h-3 rounded-full bg-qolour-ion-green animate-pulse" />
                   </div>
                   
                   <div className="flex items-center gap-3 overflow-x-auto pb-2">
@@ -455,7 +455,7 @@ export default function Dashboard() {
                       <span className="font-mono text-sm">Identity</span>
                     </div>
                     <ArrowRight className="h-4 w-4 text-muted-foreground flex-shrink-0" />
-                    <Button size="sm" className="h-10 px-4 bg-green-500 hover:bg-green-600 text-white rounded-xl flex-shrink-0">
+                    <Button size="sm" className="h-10 px-4 bg-qolour-ion-green hover:bg-qolour-ion-green/90 text-white rounded-xl flex-shrink-0">
                       <span className="font-mono font-bold">X</span>
                     </Button>
                     <ArrowRight className="h-4 w-4 text-muted-foreground flex-shrink-0" />
@@ -470,12 +470,12 @@ export default function Dashboard() {
               
               {/* Entanglement Indicator */}
               <div className="relative">
-                <Card className="border-0 bg-gradient-to-r from-orange-500/5 to-pink-500/5">
+                <Card className="border-0 bg-gradient-to-r from-qolour-ember-orange/5 to-qolour-quantum-pink/5">
                   <CardContent className="p-4 text-center">
                     <div className="flex items-center justify-center gap-3">
-                      <Link2 className="h-5 w-5 text-orange-500" />
+                      <Link2 className="h-5 w-5 text-qolour-ember-orange" />
                       <span className="text-sm font-semibold text-foreground">Qubits Entangled</span>
-                      <Link2 className="h-5 w-5 text-pink-500" />
+                      <Link2 className="h-5 w-5 text-qolour-quantum-pink" />
                     </div>
                     <p className="text-xs text-muted-foreground mt-2">Bell State: |00⟩ + |11⟩</p>
                   </CardContent>
@@ -486,15 +486,15 @@ export default function Dashboard() {
             {/* Circuit Summary */}
             <div className="grid grid-cols-3 gap-4 mt-6 pt-6 border-t">
               <div className="text-center">
-                <div className="text-lg font-bold text-purple-600">3</div>
+                <div className="text-lg font-bold text-qolour-electric-indigo">3</div>
                 <div className="text-xs text-muted-foreground">Gates</div>
               </div>
               <div className="text-center">
-                <div className="text-lg font-bold text-blue-600">2</div>
+                <div className="text-lg font-bold text-qolour-sky-blue">2</div>
                 <div className="text-xs text-muted-foreground">Depth</div>
               </div>
               <div className="text-center">
-                <div className="text-lg font-bold text-green-600">1</div>
+                <div className="text-lg font-bold text-qolour-ion-green">1</div>
                 <div className="text-xs text-muted-foreground">Entanglement</div>
               </div>
             </div>
@@ -555,21 +555,21 @@ export default function Dashboard() {
               
               {/* Execution Stats */}
               <div className="grid grid-cols-3 gap-4">
-                <Card className="border-0 bg-blue-500/5">
+                <Card className="border-0 bg-qolour-sky-blue/5">
                   <CardContent className="p-3 text-center">
-                    <div className="text-lg font-bold text-blue-600">~2ms</div>
+                    <div className="text-lg font-bold text-qolour-sky-blue">~2ms</div>
                     <div className="text-xs text-muted-foreground">Exec Time</div>
                   </CardContent>
                 </Card>
-                <Card className="border-0 bg-purple-500/5">
+                <Card className="border-0 bg-qolour-electric-indigo/5">
                   <CardContent className="p-3 text-center">
-                    <div className="text-lg font-bold text-purple-600">1000</div>
+                    <div className="text-lg font-bold text-qolour-electric-indigo">1000</div>
                     <div className="text-xs text-muted-foreground">Shots</div>
                   </CardContent>
                 </Card>
-                <Card className="border-0 bg-orange-500/5">
+                <Card className="border-0 bg-qolour-ember-orange/5">
                   <CardContent className="p-3 text-center">
-                    <div className="text-lg font-bold text-orange-600">2</div>
+                    <div className="text-lg font-bold text-qolour-ember-orange">2</div>
                     <div className="text-xs text-muted-foreground">Qubits</div>
                   </CardContent>
                 </Card>

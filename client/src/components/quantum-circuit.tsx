@@ -21,16 +21,16 @@ interface QuantumCircuitProps {
 }
 
 const gateColors = {
-  H: "bg-blue-500",
-  X: "bg-red-500", 
-  Y: "bg-yellow-500",
-  Z: "bg-green-500",
-  CNOT: "bg-purple-500",
-  T: "bg-orange-500"
+  H: "bg-qolour-electric-indigo",
+  X: "bg-qolour-electric-indigo", 
+  Y: "bg-qolour-sky-blue",
+  Z: "bg-qolour-quantum-pink",
+  CNOT: "bg-qolour-ember-orange",
+  T: "bg-qolour-helio-yellow"
 }
 
 const stateColors = {
-  "0": "bg-gray-400",
+  "0": "bg-muted",
   "1": "bg-primary",
   "+": "bg-quantum-secondary"
 }

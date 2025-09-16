@@ -24,13 +24,13 @@ interface QuantumCircuitCanvasProps {
 }
 
 const gateInfo = {
-  'X': { name: 'Pauli-X', description: 'NOT Gate', color: 'bg-red-500', icon: RotateCcw },
-  'Y': { name: 'Pauli-Y', description: 'Y Rotation', color: 'bg-green-500', icon: RotateCcw },
-  'Z': { name: 'Pauli-Z', description: 'Phase Flip', color: 'bg-blue-500', icon: Target },
-  'H': { name: 'Hadamard', description: 'Superposition', color: 'bg-purple-500', icon: Zap },
-  'CNOT': { name: 'CNOT', description: 'Controlled NOT', color: 'bg-orange-500', icon: Link2 },
-  'T': { name: 'T Gate', description: 'π/4 Rotation', color: 'bg-pink-500', icon: RotateCcw },
-  'S': { name: 'S Gate', description: 'π/2 Rotation', color: 'bg-cyan-500', icon: RotateCcw }
+  'X': { name: 'Pauli-X', description: 'NOT Gate', color: 'bg-qolour-electric-indigo', icon: RotateCcw },
+  'Y': { name: 'Pauli-Y', description: 'Y Rotation', color: 'bg-qolour-sky-blue', icon: RotateCcw },
+  'Z': { name: 'Pauli-Z', description: 'Phase Flip', color: 'bg-qolour-quantum-pink', icon: Target },
+  'H': { name: 'Hadamard', description: 'Superposition', color: 'bg-qolour-electric-indigo', icon: Zap },
+  'CNOT': { name: 'CNOT', description: 'Controlled NOT', color: 'bg-qolour-ember-orange', icon: Link2 },
+  'T': { name: 'T Gate', description: 'π/4 Rotation', color: 'bg-qolour-helio-yellow', icon: RotateCcw },
+  'S': { name: 'S Gate', description: 'π/2 Rotation', color: 'bg-qolour-ion-green', icon: RotateCcw }
 }
 
 export function QuantumCircuitCanvas({ 
@@ -106,7 +106,7 @@ export function QuantumCircuitCanvas({
                   </div>
                   
                   <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
+                    <div className="w-3 h-3 rounded-full bg-qolour-ion-green animate-pulse" />
                     <span className="text-xs text-muted-foreground">Active</span>
                   </div>
                 </div>
@@ -129,7 +129,7 @@ export function QuantumCircuitCanvas({
                         const GateIcon = gateConfig.icon
                         
                         return (
-                          <React.Fragment key={gate.id}>
+                          <div key={gate.id} className="flex items-center gap-2">
                             <ArrowRight className="h-3 w-3 text-muted-foreground flex-shrink-0" />
                             <Button
                               size="sm"
@@ -152,7 +152,7 @@ export function QuantumCircuitCanvas({
                                 </span>
                               </div>
                             </Button>
-                          </React.Fragment>
+                          </div>
                         )
                       })}
                       
@@ -187,7 +187,7 @@ export function QuantumCircuitCanvas({
                 {gates.some(g => g.type === 'CNOT' && (g.qubit === qubitIndex || g.controlQubit === qubitIndex)) && (
                   <div className="mt-3 pt-3 border-t">
                     <div className="flex items-center gap-2 text-sm">
-                      <Link2 className="h-4 w-4 text-orange-500" />
+                      <Link2 className="h-4 w-4 text-qolour-ember-orange" />
                       <span className="text-muted-foreground">
                         Entangled with other qubits
                       </span>
@@ -213,11 +213,11 @@ export function QuantumCircuitCanvas({
               <div className="text-xs text-muted-foreground">Gates</div>
             </div>
             <div>
-              <div className="text-xl font-bold text-green-600">{maxPosition + 1}</div>
+              <div className="text-xl font-bold text-qolour-ion-green">{maxPosition + 1}</div>
               <div className="text-xs text-muted-foreground">Depth</div>
             </div>
             <div>
-              <div className="text-xl font-bold text-orange-600">
+              <div className="text-xl font-bold text-qolour-ember-orange">
                 {gates.filter(g => g.type === 'CNOT').length}
               </div>
               <div className="text-xs text-muted-foreground">Entanglement</div>

@@ -40,9 +40,9 @@ export function ConnectedQubits({
   }
 
   const getBatteryColor = (level: number) => {
-    if (level > 60) return "text-green-500"
-    if (level > 30) return "text-yellow-500"
-    return "text-red-500"
+    if (level > 60) return "text-qolour-ion-green"
+    if (level > 30) return "text-qolour-helio-yellow"
+    return "text-qolour-quantum-pink"
   }
 
   const getSignalStrength = (strength: number) => {
@@ -51,7 +51,7 @@ export function ConnectedQubits({
       <div
         key={i}
         className={`w-1 h-3 rounded-sm ${
-          i < bars ? "bg-green-500" : "bg-gray-300"
+          i < bars ? "bg-qolour-ion-green" : "bg-muted"
         }`}
       />
     ))
@@ -89,7 +89,7 @@ export function ConnectedQubits({
             <div className="flex items-center gap-3">
               {/* Connection status indicator */}
               <div className={`w-3 h-3 rounded-full ${
-                qubit.isConnected ? "bg-green-500" : "bg-gray-400"
+                qubit.isConnected ? "bg-qolour-ion-green" : "bg-muted"
               }`} />
 
               {/* Qubit info */}
