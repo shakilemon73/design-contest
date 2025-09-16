@@ -49,7 +49,7 @@ export default function Settings() {
       </div>
 
       {/* Main content */}
-      <div className="max-w-4xl">
+      <div className="max-w-2xl mx-auto">
         <QuantumSettings
           settings={mockSettings}
           onSettingsChange={handleSettingsChange}

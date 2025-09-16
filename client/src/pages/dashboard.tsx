@@ -13,13 +13,13 @@ export default function Dashboard() {
   const mockQubits = [
     {
       id: "qubit-v1-1",
-      name: "Qubi v1",
+      name: "Qubit v1",
       gates: ["X", "Y", "Z", "T", "T", "H"],
       measureType: "CNOT"
     },
     {
       id: "qubit-v1-2", 
-      name: "Qubi v1",
+      name: "Qubit v1",
       gates: ["X", "Y", "Z", "T", "T", "H"],
       measureType: "Measure"
     }
@@ -40,14 +40,14 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="max-w-md mx-auto bg-background min-h-screen" data-testid="page-dashboard">
-      {/* Add Qubis Section */}
+    <div className="max-w-2xl mx-auto bg-background min-h-screen px-4" data-testid="page-dashboard">
+      {/* Build Circuit Section */}
       <div className="p-4 border-b border-border">
         <div className="flex items-center justify-between">
-          <Link href="/add-qubis">
-            <Button variant="ghost" className="text-primary hover:text-primary/80" data-testid="button-add-qubis">
+          <Link href="/circuits">
+            <Button variant="ghost" className="text-primary hover:text-primary/80" data-testid="button-build-circuit">
               <Plus className="h-4 w-4 mr-1" />
-              Add Qubis
+              Build Circuit
             </Button>
           </Link>
           <div className="flex items-center gap-2">
@@ -56,7 +56,7 @@ export default function Dashboard() {
                 <Settings className="h-4 w-4" />
               </Button>
             </Link>
-            <Link href="/themes">
+            <Link href="/profile">
               <Button size="icon" variant="ghost" data-testid="button-themes">
                 <Palette className="h-4 w-4" />
               </Button>
@@ -65,9 +65,9 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Your Qubis Section */}
+      {/* Your Qubits Section */}
       <div className="p-4 space-y-4">
-        <h2 className="text-lg font-medium">Your Qubis</h2>
+        <h2 className="text-lg font-medium">Your Qubits</h2>
         
         {mockQubits.map((qubit, index) => (
           <Card key={qubit.id} className="relative" data-testid={`qubit-card-${index}`}>
@@ -133,15 +133,13 @@ export default function Dashboard() {
             <div>
               <h3 className="font-medium text-sm">Last shake - IBM Hanoi</h3>
               <div className="flex items-center gap-2 mt-2">
-                <Link href="/execution-report">
-                  <Button size="sm" variant="outline" className="h-8 text-xs" data-testid="button-read-report">
-                    Read the report
-                    <ChevronRight className="h-3 w-3 ml-1" />
-                  </Button>
-                </Link>
-                <Link href="/run-story">
+                <Button size="sm" variant="outline" className="h-8 text-xs" data-testid="button-read-report">
+                  View Results
+                  <ChevronRight className="h-3 w-3 ml-1" />
+                </Button>
+                <Link href="/learn">
                   <Button size="sm" variant="outline" className="h-8 text-xs" data-testid="button-skip-story">
-                    Skip to the story
+                    Learn More
                     <ChevronRight className="h-3 w-3 ml-1" />
                   </Button>
                 </Link>
@@ -155,12 +153,10 @@ export default function Dashboard() {
       <div className="px-4 mb-4">
         <div className="flex items-center justify-between mb-3">
           <h3 className="font-medium">Pending circuit</h3>
-          <Link href="/history">
-            <Button size="sm" variant="ghost" data-testid="button-history">
-              <History className="h-4 w-4 mr-1" />
-              History
-            </Button>
-          </Link>
+          <Button size="sm" variant="ghost" data-testid="button-history" onClick={() => console.log('History feature coming soon')}>
+            <History className="h-4 w-4 mr-1" />
+            History
+          </Button>
         </div>
         
         {/* Circuit Visualization */}

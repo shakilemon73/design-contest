@@ -64,7 +64,7 @@ export default function Profile() {
       </div>
 
       {/* Main content */}
-      <div className="max-w-4xl">
+      <div className="max-w-2xl mx-auto">
         <UserProfile
           user={mockUser}
           themes={mockThemes}

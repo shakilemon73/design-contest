@@ -62,7 +62,7 @@ export default function Learn() {
   const completedModules = mockModules.filter(m => m.isCompleted).length
 
   return (
-    <div className="p-6 space-y-6" data-testid="page-learn">
+    <div className="max-w-2xl mx-auto p-6 space-y-6" data-testid="page-learn">
       {/* Header */}
       <div className="space-y-2">
         <h1 className="text-2xl font-semibold">Learn Quantum Computing</h1>

@@ -106,7 +106,7 @@ export default function Connected() {
       </div>
 
       {/* Main content */}
-      <div className="max-w-2xl">
+      <div className="max-w-2xl mx-auto">
         <ConnectedQubits
           qubits={qubits}
           onConnect={handleConnect}
