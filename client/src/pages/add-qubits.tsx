@@ -1,27 +1,45 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { ArrowLeft, Plus, Zap } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { ArrowLeft, MoreVertical, Battery, Wifi } from "lucide-react"
 import { Link } from "wouter"
 
-export default function AddQubits() {
-  const [qubitName, setQubitName] = useState("")
-  const [initialState, setInitialState] = useState("0")
-  const [coherenceTime, setCoherenceTime] = useState("100")
+export default function ConnectedQubis() {
+  const [nearbyQubis, setNearbyQubis] = useState([
+    {
+      id: "qubi-v1-1",
+      name: "Qubi v1", 
+      battery: 90,
+      isConnected: false
+    },
+    {
+      id: "qubi-v2-1",
+      name: "Qubi v2",
+      battery: 20, 
+      isConnected: true
+    },
+    {
+      id: "qubi-v1-2",
+      name: "Qubi v1",
+      battery: 90,
+      isConnected: false  
+    }
+  ])
 
-  const handleAddQubit = () => {
-    console.log('Adding qubit:', { qubitName, initialState, coherenceTime })
-    // Reset form
-    setQubitName("")
-    setInitialState("0")
-    setCoherenceTime("100")
+  const handleConnect = (id: string) => {
+    setNearbyQubis(prev => prev.map(q => 
+      q.id === id ? {...q, isConnected: true} : q
+    ))
+    console.log(`Connected to ${id}`)
+  }
+
+  const handleScanAgain = () => {
+    console.log('Scanning for nearby qubis...')
   }
 
   return (
-    <div className="max-w-2xl mx-auto p-6 space-y-6" data-testid="page-add-qubits">
+    <div className="max-w-2xl mx-auto p-6 space-y-6" data-testid="page-connected-qubis">
       {/* Header */}
       <div className="flex items-center gap-4">
         <Link href="/">
@@ -30,115 +48,66 @@ export default function AddQubits() {
           </Button>
         </Link>
         <div>
-          <h1 className="text-2xl font-semibold">Add New Qubit</h1>
-          <p className="text-sm text-muted-foreground">
-            Create a new qubit for your quantum circuits
-          </p>
+          <h1 className="text-2xl font-semibold">Connected Qubis</h1>
         </div>
       </div>
 
-      {/* Add Qubit Form */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Plus className="h-5 w-5" />
-            Qubit Configuration
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="space-y-2">
-            <Label htmlFor="qubit-name">Qubit Name</Label>
-            <Input
-              id="qubit-name"
-              value={qubitName}
-              onChange={(e) => setQubitName(e.target.value)}
-              placeholder="e.g., Qubit v2"
-              data-testid="input-qubit-name"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="initial-state">Initial State</Label>
-            <Select value={initialState} onValueChange={setInitialState}>
-              <SelectTrigger data-testid="select-initial-state" aria-label="Select initial qubit state">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="0">|0⟩ (Ground state)</SelectItem>
-                <SelectItem value="1">|1⟩ (Excited state)</SelectItem>
-                <SelectItem value="superposition">|+⟩ (Superposition)</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="coherence-time">Coherence Time (μs)</Label>
-            <Input
-              id="coherence-time"
-              type="number"
-              value={coherenceTime}
-              onChange={(e) => setCoherenceTime(e.target.value)}
-              placeholder="100"
-              data-testid="input-coherence-time"
-            />
-          </div>
-
-          <Button 
-            onClick={handleAddQubit} 
-            className="w-full"
-            disabled={!qubitName}
-            data-testid="button-add-qubit"
-          >
-            <Zap className="h-4 w-4 mr-2" />
-            Add Qubit to Circuit
+      {/* Nearby Qubis Section */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <h2 className="text-lg font-medium">Nearby Qubis</h2>
+          <Button variant="outline" size="sm" onClick={handleScanAgain} data-testid="button-scan-again">
+            Scan again
           </Button>
-        </CardContent>
-      </Card>
+        </div>
 
-      {/* Quick Add Options */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-base">Quick Add Templates</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-3">
-          <Button 
-            variant="outline" 
-            className="w-full justify-start"
-            onClick={() => {
-              setQubitName("Bell Pair A")
-              setInitialState("0")
-              setCoherenceTime("150")
-            }}
-            data-testid="button-bell-pair-template"
-          >
-            Bell Pair Qubit (Entanglement Ready)
-          </Button>
-          <Button 
-            variant="outline" 
-            className="w-full justify-start"
-            onClick={() => {
-              setQubitName("Grover Search")
-              setInitialState("superposition")
-              setCoherenceTime("200")
-            }}
-            data-testid="button-grover-template"
-          >
-            Grover Algorithm Qubit
-          </Button>
-          <Button 
-            variant="outline" 
-            className="w-full justify-start"
-            onClick={() => {
-              setQubitName("Error Correction")
-              setInitialState("0")
-              setCoherenceTime("300")
-            }}
-            data-testid="button-error-correction-template"
-          >
-            Error Correction Qubit
-          </Button>
-        </CardContent>
-      </Card>
+        <p className="text-sm text-muted-foreground">
+          Qubis might be grouped together if they are already entangled.
+        </p>
+
+        {/* Qubis List */}
+        <div className="space-y-3">
+          {nearbyQubis.map((qubi) => (
+            <Card key={qubi.id} className="p-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-3 h-3 rounded-full bg-muted-foreground" />
+                  <div className="flex-1">
+                    <h3 className="font-medium">{qubi.name}</h3>
+                    <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                      <Battery className="h-3 w-3" />
+                      <span>{qubi.battery}% battery</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  {qubi.isConnected ? (
+                    <Badge variant="secondary" className="text-xs">
+                      <Wifi className="h-3 w-3 mr-1" />
+                      Connected
+                    </Badge>
+                  ) : (
+                    <Link href="/">
+                      <Button 
+                        size="sm" 
+                        onClick={() => handleConnect(qubi.id)}
+                        data-testid={`button-connect-${qubi.id}`}
+                      >
+                        Connect
+                      </Button>
+                    </Link>
+                  )}
+                  
+                  <Button size="icon" variant="ghost" data-testid={`button-more-${qubi.id}`}>
+                    <MoreVertical className="h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
