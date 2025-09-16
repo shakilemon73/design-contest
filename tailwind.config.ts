@@ -59,6 +59,17 @@ export default {
           "4": "hsl(var(--chart-4) / <alpha-value>)",
           "5": "hsl(var(--chart-5) / <alpha-value>)",
         },
+        // Qolour Brand Colors
+        qolour: {
+          "electric-indigo": "hsl(var(--qolour-electric-indigo) / <alpha-value>)",
+          "ion-green": "hsl(var(--qolour-ion-green) / <alpha-value>)",
+          "rich-black": "hsl(var(--qolour-rich-black) / <alpha-value>)",
+          "sky-blue": "hsl(var(--qolour-sky-blue) / <alpha-value>)",
+          "quantum-pink": "hsl(var(--qolour-quantum-pink) / <alpha-value>)",
+          "helio-yellow": "hsl(var(--qolour-helio-yellow) / <alpha-value>)",
+          "salt-white": "hsl(var(--qolour-salt-white) / <alpha-value>)",
+          "ember-orange": "hsl(var(--qolour-ember-orange) / <alpha-value>)",
+        },
         quantum: {
           primary: "hsl(var(--quantum-primary) / <alpha-value>)",
           secondary: "hsl(var(--quantum-secondary) / <alpha-value>)",
@@ -113,9 +124,10 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["var(--font-sans)"],
+        sans: ["Figtree", "var(--font-sans)"],
         serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],
+        figtree: ["Figtree", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {

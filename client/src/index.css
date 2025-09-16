@@ -135,25 +135,25 @@
   --quantum-error: var(--qolour-quantum-pink);
   --quantum-neutral: 220 10% 50%;
   
-  /* Quantum State Colors */
-  --qubit-active: 260 95% 65%;
-  --qubit-superposition: 195 85% 55%;
-  --qubit-entangled: 310 85% 65%;
-  --qubit-measured: 142 70% 50%;
+  /* Quantum State Colors - Updated with Qolour Brand */
+  --qubit-active: var(--qolour-electric-indigo);
+  --qubit-superposition: var(--qolour-sky-blue);
+  --qubit-entangled: var(--qolour-quantum-pink);
+  --qubit-measured: var(--qolour-ion-green);
   --qubit-idle: 220 10% 70%;
   
-  /* Circuit Visualization */
+  /* Circuit Visualization - Qolour Brand Colors */
   --circuit-line: 220 10% 80%;
-  --circuit-gate: 260 95% 65%;
-  --circuit-measurement: 38 95% 65%;
-  --circuit-connection: 195 85% 55%;
+  --circuit-gate: var(--qolour-electric-indigo);
+  --circuit-measurement: var(--qolour-helio-yellow);
+  --circuit-connection: var(--qolour-sky-blue);
   
-  /* Data Visualization */
-  --probability-0: 195 85% 75%;
-  --probability-1: 260 95% 75%;
-  --fidelity-high: 142 70% 60%;
-  --fidelity-medium: 38 95% 70%;
-  --fidelity-low: 0 85% 65%;
+  /* Data Visualization - Qolour Palette */
+  --probability-0: var(--qolour-sky-blue);
+  --probability-1: var(--qolour-electric-indigo);
+  --fidelity-high: var(--qolour-ion-green);
+  --fidelity-medium: var(--qolour-helio-yellow);
+  --fidelity-low: var(--qolour-quantum-pink);
   
   /* Spacing Scale (8pt grid system) */
   --space-1: 0.125rem; /* 2px */
@@ -302,33 +302,33 @@
   --chart-4: 38 95% 70%;
   --chart-5: 310 85% 75%;
 
-  /* Dark mode quantum colors */
-  --quantum-primary: 260 95% 75%;
-  --quantum-secondary: 195 85% 70%;
-  --quantum-success: 142 70% 60%;
-  --quantum-warning: 38 95% 70%;
-  --quantum-error: 0 85% 65%;
+  /* Dark mode quantum colors - Qolour Brand */
+  --quantum-primary: var(--qolour-electric-indigo);
+  --quantum-secondary: var(--qolour-sky-blue);
+  --quantum-success: var(--qolour-ion-green);
+  --quantum-warning: var(--qolour-helio-yellow);
+  --quantum-error: var(--qolour-quantum-pink);
   --quantum-neutral: 220 10% 60%;
   
-  /* Dark mode qubit states */
-  --qubit-active: 260 95% 75%;
-  --qubit-superposition: 195 85% 70%;
-  --qubit-entangled: 310 85% 75%;
-  --qubit-measured: 142 70% 60%;
+  /* Dark mode qubit states - Qolour palette */
+  --qubit-active: var(--qolour-electric-indigo);
+  --qubit-superposition: var(--qolour-sky-blue);
+  --qubit-entangled: var(--qolour-quantum-pink);
+  --qubit-measured: var(--qolour-ion-green);
   --qubit-idle: 220 10% 40%;
   
-  /* Dark mode circuit colors */
+  /* Dark mode circuit colors - Qolour branding */
   --circuit-line: 220 10% 30%;
-  --circuit-gate: 260 95% 75%;
-  --circuit-measurement: 38 95% 70%;
-  --circuit-connection: 195 85% 70%;
+  --circuit-gate: var(--qolour-electric-indigo);
+  --circuit-measurement: var(--qolour-helio-yellow);
+  --circuit-connection: var(--qolour-sky-blue);
   
-  /* Dark mode data visualization */
-  --probability-0: 195 85% 80%;
-  --probability-1: 260 95% 80%;
-  --fidelity-high: 142 70% 65%;
-  --fidelity-medium: 38 95% 75%;
-  --fidelity-low: 0 85% 70%;
+  /* Dark mode data visualization - Qolour palette */
+  --probability-0: var(--qolour-sky-blue);
+  --probability-1: var(--qolour-electric-indigo);
+  --fidelity-high: var(--qolour-ion-green);
+  --fidelity-medium: var(--qolour-helio-yellow);
+  --fidelity-low: var(--qolour-quantum-pink);
 
   --shadow-2xs: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
   --shadow-xs: 0px 1px 3px 0px rgba(0, 0, 0, 0.4), 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
@@ -420,13 +420,42 @@
     @apply ring-2 ring-ring ring-offset-2 outline-none;
   }
   
-  /* Quantum Computing Utilities */
+  /* Qolour Brand Gradients - Following +45° angle guidelines */
+  .qolour-gradient-primary {
+    background: linear-gradient(45deg, hsl(var(--qolour-quantum-pink)) 0%, hsl(var(--qolour-ember-orange)) 100%);
+  }
+  
+  .qolour-gradient-secondary {
+    background: linear-gradient(45deg, hsl(var(--qolour-sky-blue)) 0%, hsl(var(--qolour-ion-green)) 100%);
+  }
+  
+  .qolour-gradient-tertiary {
+    background: linear-gradient(45deg, hsl(var(--qolour-electric-indigo)) 0%, hsl(var(--qolour-quantum-pink)) 100%);
+  }
+  
+  .qolour-gradient-quantum {
+    background: linear-gradient(45deg, hsl(var(--qolour-electric-indigo)) 0%, hsl(var(--qolour-sky-blue)) 100%);
+  }
+  
+  /* Legacy quantum gradient updated with Qolour colors */
   .quantum-gradient {
-    background: linear-gradient(135deg, hsl(var(--quantum-primary)) 0%, hsl(var(--quantum-secondary)) 100%);
+    background: linear-gradient(45deg, hsl(var(--qolour-electric-indigo)) 0%, hsl(var(--qolour-sky-blue)) 100%);
   }
   
   .quantum-glow {
-    box-shadow: 0 0 20px hsl(var(--quantum-primary) / 0.3);
+    box-shadow: 0 0 20px hsl(var(--qolour-electric-indigo) / 0.3);
+  }
+  
+  .qolour-glow-indigo {
+    box-shadow: 0 0 20px hsl(var(--qolour-electric-indigo) / 0.3);
+  }
+  
+  .qolour-glow-pink {
+    box-shadow: 0 0 20px hsl(var(--qolour-quantum-pink) / 0.3);
+  }
+  
+  .qolour-glow-blue {
+    box-shadow: 0 0 20px hsl(var(--qolour-sky-blue) / 0.3);
   }
   
   .quantum-pulse {
