@@ -6,6 +6,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
 import { BottomNavigation } from "@/components/bottom-navigation";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { QuantumSidebar } from "@/components/quantum-sidebar";
+import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
+import { useIsMobile } from "@/hooks/use-mobile";
 import Dashboard from "@/pages/dashboard";
 import Connected from "@/pages/connected";
 import Learn from "@/pages/learn";
@@ -42,32 +45,65 @@ function Router() {
   );
 }
 
+function AppContent() {
+  const isMobile = useIsMobile()
+
+  return (
+    <SidebarProvider>
+      <div className="min-h-screen bg-background flex">
+        {!isMobile && <QuantumSidebar />}
+        
+        <SidebarInset className="flex-1">
+          {/* Mobile Header */}
+          {isMobile && (
+            <header className="sticky top-0 z-50 flex items-center justify-between p-4 bg-background/95 backdrop-blur border-b border-border">
+              <div className="flex items-center gap-3">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg quantum-gradient quantum-glow">
+                  <div className="w-4 h-4 bg-white rounded-sm animate-quantum-pulse" />
+                </div>
+                <span className="font-bold text-lg">Qubi</span>
+              </div>
+              <ThemeToggle />
+            </header>
+          )}
+          
+          {/* Desktop Header */}
+          {!isMobile && (
+            <header className="sticky top-0 z-40 flex items-center justify-between p-4 bg-background/95 backdrop-blur border-b border-border">
+              <div className="flex items-center gap-2">
+                <SidebarTrigger className="h-8 w-8" />
+                <span className="text-sm text-muted-foreground">Quantum Computing Dashboard</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="hidden sm:flex items-center gap-1 text-xs text-muted-foreground bg-muted px-2 py-1 rounded">
+                  <div className="w-2 h-2 bg-quantum-success rounded-full animate-quantum-pulse"></div>
+                  5 systems online
+                </div>
+                <ThemeToggle />
+              </div>
+            </header>
+          )}
+
+          {/* Main content */}
+          <main className={`min-h-screen ${isMobile ? 'pb-20' : ''}`}>
+            <Router />
+          </main>
+        </SidebarInset>
+
+        {/* Mobile Bottom navigation */}
+        {isMobile && <BottomNavigation />}
+      </div>
+      <Toaster />
+    </SidebarProvider>
+  );
+}
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <ThemeProvider defaultTheme="dark">
-          <div className="min-h-screen bg-background">
-            {/* Header */}
-            <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-4 bg-background/95 backdrop-blur border-b border-border">
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-primary rounded-md flex items-center justify-center">
-                  <div className="w-3 h-3 bg-primary-foreground rounded-sm" />
-                </div>
-                <span className="font-semibold text-sm">Qubi</span>
-              </div>
-              <ThemeToggle />
-            </header>
-
-            {/* Main content */}
-            <main className="pt-16 pb-20 min-h-screen">
-              <Router />
-            </main>
-
-            {/* Bottom navigation */}
-            <BottomNavigation />
-          </div>
-          <Toaster />
+          <AppContent />
         </ThemeProvider>
       </TooltipProvider>
     </QueryClientProvider>
