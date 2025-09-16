@@ -101,7 +101,7 @@ export default function History() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto p-6 space-y-6" data-testid="page-history">
+    <div className="space-y-6" data-testid="page-history">
       {/* Header */}
       <div className="flex items-center gap-4">
         <Link href="/">
@@ -206,7 +206,7 @@ export default function History() {
           <CardTitle className="text-base">Summary Statistics</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-3 gap-4 text-center text-sm">
+          <div className="space-y-4 text-center text-sm">
             <div>
               <div className="text-lg font-semibold text-primary">
                 {historyData.filter(h => h.status === 'completed').length}

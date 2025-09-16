@@ -47,7 +47,7 @@ export default function Profile() {
   }
 
   return (
-    <div className="p-6 space-y-6" data-testid="page-profile">
+    <div className="space-y-6" data-testid="page-profile">
       {/* Header */}
       <div className="flex items-center gap-4">
         <Link href="/">
@@ -64,7 +64,7 @@ export default function Profile() {
       </div>
 
       {/* Main content */}
-      <div className="max-w-2xl mx-auto">
+      <div>
         <UserProfile
           user={mockUser}
           themes={mockThemes}

@@ -96,7 +96,7 @@ export default function QuantumComputers() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto p-6 space-y-6" data-testid="page-quantum-computers">
+    <div className="space-y-6" data-testid="page-quantum-computers">
       {/* Header */}
       <div className="flex items-center gap-4">
         <Link href="/">
@@ -169,7 +169,7 @@ export default function QuantumComputers() {
                   </Badge>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 text-sm">
+                <div className="space-y-3 text-sm">
                   <div>
                     <span className="text-muted-foreground">Qubits:</span>
                     <span className="ml-2 font-medium">{computer.qubits}</span>

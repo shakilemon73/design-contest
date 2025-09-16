@@ -57,7 +57,7 @@ export default function RunStory() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto p-6 space-y-6" data-testid="page-run-story">
+    <div className="space-y-6" data-testid="page-run-story">
       {/* Header */}
       <div className="flex items-center gap-4">
         <Link href="/">
