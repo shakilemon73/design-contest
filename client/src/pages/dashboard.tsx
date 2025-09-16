@@ -1,211 +1,237 @@
 import { useState } from "react"
+import { Link } from "wouter"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { QuantumCircuit } from "@/components/quantum-circuit"
-import { QubitStatusCard } from "@/components/qubit-status-card"
-import { Plus, Settings, Info, Zap } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Plus, Settings, Palette, Info, ChevronRight, ChevronDown, History } from "lucide-react"
 
 export default function Dashboard() {
-  const [isRunning, setIsRunning] = useState(false)
+  const [selectedQuantumComputer, setSelectedQuantumComputer] = useState("ibm-hanoi")
 
   //todo: remove mock functionality - replace with real quantum data
   const mockQubits = [
-    { id: "q0", name: "Q0", state: "0" as const },
-    { id: "q1", name: "Q1", state: "1" as const },
-    { id: "q2", name: "Q2", state: "+" as const }
-  ]
-
-  const mockGates = [
-    { id: "h1", type: "H" as const, position: { qubit: 0, step: 0 } },
-    { id: "x1", type: "X" as const, position: { qubit: 1, step: 1 } },
-    { id: "cnot1", type: "CNOT" as const, position: { qubit: 0, step: 2 }, target: 2 },
-    { id: "z1", type: "Z" as const, position: { qubit: 2, step: 3 } }
-  ]
-
-  const mockQubitCards = [
     {
-      id: "qubit-001",
-      name: "Qubit v1",
-      state: "0" as const,
-      coherenceTime: 85,
-      fidelity: 0.997,
-      temperature: 15,
-      isActive: true
+      id: "qubit-v1-1",
+      name: "Qubi v1",
+      gates: ["X", "Y", "Z", "T", "T", "H"],
+      measureType: "CNOT"
     },
     {
-      id: "qubit-002", 
-      name: "Qubit v2",
-      state: "superposition" as const,
-      coherenceTime: 92,
-      fidelity: 0.993,
-      temperature: 12,
-      isActive: true
+      id: "qubit-v1-2", 
+      name: "Qubi v1",
+      gates: ["X", "Y", "Z", "T", "T", "H"],
+      measureType: "Measure"
     }
   ]
 
-  const handleToggleExecution = () => {
-    setIsRunning(!isRunning)
-    console.log('Circuit execution toggled:', !isRunning)
+  const quantumComputers = [
+    { id: "ibm-hanoi", name: "IBM Hanoi", qubits: 32 },
+    { id: "ibm-lagos", name: "IBM Lagos", qubits: 27 },
+    { id: "ibm-nairobi", name: "IBM Nairobi", qubits: 27 }
+  ]
+
+  const handleGateClick = (qubitId: string, gate: string) => {
+    console.log(`${gate} gate clicked for ${qubitId}`)
   }
 
-  const handleReset = () => {
-    setIsRunning(false)
-    console.log('Circuit reset')
-  }
-
-  const handleQubitToggle = (qubitId: string) => {
-    console.log(`Qubit ${qubitId} toggled`)
-  }
-
-  const handleQubitConfigure = (qubitId: string) => {
-    console.log(`Configure qubit ${qubitId}`)
-  }
-
-  const handleAddQubit = () => {
-    console.log('Add new qubit')
+  const handleMeasure = (qubitId: string, measureType: string) => {
+    console.log(`${measureType} applied to ${qubitId}`)
   }
 
   return (
-    <div className="p-6 space-y-6" data-testid="page-dashboard">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-semibold">Quantum Lab</h1>
-          <p className="text-sm text-muted-foreground">
-            Design and execute quantum circuits with your connected qubits
-          </p>
-        </div>
-        <div className="flex items-center gap-2">
-          <Button 
-            size="sm" 
-            variant="outline"
-            data-testid="button-settings"
-          >
-            <Settings className="h-4 w-4 mr-1" />
-            Settings
-          </Button>
-          <Button 
-            size="sm"
-            onClick={handleAddQubit}
-            data-testid="button-add-qubit"
-          >
-            <Plus className="h-4 w-4 mr-1" />
-            Add Qubit
-          </Button>
-        </div>
-      </div>
-
-      {/* Main content grid */}
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-        {/* Quantum Circuit - Main focus */}
-        <div className="xl:col-span-2">
-          <QuantumCircuit
-            qubits={mockQubits}
-            gates={mockGates}
-            isRunning={isRunning}
-            onToggleExecution={handleToggleExecution}
-            onReset={handleReset}
-          />
-        </div>
-
-        {/* Sidebar with qubits and info */}
-        <div className="space-y-6">
-          {/* Quick stats */}
-          <Card data-testid="stats-card">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-base">System Status</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-muted-foreground">Active Qubits</span>
-                <span className="text-sm font-medium">{mockQubitCards.length}</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-muted-foreground">Circuit Gates</span>
-                <span className="text-sm font-medium">{mockGates.length}</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-muted-foreground">Execution Status</span>
-                <div className="flex items-center gap-1">
-                  <div className={`w-2 h-2 rounded-full ${isRunning ? 'bg-green-500' : 'bg-gray-400'}`} />
-                  <span className="text-sm font-medium">
-                    {isRunning ? 'Running' : 'Idle'}
-                  </span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Last execution info */}
-          <Card data-testid="execution-info">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-base flex items-center gap-2">
-                <Zap className="h-4 w-4" />
-                Last Execution
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">IBM Hanoi (32 qubits)</span>
-                  <Button 
-                    size="sm" 
-                    variant="outline" 
-                    className="h-6 text-xs"
-                    data-testid="button-skip-story"
-                  >
-                    Skip to the story
-                  </Button>
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  Read the report for detailed quantum execution results
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-
-      {/* Your Qubits section */}
-      <div className="space-y-4">
+    <div className="max-w-md mx-auto bg-background min-h-screen" data-testid="page-dashboard">
+      {/* Add Qubis Section */}
+      <div className="p-4 border-b border-border">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-semibold">Your Qubits</h2>
-          <Button 
-            size="sm" 
-            variant="outline"
-            data-testid="button-manage-qubits"
-          >
-            <Info className="h-4 w-4 mr-1" />
-            Manage All
+          <Link href="/add-qubis">
+            <Button variant="ghost" className="text-primary hover:text-primary/80" data-testid="button-add-qubis">
+              <Plus className="h-4 w-4 mr-1" />
+              Add Qubis
+            </Button>
+          </Link>
+          <div className="flex items-center gap-2">
+            <Link href="/settings">
+              <Button size="icon" variant="ghost" data-testid="button-settings">
+                <Settings className="h-4 w-4" />
+              </Button>
+            </Link>
+            <Link href="/themes">
+              <Button size="icon" variant="ghost" data-testid="button-themes">
+                <Palette className="h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Your Qubis Section */}
+      <div className="p-4 space-y-4">
+        <h2 className="text-lg font-medium">Your Qubis</h2>
+        
+        {mockQubits.map((qubit, index) => (
+          <Card key={qubit.id} className="relative" data-testid={`qubit-card-${index}`}>
+            <CardContent className="p-4">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-muted-foreground" />
+                  <span className="font-medium">{qubit.name}</span>
+                </div>
+                <Button size="sm" variant="ghost" data-testid={`button-info-${index}`}>
+                  <Info className="h-4 w-4" />
+                </Button>
+              </div>
+
+              {/* Quantum Gates */}
+              <div className="grid grid-cols-6 gap-2 mb-4">
+                {qubit.gates.map((gate, gateIndex) => (
+                  <Button
+                    key={gateIndex}
+                    variant="outline"
+                    size="sm"
+                    className="h-8 text-xs font-mono"
+                    onClick={() => handleGateClick(qubit.id, gate)}
+                    data-testid={`gate-${gate.toLowerCase()}-${index}-${gateIndex}`}
+                  >
+                    {gate}
+                  </Button>
+                ))}
+              </div>
+
+              {/* Measure Section */}
+              <div className="flex items-center gap-2">
+                <Select value={qubit.measureType} onValueChange={(value) => handleMeasure(qubit.id, value)}>
+                  <SelectTrigger className="flex-1" data-testid={`select-measure-${index}`}>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="CNOT">CNOT</SelectItem>
+                    <SelectItem value="Measure">Measure</SelectItem>
+                    <SelectItem value="Reset">Reset</SelectItem>
+                  </SelectContent>
+                </Select>
+                <Button size="icon" variant="ghost" data-testid={`button-dropdown-${index}`}>
+                  <ChevronDown className="h-4 w-4" />
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+
+        {/* Dropdown for additional options */}
+        <div className="flex justify-center">
+          <Button size="icon" variant="ghost" data-testid="button-expand-options">
+            <ChevronDown className="h-4 w-4" />
           </Button>
+        </div>
+      </div>
+
+      {/* Last shake Section */}
+      <Card className="mx-4 mb-4 bg-gradient-to-r from-blue-500/10 to-green-500/10 border-blue-500/20" data-testid="last-shake-card">
+        <CardContent className="p-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="font-medium text-sm">Last shake - IBM Hanoi</h3>
+              <div className="flex items-center gap-2 mt-2">
+                <Link href="/execution-report">
+                  <Button size="sm" variant="outline" className="h-8 text-xs" data-testid="button-read-report">
+                    Read the report
+                    <ChevronRight className="h-3 w-3 ml-1" />
+                  </Button>
+                </Link>
+                <Link href="/run-story">
+                  <Button size="sm" variant="outline" className="h-8 text-xs" data-testid="button-skip-story">
+                    Skip to the story
+                    <ChevronRight className="h-3 w-3 ml-1" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Pending circuit Section */}
+      <div className="px-4 mb-4">
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="font-medium">Pending circuit</h3>
+          <Link href="/history">
+            <Button size="sm" variant="ghost" data-testid="button-history">
+              <History className="h-4 w-4 mr-1" />
+              History
+            </Button>
+          </Link>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {mockQubitCards.map((qubit) => (
-            <QubitStatusCard
-              key={qubit.id}
-              {...qubit}
-              onToggle={() => handleQubitToggle(qubit.id)}
-              onConfigure={() => handleQubitConfigure(qubit.id)}
-            />
-          ))}
-          
-          {/* Add qubit card */}
-          <Card 
-            className="border-dashed border-2 hover-elevate cursor-pointer transition-all"
-            onClick={handleAddQubit}
-            data-testid="card-add-qubit"
-          >
-            <CardContent className="flex flex-col items-center justify-center p-6 text-center min-h-[200px]">
-              <Plus className="h-8 w-8 text-muted-foreground mb-2" />
-              <p className="text-sm font-medium">Add New Qubit</p>
-              <p className="text-xs text-muted-foreground">
-                Connect additional quantum hardware
-              </p>
-            </CardContent>
-          </Card>
-        </div>
+        {/* Circuit Visualization */}
+        <Card className="p-4" data-testid="circuit-visualization">
+          <div className="space-y-3">
+            {/* Circuit lines with quantum gates */}
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-muted-foreground" />
+              <div className="flex-1 h-0.5 bg-border relative">
+                <div className="absolute left-8 top-1/2 -translate-y-1/2 w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+                  <span className="text-xs text-primary-foreground font-mono">H</span>
+                </div>
+                <div className="absolute left-20 top-1/2 -translate-y-1/2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                  <span className="text-xs text-white font-mono">X</span>
+                </div>
+              </div>
+              <div className="w-3 h-3 rounded-full bg-muted-foreground" />
+            </div>
+            
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-muted-foreground" />
+              <div className="flex-1 h-0.5 bg-border relative">
+                <div className="absolute left-20 top-1/2 -translate-y-1/2 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                  <span className="text-xs text-white font-mono">X</span>
+                </div>
+              </div>
+              <div className="w-3 h-3 rounded-full bg-muted-foreground" />
+            </div>
+
+            {/* Connection lines for entanglement */}
+            <div className="relative">
+              <svg className="w-full h-8" viewBox="0 0 200 30">
+                <line x1="100" y1="5" x2="100" y2="25" stroke="currentColor" strokeWidth="1" strokeDasharray="2,2" className="text-muted-foreground" />
+                <circle cx="100" cy="5" r="2" fill="currentColor" className="text-primary" />
+                <circle cx="100" cy="25" r="2" fill="currentColor" className="text-primary" />
+              </svg>
+            </div>
+          </div>
+        </Card>
       </div>
+
+      {/* Next shake Section */}
+      <Card className="mx-4 mb-4" data-testid="next-shake-card">
+        <CardContent className="p-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-muted rounded-md flex items-center justify-center">
+                <div className="w-4 h-4 bg-primary rounded-sm" />
+              </div>
+              <div>
+                <p className="text-sm font-medium">Next shake</p>
+                <Select value={selectedQuantumComputer} onValueChange={setSelectedQuantumComputer}>
+                  <SelectTrigger className="w-auto border-none p-0 h-auto shadow-none focus:ring-0" data-testid="select-quantum-computer">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {quantumComputers.map((computer) => (
+                      <SelectItem key={computer.id} value={computer.id}>
+                        {computer.name} ({computer.qubits} qubits)
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+            <Button size="icon" variant="ghost" data-testid="button-quantum-computer-dropdown">
+              <ChevronDown className="h-4 w-4" />
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   )
 }
