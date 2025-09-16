@@ -150,7 +150,17 @@ export default function QuantumComputers() {
             className={`cursor-pointer transition-all hover:shadow-md ${
               selectedComputer === computer.id ? 'ring-2 ring-primary' : ''
             }`}
+            role="button"
+            tabIndex={0}
+            aria-pressed={selectedComputer === computer.id}
+            aria-label={`Select ${computer.name} quantum computer with ${computer.qubits} qubits`}
             onClick={() => handleSelectComputer(computer.id)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                handleSelectComputer(computer.id)
+              }
+            }}
             data-testid={`computer-card-${computer.id}`}
           >
             <CardContent className="p-4">

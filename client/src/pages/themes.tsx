@@ -75,7 +75,18 @@ export default function Themes() {
             className={`relative overflow-hidden ${
               !theme.isUnlocked ? 'opacity-75' : ''
             } ${selectedTheme === theme.id ? 'ring-2 ring-primary' : ''}`}
+            role="button"
+            tabIndex={theme.isUnlocked ? 0 : -1}
+            aria-pressed={selectedTheme === theme.id}
+            aria-disabled={!theme.isUnlocked}
             onClick={() => theme.isUnlocked && setSelectedTheme(theme.id)}
+            onKeyDown={(e) => {
+              if ((e.key === 'Enter' || e.key === ' ') && theme.isUnlocked) {
+                e.preventDefault()
+                setSelectedTheme(theme.id)
+              }
+            }}
+            data-testid={`theme-card-${theme.id}`}
           >
             {!theme.isUnlocked && (
               <div className="absolute top-4 right-4 z-10">

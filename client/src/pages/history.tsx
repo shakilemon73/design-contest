@@ -5,11 +5,12 @@ import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { ArrowLeft, Search, Filter, Clock, CheckCircle, XCircle, Eye } from "lucide-react"
-import { Link } from "wouter"
+import { Link, useLocation } from "wouter"
 
 export default function History() {
   const [searchTerm, setSearchTerm] = useState("")
   const [filterStatus, setFilterStatus] = useState("all")
+  const [, setLocation] = useLocation()
 
   // Mock history data
   const historyData = [
@@ -156,7 +157,21 @@ export default function History() {
           </Card>
         ) : (
           filteredHistory.map((execution) => (
-            <Card key={execution.id} className="cursor-pointer hover:shadow-md transition-shadow">
+            <Card 
+              key={execution.id} 
+              className="cursor-pointer hover:shadow-md transition-shadow"
+              role="button"
+              tabIndex={0}
+              aria-label={`View details for ${execution.name} execution`}
+              onClick={() => setLocation(`/execution-report?id=${execution.id}`)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  setLocation(`/execution-report?id=${execution.id}`)
+                }
+              }}
+              data-testid={`execution-card-${execution.id}`}
+            >
               <CardContent className="p-4">
                 <div className="flex items-start justify-between">
                   <div className="flex-1 space-y-2">
