@@ -48,12 +48,12 @@ export function QuantumCircuitCanvas({
   showLabels = true,
   interactive = false
 }: QuantumCircuitCanvasProps) {
-  const qubitHeight = 60
+  const qubitHeight = 70
   const gateWidth = 40
-  const circuitWidth = Math.max(600, gates.length * 80 + 200)
+  const circuitWidth = Math.max(400, gates.length * 80 + 150)
 
   return (
-    <div className={cn("relative bg-card border border-card-border rounded-lg p-4", className)}>
+    <div className={cn("relative bg-background border border-border rounded-lg p-4 overflow-x-auto", className)}>
       <svg 
         width={circuitWidth} 
         height={qubits * qubitHeight + 40}
@@ -69,7 +69,7 @@ export function QuantumCircuitCanvas({
               y1={40 + i * qubitHeight}
               x2={circuitWidth - 40}
               y2={40 + i * qubitHeight}
-              stroke="hsl(var(--circuit-line))"
+              stroke="hsl(var(--border))"
               strokeWidth="2"
               className="circuit-line"
             />
@@ -80,11 +80,14 @@ export function QuantumCircuitCanvas({
                 <circle
                   cx={30}
                   cy={40 + i * qubitHeight}
-                  r={12}
-                  fill="hsl(var(--qubit-idle))"
+                  r={14}
+                  fill="hsl(var(--primary))"
+                  fillOpacity="0.1"
+                  stroke="hsl(var(--primary))"
+                  strokeWidth="2"
                   className={cn(
                     "qubit-node transition-all duration-200",
-                    interactive && "cursor-pointer hover:fill-quantum-primary"
+                    interactive && "cursor-pointer hover:fill-primary/20"
                   )}
                   onClick={() => interactive && onQubitClick?.(i)}
                 />
@@ -92,7 +95,9 @@ export function QuantumCircuitCanvas({
                   x={30}
                   y={45 + i * qubitHeight}
                   textAnchor="middle"
-                  className="text-xs font-mono fill-foreground"
+                  className="text-sm font-mono font-semibold"
+                  fill="currentColor"
+                  style={{ fontSize: '12px' }}
                 >
                   q{i}
                 </text>
