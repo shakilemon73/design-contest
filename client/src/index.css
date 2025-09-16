@@ -76,6 +76,58 @@
   --chart-4: 38 95% 45%;
   --chart-5: 310 85% 35%;
 
+  /* Quantum Computing Design System */
+  --quantum-primary: 260 95% 65%;
+  --quantum-secondary: 195 85% 55%;
+  --quantum-success: 142 70% 50%;
+  --quantum-warning: 38 95% 65%;
+  --quantum-error: 0 85% 60%;
+  --quantum-neutral: 220 10% 50%;
+  
+  /* Quantum State Colors */
+  --qubit-active: 260 95% 65%;
+  --qubit-superposition: 195 85% 55%;
+  --qubit-entangled: 310 85% 65%;
+  --qubit-measured: 142 70% 50%;
+  --qubit-idle: 220 10% 70%;
+  
+  /* Circuit Visualization */
+  --circuit-line: 220 10% 80%;
+  --circuit-gate: 260 95% 65%;
+  --circuit-measurement: 38 95% 65%;
+  --circuit-connection: 195 85% 55%;
+  
+  /* Data Visualization */
+  --probability-0: 195 85% 75%;
+  --probability-1: 260 95% 75%;
+  --fidelity-high: 142 70% 60%;
+  --fidelity-medium: 38 95% 70%;
+  --fidelity-low: 0 85% 65%;
+  
+  /* Spacing Scale (8pt grid system) */
+  --space-1: 0.125rem; /* 2px */
+  --space-2: 0.25rem;  /* 4px */
+  --space-3: 0.5rem;   /* 8px */
+  --space-4: 0.75rem;  /* 12px */
+  --space-5: 1rem;     /* 16px */
+  --space-6: 1.25rem;  /* 20px */
+  --space-7: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-9: 2.5rem;   /* 40px */
+  --space-10: 3rem;    /* 48px */
+  --space-11: 4rem;    /* 64px */
+  --space-12: 6rem;    /* 96px */
+  
+  /* Typography Scale */
+  --text-xs: 0.75rem;   /* 12px */
+  --text-sm: 0.875rem;  /* 14px */
+  --text-base: 1rem;    /* 16px */
+  --text-lg: 1.125rem;  /* 18px */
+  --text-xl: 1.25rem;   /* 20px */
+  --text-2xl: 1.5rem;   /* 24px */
+  --text-3xl: 2rem;     /* 32px */
+  --text-4xl: 3rem;     /* 48px */
+
   --font-sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   --font-serif: Georgia, serif;
   --font-mono: JetBrains Mono, "SF Mono", Monaco, Inconsolata, "Roboto Mono", "Source Code Pro", monospace;
@@ -195,6 +247,34 @@
   --chart-4: 38 95% 70%;
   --chart-5: 310 85% 75%;
 
+  /* Dark mode quantum colors */
+  --quantum-primary: 260 95% 75%;
+  --quantum-secondary: 195 85% 70%;
+  --quantum-success: 142 70% 60%;
+  --quantum-warning: 38 95% 70%;
+  --quantum-error: 0 85% 65%;
+  --quantum-neutral: 220 10% 60%;
+  
+  /* Dark mode qubit states */
+  --qubit-active: 260 95% 75%;
+  --qubit-superposition: 195 85% 70%;
+  --qubit-entangled: 310 85% 75%;
+  --qubit-measured: 142 70% 60%;
+  --qubit-idle: 220 10% 40%;
+  
+  /* Dark mode circuit colors */
+  --circuit-line: 220 10% 30%;
+  --circuit-gate: 260 95% 75%;
+  --circuit-measurement: 38 95% 70%;
+  --circuit-connection: 195 85% 70%;
+  
+  /* Dark mode data visualization */
+  --probability-0: 195 85% 80%;
+  --probability-1: 260 95% 80%;
+  --fidelity-high: 142 70% 65%;
+  --fidelity-medium: 38 95% 75%;
+  --fidelity-low: 0 85% 70%;
+
   --shadow-2xs: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
   --shadow-xs: 0px 1px 3px 0px rgba(0, 0, 0, 0.4), 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
   --shadow-sm: 0px 1px 3px 0px rgba(0, 0, 0, 0.4), 0px 1px 2px -1px rgba(0, 0, 0, 0.2);
@@ -237,6 +317,54 @@
  * need to be distinguished from eachother visually.
  */
 @layer utilities {
+
+  /* Quantum Computing Utilities */
+  .quantum-gradient {
+    background: linear-gradient(135deg, hsl(var(--quantum-primary)) 0%, hsl(var(--quantum-secondary)) 100%);
+  }
+  
+  .quantum-glow {
+    box-shadow: 0 0 20px hsl(var(--quantum-primary) / 0.3);
+  }
+  
+  .quantum-pulse {
+    animation: quantum-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .circuit-line {
+    background-color: hsl(var(--circuit-line));
+    height: 2px;
+  }
+  
+  .qubit-node {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: hsl(var(--qubit-idle));
+  }
+  
+  .qubit-active {
+    background-color: hsl(var(--qubit-active));
+  }
+  
+  .qubit-superposition {
+    background-color: hsl(var(--qubit-superposition));
+    animation: quantum-superposition 1s ease-in-out infinite alternate;
+  }
+  
+  .gate-button {
+    @apply w-8 h-8 rounded-md border border-border bg-card text-xs font-mono font-semibold;
+    @apply hover:bg-accent hover:border-accent-foreground/20;
+    @apply active:scale-95 transition-all duration-150;
+  }
+  
+  .probability-bar {
+    @apply h-2 rounded-full overflow-hidden bg-muted;
+  }
+  
+  .fidelity-gauge {
+    @apply relative w-16 h-16 rounded-full;
+  }
 
   /* Hide ugly search cancel button in Chrome until we can style it properly */
   input[type="search"]::-webkit-search-cancel-button {
@@ -325,5 +453,46 @@
   .border.active-elevate-2:not(.no-active-interaction-elevate)::after,
   .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
     inset: -1px;
+  }
+}
+
+/* Quantum Computing Animations */
+@keyframes quantum-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes quantum-superposition {
+  0% {
+    opacity: 0.6;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes quantum-entanglement {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes data-flow {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
   }
 }
