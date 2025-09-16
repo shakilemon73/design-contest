@@ -6,6 +6,10 @@ import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Plus, Settings, Palette, Info, ChevronRight, ChevronDown, History } from "lucide-react"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+import { QuantumCircuitCanvas } from "@/components/ui/quantum-circuit-canvas"
+import { QubitStatusCard } from "@/components/ui/qubit-status-card"
+import { ProbabilityHistogram } from "@/components/ui/probability-histogram"
+import { FidelityGauge } from "@/components/ui/fidelity-gauge"
 
 export default function Dashboard() {
   const [selectedQuantumComputer, setSelectedQuantumComputer] = useState("ibm-hanoi")
@@ -48,8 +52,36 @@ export default function Dashboard() {
     console.log(`${measureType} applied to ${qubitId}`)
   }
 
+  // Sample data for quantum components demo
+  const sampleGates = [
+    { id: '1', type: 'H' as const, qubit: 0, position: 0 },
+    { id: '2', type: 'CNOT' as const, qubit: 1, position: 1, controlQubit: 0 },
+    { id: '3', type: 'X' as const, qubit: 2, position: 2 },
+    { id: '4', type: 'T' as const, qubit: 0, position: 3 },
+  ]
+
+  const sampleQubit = {
+    id: 'q0',
+    name: 'Transmon Q0',
+    state: 'superposition' as const,
+    fidelity: 0.956,
+    coherenceTime: 104.2,
+    errorRate: 0.0015,
+    temperature: 15.2,
+    frequency: 5.234,
+    isConnected: true,
+  }
+
+  const sampleProbabilityData = [
+    { state: '000', probability: 0.45, amplitude: 0.671, phase: 0 },
+    { state: '111', probability: 0.32, amplitude: 0.566, phase: Math.PI },
+    { state: '001', probability: 0.12, amplitude: 0.346, phase: Math.PI/2 },
+    { state: '110', probability: 0.08, amplitude: 0.283, phase: -Math.PI/2 },
+    { state: '101', probability: 0.03, amplitude: 0.173, phase: Math.PI/4 },
+  ]
+
   return (
-    <div className="max-w-2xl mx-auto bg-background min-h-screen px-4" data-testid="page-dashboard">
+    <div className="max-w-6xl mx-auto bg-background min-h-screen px-4" data-testid="page-dashboard">
       {/* Build Circuit Section */}
       <div className="p-4 border-b border-border">
         <div className="flex items-center justify-between">
@@ -70,6 +102,60 @@ export default function Dashboard() {
                 <Palette className="h-4 w-4" />
               </Button>
             </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Quantum Components Demo */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-4">
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold">Quantum Circuit</h3>
+          <QuantumCircuitCanvas
+            qubits={3}
+            gates={sampleGates}
+            showLabels={true}
+            interactive={true}
+            onGateClick={(gate) => console.log('Gate clicked:', gate)}
+            onQubitClick={(qubit) => console.log('Qubit clicked:', qubit)}
+          />
+          
+          <QubitStatusCard
+            qubit={sampleQubit}
+            showDetails={true}
+            onStatusClick={(id) => console.log('Status clicked:', id)}
+          />
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold">Quantum Analytics</h3>
+          <ProbabilityHistogram
+            data={sampleProbabilityData}
+            title="Measurement Results"
+            showPhase={true}
+            showCounts={true}
+            totalShots={1000}
+            onStateClick={(state) => console.log('State clicked:', state)}
+          />
+          
+          <div className="grid grid-cols-2 gap-4">
+            <FidelityGauge
+              value={0.956}
+              label="Gate Fidelity"
+              target={0.95}
+              previousValue={0.943}
+              showTrend={true}
+              showDetails={true}
+              size="md"
+            />
+            <FidelityGauge
+              value={0.874}
+              label="Readout"
+              target={0.9}
+              previousValue={0.891}
+              showTrend={true}
+              showDetails={true}
+              size="md"
+            />
           </div>
         </div>
       </div>
