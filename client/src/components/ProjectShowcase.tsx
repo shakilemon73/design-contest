@@ -169,13 +169,10 @@ export default function ProjectShowcase() {
             {projects.map((project) => (
               <article 
                 key={project.id}
-                className={`${project.colSpan} ${project.aspectRatio} relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer transform hover:scale-[1.02] transition-all duration-300 focus-within:scale-[1.02] focus-within:ring-2 focus-within:ring-primary`}
+                className={`${project.colSpan} ${project.aspectRatio} relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer transform hover:scale-[1.02] transition-all duration-300`}
                 onMouseEnter={() => setHoveredProject(project.id)}
                 onMouseLeave={() => setHoveredProject(null)}
                 data-testid={`project-card-${project.id}`}
-                tabIndex={0}
-                role="button"
-                aria-label={`View ${project.title} project details`}
               >
                 <img 
                   src={project.image} 

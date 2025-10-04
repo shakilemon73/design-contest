@@ -53,10 +53,9 @@ export default function ExpertiseShowcase() {
                 <Badge
                   key={location}
                   variant="outline"
-                  className="cursor-pointer hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors px-3 md:px-4 py-2 min-h-[44px] flex items-center gap-2 focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                  className="px-3 md:px-4 py-3 min-h-[44px] flex items-center gap-2"
                   data-testid={`location-${location.toLowerCase().replace(/\s+/g, '-')}`}
                   role="listitem"
-                  tabIndex={0}
                   aria-label={`We service ${location}`}
                 >
                   <MapPin className="w-3 h-3" aria-hidden="true" />
@@ -70,9 +69,8 @@ export default function ExpertiseShowcase() {
           <div className="lg:col-span-7 order-1 lg:order-2">
             <div className="grid grid-cols-2 gap-4">
               <figure 
-                className="col-span-2 aspect-[21/9] rounded-2xl overflow-hidden shadow-lg transform hover:-rotate-1 transition-all duration-300 focus-within:rotate-0" 
+                className="col-span-2 aspect-[21/9] rounded-2xl overflow-hidden shadow-lg transform hover:-rotate-1 transition-all duration-300" 
                 data-testid="image-expertise-1"
-                tabIndex={0}
               >
                 <img 
                   src={landscape1} 
@@ -82,9 +80,8 @@ export default function ExpertiseShowcase() {
                 />
               </figure>
               <figure 
-                className="aspect-square rounded-2xl overflow-hidden shadow-lg transform hover:rotate-2 transition-all duration-300 focus-within:rotate-0" 
+                className="aspect-square rounded-2xl overflow-hidden shadow-lg transform hover:rotate-2 transition-all duration-300" 
                 data-testid="image-expertise-2"
-                tabIndex={0}
               >
                 <img 
                   src={landscape2} 
@@ -94,9 +91,8 @@ export default function ExpertiseShowcase() {
                 />
               </figure>
               <figure 
-                className="aspect-square rounded-2xl overflow-hidden shadow-lg transform hover:-rotate-2 transition-all duration-300 focus-within:rotate-0" 
+                className="aspect-square rounded-2xl overflow-hidden shadow-lg transform hover:-rotate-2 transition-all duration-300" 
                 data-testid="image-expertise-3"
-                tabIndex={0}
               >
                 <img 
                   src={landscape1} 

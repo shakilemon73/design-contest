@@ -96,8 +96,6 @@ export default function ResourcesTestimonials() {
                       ${resource.id === 1 ? 'flex flex-col' : ''}
                     `}
                     data-testid={`resource-card-${resource.id}`}
-                    tabIndex={0}
-                    role="article"
                   >
                     {/* Icon - Principle 10: Susan Weinschenk - Recognition */}
                     <div 
@@ -164,7 +162,6 @@ export default function ResourcesTestimonials() {
                   ${index === 0 ? 'sm:-rotate-2 hover:rotate-0 focus-within:rotate-0' : 'sm:rotate-2 sm:mt-12 hover:rotate-0 focus-within:rotate-0'}
                 `}
                 data-testid={`testimonial-card-${index}`}
-                tabIndex={0}
                 role="listitem"
               >
                 {/* Quote mark - Principle 1: Don Norman - Visual signifier */}

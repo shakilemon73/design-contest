@@ -77,10 +77,9 @@ export default function TheGuide() {
               {trustIndicators.map((indicator) => (
                 <div 
                   key={indicator.id}
-                  className="bg-background/10 backdrop-blur-sm border border-primary/30 px-4 md:px-6 py-2 md:py-3 rounded-full hover:bg-background/20 transition-colors min-h-[44px] flex items-center focus-within:ring-2 focus-within:ring-primary"
+                  className="bg-background/10 backdrop-blur-sm border border-primary/30 px-4 md:px-6 py-3 rounded-full min-h-[44px] flex items-center"
                   data-testid={`chip-${indicator.id}`}
                   role="listitem"
-                  tabIndex={0}
                 >
                   <span className="font-accent text-xs md:text-sm tracking-wide text-background">
                     {indicator.label}

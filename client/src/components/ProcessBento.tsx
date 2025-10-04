@@ -66,8 +66,6 @@ export default function ProcessBento() {
                 key={step.id}
                 className={`${step.colSpan} bg-card border border-border rounded-3xl p-8 md:p-10 hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl focus-within:border-primary/50 focus-within:shadow-xl`}
                 data-testid={`card-step-${step.id}`}
-                tabIndex={0}
-                role="article"
                 aria-labelledby={`step-${step.id}-title`}
               >
                 <div className="h-full flex flex-col">
