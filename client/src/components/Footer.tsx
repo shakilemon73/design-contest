@@ -1,70 +1,127 @@
 import { Link } from "wouter";
-import { Instagram } from "lucide-react";
+import { Instagram, Mail, MapPin } from "lucide-react";
 import logoImage from "@assets/Full_logo_gold_and_black_png_1759569939974.png";
 
 export default function Footer() {
+  const navigationSections = [
+    {
+      title: "Services",
+      links: [
+        { href: "/custom-homes", label: "Custom Homes" },
+        { href: "/process", label: "Our Process" },
+        { href: "/knockdown-rebuild", label: "Knockdown Rebuild" }
+      ]
+    },
+    {
+      title: "Company",
+      links: [
+        { href: "/about", label: "About" },
+        { href: "/projects", label: "Projects" },
+        { href: "/videos", label: "Videos" }
+      ]
+    },
+    {
+      title: "Resources",
+      links: [
+        { href: "/resources", label: "Resources Hub" },
+        { href: "/faqs", label: "FAQs" },
+        { href: "/articles", label: "Articles" }
+      ]
+    },
+    {
+      title: "Legal",
+      links: [
+        { href: "/privacy", label: "Privacy" },
+        { href: "/terms", label: "T&Cs" }
+      ]
+    }
+  ];
+
   return (
-    <footer className="bg-background border-t border-border">
+    <footer 
+      className="bg-background border-t border-border"
+      role="contentinfo"
+      aria-label="Site footer"
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid md:grid-cols-[2fr,3fr,2fr] gap-12 mb-12">
+          {/* Brand - Principle 7: Dieter Rams - Minimal branding */}
           <div>
-            <img src={logoImage} alt="Jackson Dwellings" className="h-12 mb-4" />
+            <Link 
+              href="/" 
+              className="inline-block focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md"
+              aria-label="Jackson Dwellings home"
+            >
+              <img 
+                src={logoImage} 
+                alt="Jackson Dwellings" 
+                className="h-12 mb-4" 
+              />
+            </Link>
             <p className="font-serif text-lg italic text-muted-foreground">Dwell well</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div>
-              <h4 className="font-accent text-sm font-semibold mb-4 uppercase tracking-wider">Services</h4>
-              <ul className="space-y-2">
-                <li><Link href="/custom-homes" className="text-sm text-muted-foreground hover:text-primary transition-colors">Custom Homes</Link></li>
-                <li><Link href="/process" className="text-sm text-muted-foreground hover:text-primary transition-colors">Our Process</Link></li>
-                <li><Link href="/knockdown-rebuild" className="text-sm text-muted-foreground hover:text-primary transition-colors">Knockdown Rebuild</Link></li>
-              </ul>
+          {/* Navigation Links - Principle 2: Steve Krug - Clear organization */}
+          <nav aria-label="Footer navigation">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {navigationSections.map((section) => (
+                <div key={section.title}>
+                  <h4 className="font-accent text-sm font-semibold mb-4 uppercase tracking-wider">
+                    {section.title}
+                  </h4>
+                  <ul className="space-y-2" role="list">
+                    {section.links.map((link) => (
+                      <li key={link.href}>
+                        <Link 
+                          href={link.href} 
+                          className="text-sm text-muted-foreground hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm inline-block py-1"
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
-            <div>
-              <h4 className="font-accent text-sm font-semibold mb-4 uppercase tracking-wider">Company</h4>
-              <ul className="space-y-2">
-                <li><Link href="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">About</Link></li>
-                <li><Link href="/projects" className="text-sm text-muted-foreground hover:text-primary transition-colors">Projects</Link></li>
-                <li><Link href="/videos" className="text-sm text-muted-foreground hover:text-primary transition-colors">Videos</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-accent text-sm font-semibold mb-4 uppercase tracking-wider">Resources</h4>
-              <ul className="space-y-2">
-                <li><Link href="/resources" className="text-sm text-muted-foreground hover:text-primary transition-colors">Resources Hub</Link></li>
-                <li><Link href="/faqs" className="text-sm text-muted-foreground hover:text-primary transition-colors">FAQs</Link></li>
-                <li><Link href="/articles" className="text-sm text-muted-foreground hover:text-primary transition-colors">Articles</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-accent text-sm font-semibold mb-4 uppercase tracking-wider">Legal</h4>
-              <ul className="space-y-2">
-                <li><Link href="/privacy" className="text-sm text-muted-foreground hover:text-primary transition-colors">Privacy</Link></li>
-                <li><Link href="/terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">T&Cs</Link></li>
-              </ul>
-            </div>
-          </div>
+          </nav>
 
-          <div>
-            <h4 className="font-accent text-sm font-semibold mb-4 uppercase tracking-wider">Contact</h4>
-            <p className="text-sm text-muted-foreground mb-2">Macedon Ranges, VIC</p>
-            <p className="text-sm text-muted-foreground mb-4">hello@jacksondwellings.com.au</p>
-            <a 
-              href="https://instagram.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-              data-testid="link-instagram"
-            >
-              <Instagram className="w-5 h-5" />
-              Follow us
-            </a>
-          </div>
+          {/* Contact - Principle 1: Don Norman - Clear signifiers for contact */}
+          <address className="not-italic">
+            <h4 className="font-accent text-sm font-semibold mb-4 uppercase tracking-wider">
+              Contact
+            </h4>
+            <div className="space-y-3">
+              <p className="text-sm text-muted-foreground flex items-center gap-2">
+                <MapPin className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
+                <span>Macedon Ranges, VIC</span>
+              </p>
+              <a 
+                href="mailto:hello@jacksondwellings.com.au"
+                className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm py-1"
+                aria-label="Email us at hello@jacksondwellings.com.au"
+              >
+                <Mail className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
+                <span>hello@jacksondwellings.com.au</span>
+              </a>
+              <a 
+                href="https://instagram.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors min-h-[44px] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md py-2"
+                data-testid="link-instagram"
+                aria-label="Follow us on Instagram (opens in new tab)"
+              >
+                <Instagram className="w-5 h-5" aria-hidden="true" />
+                <span>Follow us</span>
+              </a>
+            </div>
+          </address>
         </div>
 
+        {/* Bottom bar - Principle 8: Farai Madzima - Clear, accessible information */}
         <div className="border-t border-border pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
             <p className="text-sm text-muted-foreground">
               © {new Date().getFullYear()} Jackson Dwellings. All rights reserved.
             </p>
