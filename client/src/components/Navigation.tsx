@@ -9,9 +9,12 @@ export default function Navigation() {
 
   const navItems = [
     { href: "/", label: "Home" },
-    { href: "/custom-homes", label: "Portfolio" },
+    { href: "/custom-homes", label: "Custom Homes" },
     { href: "/process", label: "Process" },
-    { href: "/about", label: "Studio" },
+    { href: "/projects", label: "Projects" },
+    { href: "/videos", label: "Videos" },
+    { href: "/about", label: "About" },
+    { href: "/resources", label: "Resources Hub" },
     { href: "/connect", label: "Connect" },
   ];
 
@@ -21,7 +24,6 @@ export default function Navigation() {
 
   return (
     <>
-      {/* Skip link for accessibility */}
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-6 focus:py-3 focus:bg-white focus:text-black focus:rounded-sm"
@@ -29,18 +31,15 @@ export default function Navigation() {
         Skip to content
       </a>
 
-      {/* Minimal luxury navigation */}
       <nav 
         className="fixed top-0 left-0 right-0 z-50"
         role="navigation"
         aria-label="Main navigation"
       >
-        {/* Glass morphism background */}
         <div className="absolute inset-0 bg-black/30 backdrop-blur-md border-b border-white/10" />
         
         <div className="relative max-w-[1800px] mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-20 lg:h-24">
-            {/* Logo - Minimal wordmark */}
             <Link 
               href="/" 
               className="group flex items-center gap-3 focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:ring-offset-2 focus:ring-offset-black rounded-sm transition-all" 
@@ -53,19 +52,18 @@ export default function Navigation() {
               </span>
             </Link>
 
-            {/* Desktop Navigation - Horizontal minimal */}
-            <div className="hidden lg:flex items-center gap-12" role="menubar">
+            <div className="hidden lg:flex items-center gap-8" role="menubar">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   className={`
-                    text-sm tracking-widest uppercase transition-all duration-300
+                    text-xs tracking-widest uppercase transition-all duration-300
                     focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:ring-offset-2 focus:ring-offset-black rounded-sm px-2 py-1
                     relative
                     ${isActive(item.href) ? 'text-[#D4AF37]' : 'text-white/80 hover:text-white'}
                   `}
-                  data-testid={`link-${item.label.toLowerCase()}`}
+                  data-testid={`link-${item.label.toLowerCase().replace(' ', '-')}`}
                   role="menuitem"
                   aria-current={isActive(item.href) ? 'page' : undefined}
                 >
@@ -80,16 +78,14 @@ export default function Navigation() {
               ))}
             </div>
 
-            {/* CTA Button */}
             <Button 
               className="hidden lg:inline-flex bg-[#D4AF37] text-black hover:bg-[#C19A2E] min-h-[48px] px-6 border-0" 
               data-testid="button-book-consult"
               aria-label="Book a consultation"
             >
-              <span className="font-light tracking-wide text-sm uppercase">Book Consult</span>
+              <span className="font-light tracking-wide text-sm uppercase">Book a Consult</span>
             </Button>
 
-            {/* Mobile Menu Toggle */}
             <button 
               className="lg:hidden p-2 min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-[#D4AF37] rounded-sm transition-all"
               data-testid="button-mobile-menu"
@@ -107,20 +103,19 @@ export default function Navigation() {
           </div>
         </div>
 
-        {/* Mobile Menu - Full screen luxury */}
         {mobileMenuOpen && (
           <div
             id="mobile-menu"
             className="fixed inset-0 top-20 lg:hidden bg-black/95 backdrop-blur-xl animate-in fade-in slide-in-from-top-5 duration-300"
             role="menu"
           >
-            <div className="h-full flex flex-col justify-center items-center px-6 py-12 space-y-8">
+            <div className="h-full flex flex-col justify-center items-center px-6 py-12 space-y-6">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   className={`
-                    text-3xl md:text-4xl font-serif font-light tracking-wider
+                    text-2xl md:text-3xl font-serif font-light tracking-wider
                     transition-all duration-300 focus:outline-none 
                     focus:ring-2 focus:ring-[#D4AF37] rounded-sm px-4 py-2
                     ${isActive(item.href) 
@@ -128,7 +123,7 @@ export default function Navigation() {
                       : 'text-white/80 hover:text-white'
                     }
                   `}
-                  data-testid={`mobile-link-${item.label.toLowerCase()}`}
+                  data-testid={`mobile-link-${item.label.toLowerCase().replace(' ', '-')}`}
                   onClick={() => setMobileMenuOpen(false)}
                   role="menuitem"
                   aria-current={isActive(item.href) ? 'page' : undefined}
@@ -141,7 +136,7 @@ export default function Navigation() {
                 data-testid="mobile-button-book-consult"
                 aria-label="Book a consultation"
               >
-                <span className="font-light tracking-wide uppercase">Book Consult</span>
+                <span className="font-light tracking-wide uppercase">Book a Consult</span>
               </Button>
             </div>
           </div>

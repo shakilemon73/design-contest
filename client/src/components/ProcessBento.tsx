@@ -1,118 +1,73 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function ProcessBento() {
   const steps = [
     {
       id: 1,
-      number: "01",
       title: "Discover",
-      description: "Deep understanding of vision, site, and lifestyle. We explore every possibility.",
-      deliverable: "Concept + Budget Framework",
-      bgColor: "bg-[#F5F5F0]"
+      description: "We listen deeply to your vision, site, and lifestyle needs.",
     },
     {
       id: 2,
-      number: "02",
       title: "Design",
-      description: "Technical precision meets aesthetic refinement. Every detail documented.",
-      deliverable: "Complete Specifications",
-      bgColor: "bg-white"
+      description: "Technical plans refined to perfection with your input throughout.",
     },
     {
       id: 3,
-      number: "03",
-      title: "Deliver",
-      description: "Meticulous execution with constant communication. Excellence guaranteed.",
-      deliverable: "Your Residence, On Time",
-      bgColor: "bg-[#F5F5F0]"
+      title: "Build",
+      description: "Meticulous execution with constant updates until handover.",
     }
   ];
 
   return (
     <section 
-      className="py-24 md:py-32 lg:py-48 bg-black text-white relative overflow-hidden"
-      aria-labelledby="process-heading"
+      className="py-24 md:py-32 bg-white"
+      aria-labelledby="plan-heading"
     >
-      <div className="max-w-[1800px] mx-auto px-6 lg:px-12">
-        {/* Header */}
-        <div className="mb-20 md:mb-32">
-          <p className="text-xs tracking-[0.3em] uppercase text-white/40 mb-4">Our Method</p>
-          <div className="grid lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-6">
-              <h2 
-                id="process-heading"
-                className="font-serif font-light text-5xl md:text-7xl lg:text-8xl leading-[0.9]"
-              >
-                The Journey
-                <span className="block text-[#D4AF37] italic mt-4">To Excellence</span>
-              </h2>
-            </div>
-            <div className="lg:col-span-6 flex items-end">
-              <p className="text-white/70 text-lg md:text-xl font-light leading-relaxed max-w-xl">
-                Three deliberate phases. Absolute transparency. Your vision, expertly realized.
-              </p>
-            </div>
-          </div>
+      <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
+        <div className="text-center mb-16 md:mb-20">
+          <p className="text-xs tracking-[0.3em] uppercase text-black/40 mb-4">The Plan</p>
+          <h2 
+            id="plan-heading"
+            className="font-serif font-light text-4xl md:text-5xl lg:text-6xl mb-6"
+          >
+            Three Simple Steps
+          </h2>
         </div>
 
-        {/* Process Cards - Asymmetric luxury layout */}
-        <div className="space-y-6">
-          {steps.map((step, index) => (
+        {/* 3 steps */}
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
+          {steps.map((step) => (
             <article
               key={step.id}
-              className={`
-                group relative overflow-hidden transition-all duration-500 hover:shadow-2xl
-                ${index === 0 ? 'lg:ml-0' : index === 1 ? 'lg:ml-24' : 'lg:ml-48'}
-              `}
+              className="text-center"
               data-testid={`step-${step.id}`}
             >
-              <div className={`${step.bgColor} text-black p-8 md:p-12 lg:p-16 flex flex-col lg:flex-row items-start justify-between gap-8`}>
-                {/* Left - Number and Title */}
-                <div className="flex-shrink-0 lg:w-1/3">
-                  <div className="flex items-baseline gap-4 mb-6">
-                    <span className="text-6xl md:text-7xl lg:text-8xl font-serif font-light text-black/20">
-                      {step.number}
-                    </span>
-                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-serif font-light">
-                      {step.title}
-                    </h3>
-                  </div>
-                </div>
-
-                {/* Center - Description */}
-                <div className="lg:w-1/3">
-                  <p className="text-black/70 text-lg md:text-xl font-light leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-
-                {/* Right - Deliverable */}
-                <div className="lg:w-1/3 flex flex-col items-start lg:items-end justify-between h-full">
-                  <div className="inline-block px-4 py-2 border border-black/10">
-                    <p className="text-xs tracking-[0.3em] uppercase text-black/40 mb-1">Deliverable</p>
-                    <p className="text-sm font-light">{step.deliverable}</p>
-                  </div>
-                  
-                  <ArrowUpRight 
-                    className="w-8 h-8 mt-6 lg:mt-0 text-black/20 group-hover:text-[#D4AF37] transition-colors" 
-                    aria-hidden="true"
-                  />
-                </div>
+              <div className="w-16 h-16 rounded-full bg-[#D4AF37]/10 flex items-center justify-center mx-auto mb-6">
+                <span className="text-2xl font-serif font-light text-[#D4AF37]">
+                  {step.id}
+                </span>
               </div>
+              <h3 className="text-2xl md:text-3xl font-serif font-light mb-4">
+                {step.title}
+              </h3>
+              <p className="text-black/70 font-light leading-relaxed">
+                {step.description}
+              </p>
             </article>
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="mt-16 md:mt-24 flex justify-center">
+        {/* See the Process link */}
+        <div className="text-center">
           <Button 
-            variant="outline" 
-            className="border-white text-white hover:bg-white hover:text-black min-h-[56px] px-8 group"
-            aria-label="Learn more about our process"
+            variant="ghost" 
+            className="group text-black hover:bg-transparent px-0"
+            aria-label="See the full process"
           >
-            <span className="font-light tracking-wide uppercase mr-2">Explore Process</span>
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            <span className="font-light tracking-wide mr-2">See the Process</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
           </Button>
         </div>
       </div>

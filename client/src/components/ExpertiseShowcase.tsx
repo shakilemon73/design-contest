@@ -1,74 +1,41 @@
 import { MapPin } from "lucide-react";
-import landscape1 from "@assets/generated_images/Macedon_Ranges_landscape_1_cb01c550.png";
-import landscape2 from "@assets/generated_images/Macedon_Ranges_expertise_2_ffbb8bea.png";
 
 export default function ExpertiseShowcase() {
   const locations = [
     "Gisborne", "Macedon", "Mount Macedon", "Woodend",
-    "Kyneton", "Riddells Creek", "Romsey", "Sunbury"
+    "Kyneton", "Riddells Creek", "Romsey", "Lancefield"
   ];
 
   return (
     <section 
-      className="py-24 md:py-32 lg:py-48 bg-black text-white"
-      aria-label="Local expertise"
+      className="py-24 md:py-32 bg-[#F5F5F0]"
+      aria-label="Place expertise"
     >
-      <div className="max-w-[1800px] mx-auto px-6 lg:px-12">
-        {/* Grid Layout */}
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Content */}
-          <div>
-            <p className="text-xs tracking-[0.3em] uppercase text-white/40 mb-6">Regional Mastery</p>
-            <h2 className="font-serif font-light text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-8">
-              Built for the
-              <span className="block text-[#D4AF37] italic mt-2">Macedon Ranges</span>
-            </h2>
-            
-            <p className="text-white/70 text-lg md:text-xl font-light leading-relaxed mb-12 max-w-xl">
-              Microclimates. Bushfire overlays. Siting for light and views. We understand what makes this region unique.
-            </p>
+      <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-xs tracking-[0.3em] uppercase text-black/40 mb-4">Place Expertise</p>
+          <h2 className="font-serif font-light text-4xl md:text-5xl mb-8">
+            Built for the Macedon Ranges
+          </h2>
+          
+          {/* Short copy */}
+          <p className="text-black/80 text-lg font-light leading-relaxed mb-12">
+            Microclimates shift within kilometers. Bushfire overlays demand precision. Siting for light, views, and privacy requires intimate local knowledge. We've built here for over 15 years—we understand what works.
+          </p>
 
-            {/* Location grid - Minimal badges */}
-            <div className="grid grid-cols-2 gap-3">
-              {locations.map((location) => (
-                <div
-                  key={location}
-                  className="group flex items-center gap-3 px-4 py-3 border border-white/10 hover:border-[#D4AF37] transition-colors"
-                  role="listitem"
-                >
-                  <MapPin className="w-4 h-4 text-[#D4AF37]" aria-hidden="true" />
-                  <span className="text-sm font-light tracking-wide">{location}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Images - Asymmetric editorial layout */}
-          <div className="grid grid-cols-2 gap-6">
-            <figure className="col-span-2 aspect-[21/9] overflow-hidden">
-              <img 
-                src={landscape1} 
-                alt="Macedon Ranges panoramic landscape"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                loading="lazy"
-              />
-            </figure>
-            <figure className="aspect-square overflow-hidden">
-              <img 
-                src={landscape2} 
-                alt="Bushfire compliance zone"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                loading="lazy"
-              />
-            </figure>
-            <figure className="aspect-square overflow-hidden">
-              <img 
-                src={landscape1} 
-                alt="Site positioning for views"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                loading="lazy"
-              />
-            </figure>
+          {/* Location pill links */}
+          <div className="flex flex-wrap justify-center gap-3">
+            {locations.map((location) => (
+              <a
+                key={location}
+                href={`/projects?location=${location.toLowerCase().replace(' ', '-')}`}
+                className="group flex items-center gap-2 px-4 py-2 bg-white border border-black/10 hover:border-[#D4AF37] hover:bg-white transition-all min-h-[44px] focus:outline-none focus:ring-2 focus:ring-[#D4AF37] rounded-sm"
+                aria-label={`View projects in ${location}`}
+              >
+                <MapPin className="w-4 h-4 text-[#D4AF37]" aria-hidden="true" />
+                <span className="text-sm font-light">{location}</span>
+              </a>
+            ))}
           </div>
         </div>
       </div>
