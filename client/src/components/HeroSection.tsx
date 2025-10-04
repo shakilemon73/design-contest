@@ -1,23 +1,51 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Calendar, Download } from "lucide-react";
+import { ArrowDown, Calendar, Download, Volume2, VolumeX } from "lucide-react";
 import heroImage from "@assets/generated_images/Luxury_home_hero_image_945187aa.png";
 
 export default function HeroSection() {
+  const [isMuted, setIsMuted] = useState(true);
+
   return (
     <section 
       id="main-content"
       className="relative min-h-screen overflow-hidden bg-black"
       aria-label="Hero section"
     >
-      {/* Full-screen cinematic image with overlay */}
+      {/* Full-screen cinematic video background */}
       <div className="absolute inset-0">
-        <img 
-          src={heroImage} 
-          alt="Luxury custom home in Macedon Ranges"
+        {/* Video with fallback to image */}
+        <video
+          autoPlay
+          muted={isMuted}
+          loop
+          playsInline
+          poster={heroImage}
           className="w-full h-full object-cover opacity-70"
-          loading="eager"
-        />
+          aria-label="Luxury home showcase video"
+        >
+          <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" />
+          {/* Fallback image */}
+          <img 
+            src={heroImage} 
+            alt="Luxury custom home in Macedon Ranges"
+            className="w-full h-full object-cover"
+          />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+        
+        {/* Video controls - Don Norman: Visibility & Feedback */}
+        <button
+          onClick={() => setIsMuted(!isMuted)}
+          className="absolute top-24 right-6 z-30 p-3 bg-black/30 backdrop-blur-sm border border-white/20 hover:bg-black/50 transition-all min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-[#D4AF37] rounded-sm"
+          aria-label={isMuted ? "Unmute video" : "Mute video"}
+        >
+          {isMuted ? (
+            <VolumeX className="w-5 h-5 text-white" aria-hidden="true" />
+          ) : (
+            <Volume2 className="w-5 h-5 text-white" aria-hidden="true" />
+          )}
+        </button>
       </div>
 
       {/* Main content - Split vertical layout */}
@@ -54,7 +82,7 @@ export default function HeroSection() {
 
             {/* Right - CTAs + Stats */}
             <div className="lg:col-span-7 flex flex-col md:flex-row md:items-end justify-between gap-8">
-              {/* CTA Buttons */}
+              {/* CTA Buttons - Luke Wroblewski: Mobile-first touch targets */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
                   size="lg" 
