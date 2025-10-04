@@ -1,14 +1,11 @@
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
-import ThePlan from "@/components/ThePlan";
+import ProcessBento from "@/components/ProcessBento";
 import TheGuide from "@/components/TheGuide";
 import StakesComparison from "@/components/StakesComparison";
-import FeaturedProject from "@/components/FeaturedProject";
-import ProjectsGrid from "@/components/ProjectsGrid";
-import PlaceExpertise from "@/components/PlaceExpertise";
-import VideosStrip from "@/components/VideosStrip";
-import ResourcesHub from "@/components/ResourcesHub";
-import Testimonials from "@/components/Testimonials";
+import ProjectShowcase from "@/components/ProjectShowcase";
+import ExpertiseShowcase from "@/components/ExpertiseShowcase";
+import ResourcesTestimonials from "@/components/ResourcesTestimonials";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 
@@ -18,15 +15,12 @@ export default function Home() {
       <Navigation />
       <main>
         <HeroSection />
-        <ThePlan />
+        <ProcessBento />
         <TheGuide />
         <StakesComparison />
-        <FeaturedProject />
-        <ProjectsGrid />
-        <PlaceExpertise />
-        <VideosStrip />
-        <ResourcesHub />
-        <Testimonials />
+        <ProjectShowcase />
+        <ExpertiseShowcase />
+        <ResourcesTestimonials />
         <FinalCTA />
       </main>
       <Footer />
