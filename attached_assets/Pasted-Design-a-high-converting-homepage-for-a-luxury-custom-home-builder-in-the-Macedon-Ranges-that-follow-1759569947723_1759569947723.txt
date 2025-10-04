@@ -1,0 +1,63 @@
+Design a high-converting homepage for a luxury custom home builder in the Macedon Ranges that follows the StoryBrand flow: clarify the problem, show the plan, position JD as the guide, call to action, outline stakes, show proof. UX design must match the style of the inspration reference (attached).
+
+**We'd love to see your ideas on how to make this design exceptional.**
+
+What to open:
+
+1. Wireframe document: content order only. Do not follow its visual style.
+2. Design inspiration link: follow that aesthetic direction, but use JD colours, logos and photos.
+3. Brand assets: logo files, photos https://drive.google.com/drive/folders/1sy5Ma0oliMbW-683_3ryOHfs0APWpeHN?usp=sharing
+
+Brand and visual direction
+
+• Positioning: luxury, calm confidence, craftsmanship.
+• Colour: black, white, gold accents, neutral greys. Gold only as subtle highlight.
+• Type: refined, readable. A clean sans with an elegant serif for headings is acceptable, but keep luxury without hurting readability.
+• Imagery: natural light, material close-ups, real project photography (supplied)
+
+Navigation and IA
+
+Header: Home, Custom Homes, Process, Projects, Videos, About, Resources Hub, Connect.
+Primary CTA in header: Book a Consult.
+
+*****Page structure to design (keep this order)*****
+
+Hero — The Problem
+
+H1: Building a luxury custom home shouldn’t feel risky
+Subhead: Clarity on cost, timeline, craftsmanship for your Macedon Ranges home
+CTAs: Book a Consult, Download the Build Guide
+Trust chips: 100+ custom homes, On time and on budget, Specialist trades
+Visual: single strong image or a short silent loop. No heavy video.
+
+The Plan — 3 steps
+Discover, Design, Build. One sentence each. Include a “See the Process” link.
+
+The Guide — JD as the guide
+Photo of Emma and Cameron, 70–90 words of empathetic copy, three micro-proof chips.
+
+Stakes — failure vs success
+Two short bullet columns: Without a plan vs With Jackson Dwellings.
+
+Proof 1 — Featured project story
+Large image + 50–70 word outcome paragraph, four quick stats, one client quote, View case study.
+
+Proof 2 — Projects grid
+Three recent projects with Location, Style, Budget filters. Link to Projects archive.
+
+Place expertise
+Short copy on Macedon Ranges microclimates and siting. Location pill links.
+
+Videos strip
+Three thumbnails: Process in 90 seconds, Client story, Site walk-through.
+
+Resources Hub preview
+Cards: FAQs, Articles, PDFs (Build Guide), Knockdown Rebuild. Secondary CTA: Download the Build Guide.
+
+Testimonials
+Two short quotes. Link to Google Reviews.
+
+Final CTA band
+Heading + Book a Consult button + Connect link.
+
+>>>
