@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import logoImage from "@assets/Full_logo_gold_and_black_png_1759569939974.png";
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -10,12 +9,9 @@ export default function Navigation() {
 
   const navItems = [
     { href: "/", label: "Home" },
-    { href: "/custom-homes", label: "Custom Homes" },
+    { href: "/custom-homes", label: "Portfolio" },
     { href: "/process", label: "Process" },
-    { href: "/projects", label: "Projects" },
-    { href: "/videos", label: "Videos" },
-    { href: "/about", label: "About" },
-    { href: "/resources", label: "Resources Hub" },
+    { href: "/about", label: "Studio" },
     { href: "/connect", label: "Connect" },
   ];
 
@@ -25,57 +21,58 @@ export default function Navigation() {
 
   return (
     <>
-      {/* Skip to main content - Accessibility (Principle 8: Farai Madzima) */}
+      {/* Skip link for accessibility */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-6 focus:py-3 focus:bg-white focus:text-black focus:rounded-sm"
       >
-        Skip to main content
+        Skip to content
       </a>
 
+      {/* Minimal luxury navigation */}
       <nav 
-        className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border"
+        className="fixed top-0 left-0 right-0 z-50"
         role="navigation"
         aria-label="Main navigation"
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo - Principle 2: Steve Krug - Clear, recognizable */}
+        {/* Glass morphism background */}
+        <div className="absolute inset-0 bg-black/30 backdrop-blur-md border-b border-white/10" />
+        
+        <div className="relative max-w-[1800px] mx-auto px-6 lg:px-12">
+          <div className="flex items-center justify-between h-20 lg:h-24">
+            {/* Logo - Minimal wordmark */}
             <Link 
               href="/" 
-              className="flex items-center gap-3 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md transition-all" 
+              className="group flex items-center gap-3 focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:ring-offset-2 focus:ring-offset-black rounded-sm transition-all" 
               data-testid="link-home"
               aria-label="Jackson Dwellings Home"
             >
-              <img 
-                src={logoImage} 
-                alt="Jackson Dwellings" 
-                className="h-12 w-auto" 
-              />
+              <span className="text-white text-xl md:text-2xl font-serif font-light tracking-wider">
+                JACKSON
+                <span className="text-[#D4AF37]">.</span>
+              </span>
             </Link>
 
-            {/* Desktop Navigation - Principle 7: Dieter Rams - Minimal & clear */}
-            <div className="hidden lg:flex items-center gap-8" role="menubar">
+            {/* Desktop Navigation - Horizontal minimal */}
+            <div className="hidden lg:flex items-center gap-12" role="menubar">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   className={`
-                    text-sm font-sans transition-all duration-200 
-                    hover:text-primary focus:outline-none focus:ring-2 
-                    focus:ring-primary focus:ring-offset-2 rounded-md px-2 py-1
+                    text-sm tracking-widest uppercase transition-all duration-300
+                    focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:ring-offset-2 focus:ring-offset-black rounded-sm px-2 py-1
                     relative
-                    ${isActive(item.href) ? 'text-primary font-semibold' : 'text-foreground'}
+                    ${isActive(item.href) ? 'text-[#D4AF37]' : 'text-white/80 hover:text-white'}
                   `}
-                  data-testid={`link-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
+                  data-testid={`link-${item.label.toLowerCase()}`}
                   role="menuitem"
                   aria-current={isActive(item.href) ? 'page' : undefined}
                 >
-                  {item.label}
-                  {/* Active indicator - Principle 1: Don Norman - Signifiers */}
+                  <span className="font-light">{item.label}</span>
                   {isActive(item.href) && (
                     <span 
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
+                      className="absolute bottom-0 left-0 w-full h-px bg-[#D4AF37]"
                       aria-hidden="true"
                     />
                   )}
@@ -83,18 +80,18 @@ export default function Navigation() {
               ))}
             </div>
 
-            {/* CTA Button - Principle 3: Luke Wroblewski - Minimum 44px touch target */}
+            {/* CTA Button */}
             <Button 
-              className="hidden lg:inline-flex min-h-[44px] min-w-[44px]" 
+              className="hidden lg:inline-flex bg-[#D4AF37] text-black hover:bg-[#C19A2E] min-h-[48px] px-6 border-0" 
               data-testid="button-book-consult"
               aria-label="Book a consultation"
             >
-              Book a Consult
+              <span className="font-light tracking-wide text-sm uppercase">Book Consult</span>
             </Button>
 
-            {/* Mobile Menu Toggle - Principle 8: Accessibility with ARIA */}
+            {/* Mobile Menu Toggle */}
             <button 
-              className="lg:hidden p-2 min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md transition-all hover:bg-accent"
+              className="lg:hidden p-2 min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-[#D4AF37] rounded-sm transition-all"
               data-testid="button-mobile-menu"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
@@ -102,36 +99,36 @@ export default function Navigation() {
               aria-controls="mobile-menu"
             >
               {mobileMenuOpen ? (
-                <X className="w-6 h-6" aria-hidden="true" />
+                <X className="w-6 h-6 text-white" aria-hidden="true" />
               ) : (
-                <Menu className="w-6 h-6" aria-hidden="true" />
+                <Menu className="w-6 h-6 text-white" aria-hidden="true" />
               )}
             </button>
           </div>
         </div>
 
-        {/* Mobile Menu - Principle 4: Aarron Walter - Smooth transitions for delight */}
+        {/* Mobile Menu - Full screen luxury */}
         {mobileMenuOpen && (
           <div
             id="mobile-menu"
-            className="lg:hidden border-t border-border bg-background animate-in slide-in-from-top-5 duration-200"
+            className="fixed inset-0 top-20 lg:hidden bg-black/95 backdrop-blur-xl animate-in fade-in slide-in-from-top-5 duration-300"
             role="menu"
           >
-            <div className="px-6 py-4 space-y-1">
+            <div className="h-full flex flex-col justify-center items-center px-6 py-12 space-y-8">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   className={`
-                    block px-4 py-3 min-h-[44px] rounded-lg text-base 
-                    transition-all duration-200 focus:outline-none 
-                    focus:ring-2 focus:ring-primary focus:ring-offset-2
+                    text-3xl md:text-4xl font-serif font-light tracking-wider
+                    transition-all duration-300 focus:outline-none 
+                    focus:ring-2 focus:ring-[#D4AF37] rounded-sm px-4 py-2
                     ${isActive(item.href) 
-                      ? 'bg-primary/10 text-primary font-semibold' 
-                      : 'hover:bg-accent text-foreground'
+                      ? 'text-[#D4AF37]' 
+                      : 'text-white/80 hover:text-white'
                     }
                   `}
-                  data-testid={`mobile-link-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
+                  data-testid={`mobile-link-${item.label.toLowerCase()}`}
                   onClick={() => setMobileMenuOpen(false)}
                   role="menuitem"
                   aria-current={isActive(item.href) ? 'page' : undefined}
@@ -140,11 +137,11 @@ export default function Navigation() {
                 </Link>
               ))}
               <Button 
-                className="w-full mt-4 min-h-[44px]" 
+                className="mt-8 bg-[#D4AF37] text-black hover:bg-[#C19A2E] min-h-[56px] px-8 text-lg border-0" 
                 data-testid="mobile-button-book-consult"
                 aria-label="Book a consultation"
               >
-                Book a Consult
+                <span className="font-light tracking-wide uppercase">Book Consult</span>
               </Button>
             </div>
           </div>

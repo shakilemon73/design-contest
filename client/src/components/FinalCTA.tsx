@@ -1,63 +1,59 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar } from "lucide-react";
+import { Calendar, ArrowUpRight } from "lucide-react";
 
 export default function FinalCTA() {
   return (
     <section 
-      className="py-20 md:py-32 bg-foreground text-background relative overflow-hidden"
+      className="py-32 md:py-48 lg:py-64 bg-black text-white relative overflow-hidden"
       aria-labelledby="final-cta-heading"
     >
-      {/* Background decoration - Principle 5: Jonathan Ive - Purposeful aesthetics */}
-      <div className="absolute inset-0 opacity-10" aria-hidden="true">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary rounded-full blur-3xl" />
-      </div>
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/5 via-transparent to-transparent" aria-hidden="true" />
 
-      <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
-        {/* Heading - Principle 2: Steve Krug - Clear, scannable message */}
+      <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 text-center">
+        <p className="text-xs tracking-[0.3em] uppercase text-white/40 mb-8">Begin Your Journey</p>
+        
         <h2 
           id="final-cta-heading"
-          className="font-serif font-light text-3xl md:text-5xl lg:text-6xl mb-8 text-background leading-tight" 
-          data-testid="text-final-cta-heading"
+          className="font-serif font-light text-5xl md:text-6xl lg:text-8xl leading-[0.95] mb-12 max-w-5xl mx-auto"
         >
-          Ready to stop guessing and start building{" "}
-          <span className="text-primary italic">with clarity</span>?
+          Ready to build with
+          <span className="block text-[#D4AF37] italic mt-4">absolute clarity?</span>
         </h2>
 
-        {/* CTAs - Principle 3: Luke Wroblewski - 44px minimum touch targets */}
-        <div 
-          className="flex flex-col sm:flex-row flex-wrap justify-center gap-4" 
-          role="group" 
-          aria-label="Final call to action buttons"
-        >
+        <p className="text-white/70 text-lg md:text-xl font-light max-w-2xl mx-auto mb-16">
+          Schedule a private consultation to discuss your vision.
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
           <Button 
             size="lg" 
-            className="text-base px-8 group min-h-[44px] min-w-[44px] focus:ring-2 focus:ring-offset-2 focus:ring-primary" 
-            data-testid="button-book-consult-final"
-            aria-label="Book a consultation to discuss your custom home"
+            className="bg-[#D4AF37] text-black hover:bg-[#C19A2E] min-h-[64px] px-10 border-0 text-lg group" 
+            aria-label="Book a private consultation"
           >
-            <Calendar className="mr-2 w-4 h-4" aria-hidden="true" />
-            Book a Consult
+            <Calendar className="mr-3 w-6 h-6" aria-hidden="true" />
+            <span className="font-light tracking-wide">Book Consultation</span>
           </Button>
+          
           <Button 
             size="lg" 
-            variant="secondary" 
-            className="text-base px-8 group min-h-[44px] min-w-[44px] focus:ring-2 focus:ring-offset-2 focus:ring-primary" 
-            data-testid="button-connect-final"
-            aria-label="Connect with us to learn more"
+            variant="ghost" 
+            className="text-white hover:bg-white/10 min-h-[64px] px-10 text-lg group"
+            aria-label="Explore our portfolio"
           >
-            Connect
-            <ArrowRight 
-              className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" 
-              aria-hidden="true"
-            />
+            <span className="font-light tracking-wide mr-3">Explore Portfolio</span>
+            <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" aria-hidden="true" />
           </Button>
         </div>
 
-        {/* Trust indicator - Principle 10: Susan Weinschenk - Reducing anxiety */}
-        <p className="text-sm text-background/70 mt-8">
-          No obligation · Free consultation · Local team
-        </p>
+        {/* Trust indicators */}
+        <div className="mt-16 flex flex-wrap items-center justify-center gap-8 text-sm text-white/40">
+          <span>No Obligation</span>
+          <span className="w-px h-4 bg-white/20" aria-hidden="true" />
+          <span>Private Consultation</span>
+          <span className="w-px h-4 bg-white/20" aria-hidden="true" />
+          <span>Local Team</span>
+        </div>
       </div>
     </section>
   );

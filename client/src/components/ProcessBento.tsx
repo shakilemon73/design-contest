@@ -1,120 +1,118 @@
-import { Search, Palette, Hammer, ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function ProcessBento() {
   const steps = [
     {
       id: 1,
-      icon: Search,
+      number: "01",
       title: "Discover",
-      description: "Align brief, site, style, budget. We listen deeply, assess your land, and explore what's possible.",
-      output: "Costed concept + budget band",
-      colSpan: "col-span-12 lg:col-span-7 row-span-2"
+      description: "Deep understanding of vision, site, and lifestyle. We explore every possibility.",
+      deliverable: "Concept + Budget Framework",
+      bgColor: "bg-[#F5F5F0]"
     },
     {
       id: 2,
-      icon: Palette,
+      number: "02",
       title: "Design",
-      description: "Lock drawings, selections, pricing.",
-      output: "Itemised inclusions, finishes, program",
-      colSpan: "col-span-12 lg:col-span-5"
+      description: "Technical precision meets aesthetic refinement. Every detail documented.",
+      deliverable: "Complete Specifications",
+      bgColor: "bg-white"
     },
     {
       id: 3,
-      icon: Hammer,
-      title: "Build",
-      description: "Craftsmanship + weekly updates.",
-      output: "Quality checks, on time finish",
-      colSpan: "col-span-12 lg:col-span-5"
+      number: "03",
+      title: "Deliver",
+      description: "Meticulous execution with constant communication. Excellence guaranteed.",
+      deliverable: "Your Residence, On Time",
+      bgColor: "bg-[#F5F5F0]"
     }
   ];
 
   return (
     <section 
-      className="py-32 bg-background relative overflow-hidden"
+      className="py-24 md:py-32 lg:py-48 bg-black text-white relative overflow-hidden"
       aria-labelledby="process-heading"
     >
-      {/* Floating background element - Principle 5: Jonathan Ive - Purposeful aesthetics */}
-      <div className="absolute top-20 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" aria-hidden="true" />
-      
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-        {/* Asymmetric Header - Principle 2: Steve Krug - Scannable hierarchy */}
-        <div className="grid lg:grid-cols-12 gap-12 mb-16">
-          <div className="lg:col-span-7">
-            <h2 
-              id="process-heading"
-              className="font-serif font-light text-5xl md:text-6xl lg:text-7xl leading-tight" 
-              data-testid="text-plan-heading"
-            >
-              A Process
-              <span className="block text-primary italic">Built for Trust</span>
-            </h2>
-          </div>
-          <div className="lg:col-span-5 flex items-end">
-            <p className="text-lg text-muted-foreground max-w-md">
-              Three clear phases. Total transparency. Your vision, expertly executed.
-            </p>
+      <div className="max-w-[1800px] mx-auto px-6 lg:px-12">
+        {/* Header */}
+        <div className="mb-20 md:mb-32">
+          <p className="text-xs tracking-[0.3em] uppercase text-white/40 mb-4">Our Method</p>
+          <div className="grid lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-6">
+              <h2 
+                id="process-heading"
+                className="font-serif font-light text-5xl md:text-7xl lg:text-8xl leading-[0.9]"
+              >
+                The Journey
+                <span className="block text-[#D4AF37] italic mt-4">To Excellence</span>
+              </h2>
+            </div>
+            <div className="lg:col-span-6 flex items-end">
+              <p className="text-white/70 text-lg md:text-xl font-light leading-relaxed max-w-xl">
+                Three deliberate phases. Absolute transparency. Your vision, expertly realized.
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Broken Grid Layout - Principle 10: Susan Weinschenk - Information chunking */}
-        <div className="grid grid-cols-12 gap-6 mb-12">
-          {steps.map((step, index) => {
-            const Icon = step.icon;
-            return (
-              <article 
-                key={step.id}
-                className={`${step.colSpan} bg-card border border-border rounded-3xl p-8 md:p-10 hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl focus-within:border-primary/50 focus-within:shadow-xl`}
-                data-testid={`card-step-${step.id}`}
-                aria-labelledby={`step-${step.id}-title`}
-              >
-                <div className="h-full flex flex-col">
-                  {/* Icon - Principle 10: Susan Weinschenk - Recognition over recall */}
-                  <div 
-                    className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-primary/10 flex items-center justify-center mb-6"
-                    aria-hidden="true"
-                  >
-                    <Icon className="w-8 h-8 md:w-10 md:h-10 text-primary" />
+        {/* Process Cards - Asymmetric luxury layout */}
+        <div className="space-y-6">
+          {steps.map((step, index) => (
+            <article
+              key={step.id}
+              className={`
+                group relative overflow-hidden transition-all duration-500 hover:shadow-2xl
+                ${index === 0 ? 'lg:ml-0' : index === 1 ? 'lg:ml-24' : 'lg:ml-48'}
+              `}
+              data-testid={`step-${step.id}`}
+            >
+              <div className={`${step.bgColor} text-black p-8 md:p-12 lg:p-16 flex flex-col lg:flex-row items-start justify-between gap-8`}>
+                {/* Left - Number and Title */}
+                <div className="flex-shrink-0 lg:w-1/3">
+                  <div className="flex items-baseline gap-4 mb-6">
+                    <span className="text-6xl md:text-7xl lg:text-8xl font-serif font-light text-black/20">
+                      {step.number}
+                    </span>
+                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-serif font-light">
+                      {step.title}
+                    </h3>
                   </div>
-                  
-                  {/* Step number badge - Principle 1: Don Norman - Signifiers */}
-                  <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary/20 text-primary text-sm font-semibold mb-4">
-                    {index + 1}
-                  </div>
-                  
-                  <h3 
-                    id={`step-${step.id}-title`}
-                    className="font-serif text-3xl md:text-4xl mb-4"
-                  >
-                    {step.title}
-                  </h3>
-                  <p className="text-foreground/80 text-base md:text-lg mb-4">
+                </div>
+
+                {/* Center - Description */}
+                <div className="lg:w-1/3">
+                  <p className="text-black/70 text-lg md:text-xl font-light leading-relaxed">
                     {step.description}
                   </p>
-                  {/* Output - Principle 4: Aarron Walter - Setting expectations */}
-                  <p className="text-sm text-primary italic mt-auto">
-                    <span className="font-semibold">Output:</span> {step.output}
-                  </p>
                 </div>
-              </article>
-            );
-          })}
+
+                {/* Right - Deliverable */}
+                <div className="lg:w-1/3 flex flex-col items-start lg:items-end justify-between h-full">
+                  <div className="inline-block px-4 py-2 border border-black/10">
+                    <p className="text-xs tracking-[0.3em] uppercase text-black/40 mb-1">Deliverable</p>
+                    <p className="text-sm font-light">{step.deliverable}</p>
+                  </div>
+                  
+                  <ArrowUpRight 
+                    className="w-8 h-8 mt-6 lg:mt-0 text-black/20 group-hover:text-[#D4AF37] transition-colors" 
+                    aria-hidden="true"
+                  />
+                </div>
+              </div>
+            </article>
+          ))}
         </div>
 
-        {/* CTA - Principle 3: Luke Wroblewski - 44px minimum touch target */}
-        <div className="flex justify-end">
+        {/* CTA */}
+        <div className="mt-16 md:mt-24 flex justify-center">
           <Button 
             variant="outline" 
-            size="lg" 
-            className="group min-h-[44px] min-w-[44px] focus:ring-2 focus:ring-offset-2 focus:ring-primary" 
-            data-testid="button-see-process"
-            aria-label="Explore our detailed building process"
+            className="border-white text-white hover:bg-white hover:text-black min-h-[56px] px-8 group"
+            aria-label="Learn more about our process"
           >
-            Explore Our Process
-            <ArrowRight 
-              className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" 
-              aria-hidden="true"
-            />
+            <span className="font-light tracking-wide uppercase mr-2">Explore Process</span>
+            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </Button>
         </div>
       </div>
