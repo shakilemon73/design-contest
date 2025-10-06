@@ -1,6 +1,7 @@
 import { ArrowRight, Search, Palette, Hammer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function ThePlan() {
   const [activePhase, setActivePhase] = useState(0);
@@ -54,14 +55,20 @@ export default function ThePlan() {
     <section className="py-20 md:py-32 bg-gradient-to-b from-background to-background/50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16 md:mb-24">
+        <motion.div 
+          className="text-center mb-16 md:mb-24"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="font-serif font-light text-4xl md:text-6xl lg:text-7xl mb-6" data-testid="text-plan-heading">
             The Plan
           </h2>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
             Three carefully orchestrated phases that transform your vision into reality
           </p>
-        </div>
+        </motion.div>
 
         {/* Phase Cards */}
         <div className="space-y-12 md:space-y-20">
@@ -70,20 +77,30 @@ export default function ThePlan() {
             const isEven = index % 2 === 0;
             
             return (
-              <div 
+              <motion.div 
                 key={index} 
                 className={`group relative`}
                 data-testid={`card-step-${index + 1}`}
                 onMouseEnter={() => setActivePhase(index)}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.7, delay: index * 0.2 }}
               >
                 <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 md:gap-12 items-center`}>
                   {/* Image Side */}
-                  <div className="w-full md:w-1/2 relative overflow-hidden rounded-2xl aspect-[4/3] bg-muted">
+                  <motion.div 
+                    className="w-full md:w-1/2 relative overflow-hidden rounded-2xl aspect-[4/3] bg-muted"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.4 }}
+                  >
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                    <img 
+                    <motion.img 
                       src={phase.image} 
                       alt={phase.title}
-                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
+                      className="w-full h-full object-cover"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.7, ease: "easeOut" }}
                     />
                     
                     {/* Floating Number Badge */}
@@ -95,7 +112,7 @@ export default function ThePlan() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
 
                   {/* Content Side */}
                   <div className="w-full md:w-1/2 space-y-6">
@@ -148,7 +165,7 @@ export default function ThePlan() {
                     </div>
                   </div>
                 )}
-              </div>
+              </motion.div>
             );
           })}
         </div>
