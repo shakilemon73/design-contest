@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import TopHeaderStripe from "@/components/TopHeaderStripe";
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -31,14 +32,15 @@ export default function Navigation() {
         Skip to content
       </a>
 
-      <nav 
-        className="fixed top-0 left-0 right-0 z-50"
-        role="navigation"
-        aria-label="Main navigation"
-      >
-        <div className="absolute inset-0 bg-black/30 backdrop-blur-md border-b border-white/10" />
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <TopHeaderStripe />
         
-        <div className="relative max-w-[1800px] mx-auto px-6 lg:px-12">
+        <nav 
+          role="navigation"
+          aria-label="Main navigation"
+          className="bg-black/30 backdrop-blur-md border-b border-white/10"
+        >
+        <div className="max-w-[1800px] mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-20 lg:h-24">
             <Link 
               href="/" 
@@ -106,7 +108,7 @@ export default function Navigation() {
         {mobileMenuOpen && (
           <div
             id="mobile-menu"
-            className="fixed inset-0 top-20 lg:hidden bg-black/95 backdrop-blur-xl animate-in fade-in slide-in-from-top-5 duration-300"
+            className="fixed inset-0 top-[120px] lg:hidden bg-black/95 backdrop-blur-xl animate-in fade-in slide-in-from-top-5 duration-300"
             role="menu"
           >
             <div className="h-full flex flex-col justify-center items-center px-6 py-12 space-y-6">
@@ -141,7 +143,8 @@ export default function Navigation() {
             </div>
           </div>
         )}
-      </nav>
+        </nav>
+      </div>
     </>
   );
 }

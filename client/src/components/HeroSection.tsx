@@ -66,7 +66,7 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
         
         {/* Video controls */}
-        <div className="absolute top-24 right-6 z-30 flex gap-2" role="group" aria-label="Video controls">
+        <div className="absolute top-32 lg:top-36 right-6 z-30 flex gap-2" role="group" aria-label="Video controls">
           <button
             onClick={togglePlayPause}
             className="p-3 bg-black/30 backdrop-blur-sm border border-white/20 hover:bg-black/50 transition-all min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-[#D4AF37] rounded-sm"
