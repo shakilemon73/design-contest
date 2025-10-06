@@ -2,9 +2,6 @@ import { ArrowRight, Search, Palette, Hammer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import discoverImg from "@assets/generated_images/Macedon_Ranges_landscape_1_cb01c550.png";
-import designImg from "@assets/generated_images/Featured_project_Casa_Lauren_e0dd4b0b.png";
-import buildImg from "@assets/generated_images/Craftsmanship_detail_image_eb1b3805.png";
 
 export default function ThePlan() {
   const [activePhase, setActivePhase] = useState(0);
@@ -16,7 +13,7 @@ export default function ThePlan() {
       title: "Discover",
       description: "Align brief, site, style, budget.",
       output: "Output: costed concept + band.",
-      image: discoverImg,
+      image: "/images/Macedon_Ranges_landscape_1_cb01c550.png",
       details: [
         "Initial consultation and site analysis",
         "Budget alignment and feasibility study",
@@ -30,7 +27,7 @@ export default function ThePlan() {
       title: "Design",
       description: "Lock drawings, selections, pricing.",
       output: "Output: itemised inclusions, finishes, program.",
-      image: designImg,
+      image: "/images/Featured_project_Casa_Lauren_e0dd4b0b.png",
       details: [
         "Detailed architectural drawings",
         "Material and finishes selection",
@@ -44,7 +41,7 @@ export default function ThePlan() {
       title: "Build",
       description: "Craftsmanship + weekly updates.",
       output: "Output: quality checks, on time finish.",
-      image: buildImg,
+      image: "/images/Craftsmanship_detail_image_eb1b3805.png",
       details: [
         "Expert craftsmen and quality materials",
         "Weekly progress updates and walkthroughs",
